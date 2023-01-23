@@ -45,8 +45,13 @@ input {
   border-radius: 0;
 }
 
-.header {
-  background-color: green;
+@font-face {
+  font-family: Proxima-Nova;
+  src: url(/fonts/ProximaNova-Regular.otf);
+}
+body {
+  font-family: Proxima-Nova;
+  padding: 0 20px;
 }
 
 /*# sourceMappingURL=index.css.map */
