@@ -4,8 +4,8 @@
 
 
 .header
-  padding-top: 3px
-  padding-bottom: 3px
+  padding-top: 10px
+  padding-bottom: 10px
   display: flex
   justify-content: space-between
   align-items: center
@@ -15,14 +15,41 @@
     padding-top: 0.38vw
     padding-bottom: 0.38vw
 
+
+.header__menu
+  @include mixins.tablet
+    width: 100%
+
 .header__menu__list
   display: flex
   column-gap: 3.8vw
   text-transform: uppercase
-  font-weight: bold
+  font-weight: bold   
+  .header__menu__item 
+    line-height: 0
+    text-decoration: none
+    
   @include mixins.tablet
-    font-size: 10px
-  
+    position: absolute
+    top: 48px
+    left: 0
+    width: 100%
+    padding: 0 20px
+    flex-direction: column
+    font-weight: normal
+    background-color: variables.$dark
+    .header__menu__item
+      padding: 20px 0
+      border-top: variables.$strong-grey solid 1px
+
+.mobile__menu__btn
+  text-transform: uppercase
+  font-size: 18px
+  display: block
+  width: 100%
+  cursor: pointer
+  @include mixins.desktop
+    display: none
 
 .logo
   width: 150px
@@ -31,8 +58,13 @@
     width: 13vw
     height: 2.9vw
 
+.user__panel
+  display: flex
+  column-gap: 1.9vw
+
 .user__icon, .cart__icon 
   width: 25px
+  cursor: pointer
   @include mixins.desktop
     width: 1.88vw
 

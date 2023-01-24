@@ -52,9 +52,21 @@ input {
 html {
   font-size: 1.17vw;
 }
+@media (max-width: 768px) {
+  html {
+    font-size: 14px;
+  }
+}
 
 body {
   font-family: Proxima-Nova;
+}
+
+.link {
+  color: #FFF;
+}
+.link:visited {
+  color: #FFF;
 }
 
 @media (max-width: 768px) {
@@ -77,8 +89,8 @@ body {
 }
 
 .header {
-  padding-top: 3px;
-  padding-bottom: 3px;
+  padding-top: 10px;
+  padding-bottom: 10px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -92,15 +104,49 @@ body {
   }
 }
 
+@media (max-width: 768px) {
+  .header__menu {
+    width: 100%;
+  }
+}
+
 .header__menu__list {
   display: flex;
   column-gap: 3.8vw;
   text-transform: uppercase;
   font-weight: bold;
 }
+.header__menu__list .header__menu__item {
+  line-height: 0;
+  text-decoration: none;
+}
 @media (max-width: 768px) {
   .header__menu__list {
-    font-size: 10px;
+    position: absolute;
+    top: 48px;
+    left: 0;
+    width: 100%;
+    padding: 0 20px;
+    flex-direction: column;
+    font-weight: normal;
+    background-color: #000;
+  }
+  .header__menu__list .header__menu__item {
+    padding: 20px 0;
+    border-top: #2e2e2e solid 1px;
+  }
+}
+
+.mobile__menu__btn {
+  text-transform: uppercase;
+  font-size: 18px;
+  display: block;
+  width: 100%;
+  cursor: pointer;
+}
+@media (min-width: 769px) {
+  .mobile__menu__btn {
+    display: none;
   }
 }
 
@@ -115,8 +161,14 @@ body {
   }
 }
 
+.user__panel {
+  display: flex;
+  column-gap: 1.9vw;
+}
+
 .user__icon, .cart__icon {
   width: 25px;
+  cursor: pointer;
 }
 @media (min-width: 769px) {
   .user__icon, .cart__icon {

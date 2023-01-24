@@ -3,9 +3,17 @@
 
 html
   font-size: 1.17vw
+  @include mixins.tablet
+    font-size: 14px
 
 body
   font-family: variables.$font-default
+  
+.link
+  color: variables.$light
+  &:visited
+    color: variables.$light
+    
 
 .container  
   @include mixins.tablet
