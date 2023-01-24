@@ -57,6 +57,12 @@ const Header = () => {
           >
             Weapons
           </Link>
+          <Link
+            href="" 
+            className="header__menu__item link menu__login__link"
+          >
+            Log in/Create account
+          </Link>
         </ul>
       </nav>
       <div className="user__panel">

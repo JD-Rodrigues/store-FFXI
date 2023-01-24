@@ -11,6 +11,7 @@
   align-items: center
   background-color: variables.$dark
   color: variables.$light
+  text-transform: uppercase
   @include mixins.desktop
     padding-top: 0.38vw
     padding-bottom: 0.38vw
@@ -23,12 +24,7 @@
 .header__menu__list
   display: flex
   column-gap: 3.8vw
-  text-transform: uppercase
-  font-weight: bold   
-  .header__menu__item 
-    line-height: 0
-    text-decoration: none
-    
+  font-weight: bold      
   @include mixins.tablet
     position: absolute
     top: 48px
@@ -38,12 +34,20 @@
     flex-direction: column
     font-weight: normal
     background-color: variables.$dark
-    .header__menu__item
-      padding: 20px 0
-      border-top: variables.$strong-grey solid 1px
+      
+.header__menu__item 
+  line-height: 0
+  text-decoration: none
+  @include mixins.tablet
+    padding: 20px 0
+    border-top: variables.$strong-grey solid 1px
+
+.menu__login__link
+  text-transform: none
+  @include mixins.desktop
+    display: none
 
 .mobile__menu__btn
-  text-transform: uppercase
   font-size: 18px
   display: block
   width: 100%
