@@ -49,9 +49,79 @@ input {
   font-family: Proxima-Nova;
   src: url(/fonts/ProximaNova-Regular.otf);
 }
+html {
+  font-size: 1.17vw;
+}
+
 body {
   font-family: Proxima-Nova;
-  padding: 0 20px;
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+}
+@media (max-width: 450px) {
+  .container {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+}
+@media (min-width: 769px) {
+  .container {
+    padding-left: 1.5vw;
+    padding-right: 1.5vw;
+  }
+}
+
+.header {
+  padding-top: 3px;
+  padding-bottom: 3px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #000;
+  color: #FFF;
+}
+@media (min-width: 769px) {
+  .header {
+    padding-top: 0.38vw;
+    padding-bottom: 0.38vw;
+  }
+}
+
+.header__menu__list {
+  display: flex;
+  column-gap: 3.8vw;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+@media (max-width: 768px) {
+  .header__menu__list {
+    font-size: 10px;
+  }
+}
+
+.logo {
+  width: 150px;
+  height: 30px;
+}
+@media (min-width: 769px) {
+  .logo {
+    width: 13vw;
+    height: 2.9vw;
+  }
+}
+
+.user__icon, .cart__icon {
+  width: 25px;
+}
+@media (min-width: 769px) {
+  .user__icon, .cart__icon {
+    width: 1.88vw;
+  }
 }
 
 /*# sourceMappingURL=index.css.map */

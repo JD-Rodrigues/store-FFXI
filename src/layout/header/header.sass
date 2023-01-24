@@ -1,0 +1,42 @@
+@use '../../basic_styles/variables' as variables
+@use '../../basic_styles/mixins' as mixins
+
+
+
+.header
+  padding-top: 3px
+  padding-bottom: 3px
+  display: flex
+  justify-content: space-between
+  align-items: center
+  background-color: variables.$dark
+  color: variables.$light
+  @include mixins.desktop
+    padding-top: 0.38vw
+    padding-bottom: 0.38vw
+
+.header__menu__list
+  display: flex
+  column-gap: 3.8vw
+  text-transform: uppercase
+  font-weight: bold
+  @include mixins.tablet
+    font-size: 10px
+  
+
+.logo
+  width: 150px
+  height: 30px
+  @include mixins.desktop
+    width: 13vw
+    height: 2.9vw
+
+.user__icon, .cart__icon 
+  width: 25px
+  @include mixins.desktop
+    width: 1.88vw
+
+
+
+
+
