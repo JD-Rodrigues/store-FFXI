@@ -1,0 +1,79 @@
+
+@use '../../basic_styles/mixins' as mixins
+@use '../../basic_styles/variables' as variables
+
+.footer
+  @include mixins.flex(column)
+  padding: 1.8vw 100px
+  color: variables.$social-icon
+  font-weight: 900
+  background-color: variables.$social-section-bg
+  @include mixins.tablet 
+    padding: 30px
+    
+
+  &__social__payment
+    @include mixins.flex()
+
+    @include mixins.tablet 
+      flex-direction: column
+
+  &__social__area
+    @include mixins.flex(column)
+    row-gap: 0.9vw
+
+  &__social__logos
+    @include mixins.flex()
+    padding: 10px 30px
+    column-gap: 10px
+
+  &__social__logo
+    @include mixins.flex()
+    padding: 10px
+    background-color: variables.$light
+  
+  &__payment__options
+    @include mixins.flex(column)
+    padding: 30px
+    row-gap: 0.9vw
+
+  &__payment__logos
+    @include mixins.flex($justify:center)    
+    padding: 10px
+  
+  &__paypal__logo
+    @include mixins.flex()
+    width: 18%
+    padding: 10px
+    background-color: variables.$light
+  
+  &__brand__copy
+    @include mixins.flex($justify:center)
+      column-gap: 1.8vw
+      row-gap: 10px
+      padding: 10px
+    @include mixins.tablet 
+      flex-direction: column
+
+  &__brand__container
+    @include mixins.flex($justify:center)
+    width: auto
+    
+
+  &__brand__pic
+    width: 18.3vw
+    height: 1.9vw
+    @include mixins.tablet
+      width: 36.6vw
+      height: 3.8vw
+    
+  &__copy__text
+    width: auto
+    color: variables.$strong-grey
+    font-weight: normal
+    
+  
+
+
+
+  

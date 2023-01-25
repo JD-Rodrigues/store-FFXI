@@ -1,3 +1,5 @@
+@use 'variables'
+  
 @mixin desktop
   @media (min-width: 769px)
     @content
@@ -10,3 +12,10 @@
   @media (max-width: 450px)
     @content
 
+@mixin flex($direction:row, $justify: space-between, $align:center )
+  width: 100%
+  display: flex
+  flex-direction: $direction
+  justify-content: $justify
+  align-items: $align
+  @content
