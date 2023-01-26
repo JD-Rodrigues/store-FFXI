@@ -8,14 +8,28 @@ import { useEffect, useState } from "react"
 
 const Header = () => {
   const [screenWidth, setScreenWidth] = useState(Number)
+  const [showMenu, setShowMenu] = useState(false)
 
   const setWindowWidth = () => {
     setScreenWidth(window.innerWidth)
   }
 
-  useEffect(()=>{
-    window.addEventListener('resize', setWindowWidth)
+  const changeShowMenu = () => {
+    setShowMenu(prevState => !prevState)
+  }
+
+
+  useEffect(()=>{   
+    window.addEventListener('resize', ()=> {
+      setWindowWidth()
+    })
     setWindowWidth()
+  },[])
+
+  useEffect(()=> {
+    const menuButton = document.querySelector('.mobile__menu__btn')
+    menuButton !== null && menuButton.addEventListener('click', changeShowMenu)
+    console.log(showMenu)
   },[])
  
   return (
@@ -32,7 +46,7 @@ const Header = () => {
       </Link>
       
       <nav className="header__menu">
-        <ul className='header__menu__list' >
+        <ul className={ showMenu ? 'show__menu' : 'header__menu__list'} >
           <Link 
             href="" 
             className="header__menu__item link"
@@ -56,6 +70,12 @@ const Header = () => {
             className="header__menu__item link"
           >
             Weapons
+          </Link>
+          <Link
+            href="" 
+            className="header__menu__item link"
+          >
+            {JSON.stringify(showMenu)}
           </Link>
           <Link
             href="" 
