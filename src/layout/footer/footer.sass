@@ -10,6 +10,8 @@
   background-color: variables.$social-section-bg
   @include mixins.tablet 
     padding: 30px
+  @include mixins.XL-monitor
+    row-gap: 1.5vw
     
 
   &__social__payment
@@ -26,6 +28,8 @@
     @include mixins.flex()
     padding: 10px 30px
     column-gap: 10px
+    @include mixins.XL-monitor
+      column-gap: 0.75vw
 
   &__social__logo
     @include mixins.flex()

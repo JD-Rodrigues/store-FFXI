@@ -1,0 +1,21 @@
+@use '../../basic_styles/mixins'
+@use 'gallery'
+
+.main__content
+  @include mixins.flex(column, center)
+  padding: 40px 10px
+  border: grey solid
+  @include mixins.desktop
+    padding: 100px
+  @include mixins.XL-monitor
+    padding: 7vw
+    
+
+.category__name
+  align-self: flex-start
+  font-size: 24px
+  border-bottom: red solid
+  @include mixins.desktop
+    font-size: 1.8vw
+
+  

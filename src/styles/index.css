@@ -195,6 +195,11 @@ address {
     padding: 30px;
   }
 }
+@media (min-width: 1367px) {
+  .footer {
+    row-gap: 1.5vw;
+  }
+}
 .footer__social__payment {
   width: 100%;
   display: flex;
@@ -223,6 +228,11 @@ address {
   align-items: center;
   padding: 10px 30px;
   column-gap: 10px;
+}
+@media (min-width: 1367px) {
+  .footer__social__logos {
+    column-gap: 0.75vw;
+  }
 }
 .footer__social__logo {
   width: 100%;
@@ -297,6 +307,68 @@ address {
   width: auto;
   color: #2e2e2e;
   font-weight: normal;
+}
+
+.gallery {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  column-gap: 20px;
+  row-gap: 20px;
+  border: blue solid;
+}
+@media (min-width: 1367px) {
+  .gallery {
+    column-gap: 1.5vw;
+    row-gap: 1.5vw;
+  }
+}
+
+.main__content {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 40px 10px;
+  border: grey solid;
+}
+@media (min-width: 769px) {
+  .main__content {
+    padding: 100px;
+  }
+}
+@media (min-width: 1367px) {
+  .main__content {
+    padding: 7vw;
+  }
+}
+
+.category__name {
+  align-self: flex-start;
+  font-size: 24px;
+  border-bottom: red solid;
+}
+@media (min-width: 769px) {
+  .category__name {
+    font-size: 1.8vw;
+  }
+}
+
+.gallery__card {
+  width: 230px;
+  height: 560px;
+  border: red solid;
+}
+@media (min-width: 1367px) {
+  .gallery__card {
+    width: 16.8vw;
+    height: 41vw;
+  }
 }
 
 /*# sourceMappingURL=index.css.map */

@@ -1,5 +1,9 @@
 @use 'variables'
   
+@mixin XL-monitor
+  @media (min-width: 1367px)
+    @content
+  
 @mixin desktop
   @media (min-width: 769px)
     @content
