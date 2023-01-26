@@ -1,21 +1,24 @@
 @use '../../basic_styles/mixins'
-@use 'gallery'
+
 
 .main__content
   @include mixins.flex(column, center)
   padding: 40px 10px
   border: grey solid
+  row-gap: 15px
   @include mixins.desktop
     padding: 100px
   @include mixins.XL-monitor
     padding: 7vw
+    row-gap: 1vw
     
 
 .category__name
   align-self: flex-start
   font-size: 24px
-  border-bottom: red solid
+  border-bottom: red solid 
   @include mixins.desktop
     font-size: 1.8vw
+    border-bottom: red solid 0.15vw
 
   

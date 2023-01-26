@@ -1,4 +1,4 @@
-@use '../../basic_styles/mixins'
+@use '../basic_styles/mixins'
   
 .gallery
   @include mixins.flex($justify:center)
@@ -6,7 +6,6 @@
   flex-wrap: wrap
   column-gap: 20px  
   row-gap: 20px  
-  border: blue solid
   @include mixins.XL-monitor
     column-gap: 1.5vw
     row-gap: 1.5vw
