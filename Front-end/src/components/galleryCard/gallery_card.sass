@@ -1,20 +1,101 @@
 @use '../../basic_styles/mixins' as mixins
 @use '../../basic_styles/variables' as variables
 
-.gallery__card
+.product__card
   width: 230px
-  height: 560px
+  height: 500px
   padding: 20px 15px
+  display: flex
+  flex-direction: column
+  justify-content: space-between
+  row-gap: 5px
   transition: .5s
   @include mixins.XL-monitor
     width: 16.8vw
-    height: 41vw
+    height: 36.6vw
     padding: 1.5vw 1vw
+    row-gap: 0.36vw
   @include mixins.tablet
     width: 100%
-    height: 188px
+    height: 210px
 
   &:hover
-    box-shadow: 1px 3px 5px 1px variables.$volume-color
+    box-shadow: 1px 1px 10px variables.$volume-color
     @include mixins.XL-monitor
-      box-shadow: 0.075vw 0.21vw 0.37vw  0.075vw variables.$volume-color
+      box-shadow: 0.075vw 0.075vw 0.75vw  variables.$volume-color
+
+  &:hover &__pic
+    box-shadow: none
+
+
+  &__info
+    height: 100%
+    row-gap: 30px
+    column-gap: 25px
+    @include mixins.flex()
+    @include mixins.desktop
+      @include mixins.flex(column, center, flex-start)
+    @include mixins.XL-monitor
+      row-gap: 2.2vw
+
+  &__pic__wrapper
+    width: 100%
+    height: 100%
+    display: flex
+    flex-wrap: wrap
+    align-content: center
+    @include mixins.tablet
+      width: 110px
+      height: 110px
+
+
+  &__pic
+    width: 100%
+    height: auto
+    object-fit: contain
+    align-content: center
+    transition: .5s
+    box-shadow: 3px 3px 3px 1px variables.$volume-color
+    @include mixins.XL-monitor
+      box-shadow: 0.075vw 0.075vw 0.75vw  variables.$volume-color
+
+  &__title-price__wrapper
+    @include mixins.flex(column, center, flex-start)
+    row-gap: 25px
+    @include mixins.tablet      
+      height: 100%
+    @include mixins.XL-monitor
+      row-gap: 1.8vw
+  
+  &__title
+    font-size: 13px
+    text-transform: uppercase
+    line-height: 15px
+    display: block
+    @include mixins.desktop
+      font-family: variables.$font-bold
+    @include mixins.XL-monitor
+      font-size: 0.9vw
+      line-height: 15px1.1vw
+
+  &__price
+    font-family: variables.$font-bold
+    font-size: 15px
+    @include mixins.desktop
+      font-family: variables.$font-black
+      font-size: 18px
+    @include mixins.XL-monitor
+      font-size: 1.3vw
+
+.order__button
+  width: 100%
+  height: 40px
+  background-color: variables.$order-button
+  border: none
+  color: variables.$light
+  font-size: 0.8rem
+  @include mixins.XL-monitor
+    height: 2.9vw
+    
+  
+

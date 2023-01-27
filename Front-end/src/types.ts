@@ -4,5 +4,11 @@ interface MainContentProps {
   children: React.ReactNode;
 }
 
-export type {MainContentProps}
+type TGalleryCard = {
+  title:string
+  pic: string
+  price: number
+}
+
+export type {MainContentProps, TGalleryCard}
 

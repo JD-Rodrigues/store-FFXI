@@ -21,11 +21,31 @@ export default function Home() {
             FEATURED ITEMS
         </h1>
         <section className='gallery'>
-          <GalleryCard />
-          <GalleryCard />
-          <GalleryCard />
-          <GalleryCard />
-          <GalleryCard />
+          <GalleryCard 
+            title='Account - lvl 99 - All subjobs' 
+            pic='/gallery__images/account.jpg'
+            price={250.00}
+          />
+          <GalleryCard 
+            title='Epic weapon - Conqueror'
+            pic='/gallery__images/conqueror.jpg'
+            price={75}
+          />
+          <GalleryCard 
+            title='Leveling - Job 1-50'
+            pic='/gallery__images/levelup.jpg'
+            price={125}
+          />
+          <GalleryCard 
+            title='Missions - ranks 1-10'
+            pic='/gallery__images/missions.webp'
+            price={75}
+          />
+          <GalleryCard 
+            title='Epic weapon - Nirvana'
+            pic='/gallery__images/nirvana.webp'
+            price={75}
+          />
         </section>
       </MainContent>
     </>

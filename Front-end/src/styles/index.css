@@ -2,6 +2,14 @@
   font-family: Proxima-Nova;
   src: url(/fonts/ProximaNova-Regular.otf);
 }
+@font-face {
+  font-family: Proxima-Nova-Bold;
+  src: url(/fonts/Proxima_Nova_Bold.otf);
+}
+@font-face {
+  font-family: Proxima-Nova-Black;
+  src: url(/fonts/Proxima_Nova_Black.otf);
+}
 .gallery {
   width: 100%;
   display: flex;
@@ -11,7 +19,7 @@
   display: flex;
   flex-wrap: wrap;
   column-gap: 20px;
-  row-gap: 20px;
+  row-gap: 10px;
 }
 @media (min-width: 1367px) {
   .gallery {
@@ -392,31 +400,153 @@ address {
   }
 }
 
-.gallery__card {
+.product__card {
   width: 230px;
-  height: 560px;
+  height: 500px;
   padding: 20px 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  row-gap: 5px;
   transition: 0.5s;
 }
 @media (min-width: 1367px) {
-  .gallery__card {
+  .product__card {
     width: 16.8vw;
-    height: 41vw;
+    height: 36.6vw;
     padding: 1.5vw 1vw;
+    row-gap: 0.36vw;
   }
 }
 @media (max-width: 768px) {
-  .gallery__card {
+  .product__card {
     width: 100%;
-    height: 188px;
+    height: 210px;
   }
 }
-.gallery__card:hover {
-  box-shadow: 1px 3px 5px 1px #666;
+.product__card:hover {
+  box-shadow: 1px 1px 10px #666;
 }
 @media (min-width: 1367px) {
-  .gallery__card:hover {
-    box-shadow: 0.075vw 0.21vw 0.37vw 0.075vw #666;
+  .product__card:hover {
+    box-shadow: 0.075vw 0.075vw 0.75vw #666;
+  }
+}
+.product__card:hover .product__card__pic {
+  box-shadow: none;
+}
+.product__card__info {
+  height: 100%;
+  row-gap: 30px;
+  column-gap: 25px;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+@media (min-width: 769px) {
+  .product__card__info {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+  }
+}
+@media (min-width: 1367px) {
+  .product__card__info {
+    row-gap: 2.2vw;
+  }
+}
+.product__card__pic__wrapper {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  align-content: center;
+}
+@media (max-width: 768px) {
+  .product__card__pic__wrapper {
+    width: 110px;
+    height: 110px;
+  }
+}
+.product__card__pic {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  align-content: center;
+  transition: 0.5s;
+  box-shadow: 3px 3px 3px 1px #666;
+}
+@media (min-width: 1367px) {
+  .product__card__pic {
+    box-shadow: 0.075vw 0.075vw 0.75vw #666;
+  }
+}
+.product__card__title-price__wrapper {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  row-gap: 25px;
+}
+@media (max-width: 768px) {
+  .product__card__title-price__wrapper {
+    height: 100%;
+  }
+}
+@media (min-width: 1367px) {
+  .product__card__title-price__wrapper {
+    row-gap: 1.8vw;
+  }
+}
+.product__card__title {
+  font-size: 13px;
+  text-transform: uppercase;
+  line-height: 15px;
+  display: block;
+}
+@media (min-width: 769px) {
+  .product__card__title {
+    font-family: Proxima-Nova-Bold;
+  }
+}
+@media (min-width: 1367px) {
+  .product__card__title {
+    font-size: 0.9vw;
+    line-height: 15px1 0.1vw;
+  }
+}
+.product__card__price {
+  font-family: Proxima-Nova-Bold;
+  font-size: 15px;
+}
+@media (min-width: 769px) {
+  .product__card__price {
+    font-family: Proxima-Nova-Black;
+    font-size: 18px;
+  }
+}
+@media (min-width: 1367px) {
+  .product__card__price {
+    font-size: 1.3vw;
+  }
+}
+
+.order__button {
+  width: 100%;
+  height: 40px;
+  background-color: #7bbf1c;
+  border: none;
+  color: #FFF;
+  font-size: 0.8rem;
+}
+@media (min-width: 1367px) {
+  .order__button {
+    height: 2.9vw;
   }
 }
 
