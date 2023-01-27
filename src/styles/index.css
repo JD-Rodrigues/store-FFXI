@@ -119,7 +119,6 @@ address {
   position: fixed;
   padding-top: 10px;
   padding-bottom: 10px;
-  align-items: center;
   background-color: #000;
   color: #FFF;
   text-transform: uppercase;
@@ -205,8 +204,18 @@ address {
 }
 
 .user__panel {
+  width: 100%;
   display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+  width: auto;
   column-gap: 1.9vw;
+}
+@media (max-width: 768px) {
+  .user__panel {
+    width: 100%;
+  }
 }
 
 .user__icon, .cart__icon {

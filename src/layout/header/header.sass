@@ -7,7 +7,6 @@
   position: fixed
   padding-top: 10px
   padding-bottom: 10px
-  align-items: center
   background-color: variables.$dark
   color: variables.$light
   text-transform: uppercase
@@ -16,10 +15,6 @@
   @include mixins.desktop
     padding-top: 0.38vw
     padding-bottom: 0.38vw
-
-.header__menu
-  @include mixins.tablet
-    
 
 .header__menu__list
   display: flex
@@ -70,8 +65,12 @@
     height: 2.9vw
 
 .user__panel
-  display: flex
+  @include mixins.flex($justify:flex-end)
+  width: auto
   column-gap: 1.9vw
+  @include mixins.tablet
+    width: 100%
+
 
 .user__icon, .cart__icon 
   width: 25px
