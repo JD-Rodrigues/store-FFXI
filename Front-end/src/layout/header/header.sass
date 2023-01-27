@@ -37,9 +37,10 @@
   @include mixins.tablet
     top: 48px
 
-.header__menu__item 
+.header__menu__item  
   line-height: 0
   text-decoration: none
+  padding: 1vw 0
   @include mixins.tablet
     padding: 20px 0
     border-top: variables.$strong-grey solid 1px
@@ -77,8 +78,17 @@
   cursor: pointer
   @include mixins.desktop
     width: 1.88vw
+    padding: 0.2vw 0
 
-
+.header__menu__item, .user__icon, .cart__icon 
+  @include mixins.desktop
+    transition: .3s 
+    border-bottom: transparent solid 0.15vw 
+    &:hover
+      border-bottom: variables.$highlight solid 0.15vw
+  
+  
+    
 
 
 

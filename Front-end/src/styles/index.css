@@ -171,6 +171,7 @@ address {
 .header__menu__item {
   line-height: 0;
   text-decoration: none;
+  padding: 1vw 0;
 }
 @media (max-width: 768px) {
   .header__menu__item {
@@ -233,6 +234,17 @@ address {
 @media (min-width: 769px) {
   .user__icon, .cart__icon {
     width: 1.88vw;
+    padding: 0.2vw 0;
+  }
+}
+
+@media (min-width: 769px) {
+  .header__menu__item, .user__icon, .cart__icon {
+    transition: 0.3s;
+    border-bottom: transparent solid 0.15vw;
+  }
+  .header__menu__item:hover, .user__icon:hover, .cart__icon:hover {
+    border-bottom: #f00 solid 0.15vw;
   }
 }
 
@@ -396,7 +408,7 @@ address {
 @media (min-width: 769px) {
   .category__name {
     font-size: 1.8vw;
-    border-bottom: red solid 0.15vw;
+    border-bottom: #f00 solid 0.15vw;
   }
 }
 
