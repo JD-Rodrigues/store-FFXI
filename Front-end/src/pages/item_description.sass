@@ -1,0 +1,36 @@
+@use '../basic_styles/mixins'
+@use '../basic_styles/variables'
+
+.item
+  @include mixins.flex(column)
+  padding: 7.3vw 0
+  border: pink solid
+  @include mixins.tablet
+    padding: 100px 0
+
+  &__abstract
+    @include mixins.flex()
+    column-gap: 3.6vw
+    @include mixins.tablet
+      @include mixins.flex(column)
+
+    &__pic
+      border: red solid
+      @include mixins.tablet
+        order: 2
+    
+    &__info
+      @include mixins.tablet
+        order: 1
+    
+    &__title
+      border: blue solid
+      
+
+    &__text
+      border: green solid
+
+    &__price-order
+      border: purple solid
+      @include mixins.tablet
+        order: 3

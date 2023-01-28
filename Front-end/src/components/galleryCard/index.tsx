@@ -1,5 +1,6 @@
 import Image from "next/image"
 import { TGalleryCard } from "src/types"
+import { OrderButton } from "../orderButton"
 
 
 const GalleryCard = ({title, pic, price}:TGalleryCard) => {
@@ -21,12 +22,10 @@ const GalleryCard = ({title, pic, price}:TGalleryCard) => {
             className='product__card__price'>{`$${price}`}
           </p>
         </div>
-        
+        <OrderButton />
              
       </div>
-      <button className="order__button">
-          ADD TO CART
-      </button>   
+   
     </div>
   )
 }
