@@ -556,8 +556,7 @@ address {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 40px 10px;
-  border: grey solid;
+  padding: 100px 10px;
   row-gap: 15px;
 }
 @media (min-width: 769px) {
