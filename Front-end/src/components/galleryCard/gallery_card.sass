@@ -70,6 +70,8 @@
   &__title
     font-size: 13px
     text-transform: uppercase
+    text-decoration: none
+    color: inherit
     line-height: 15px
     display: block
     @include mixins.desktop
@@ -77,6 +79,8 @@
     @include mixins.XL-monitor
       font-size: 0.9vw
       line-height: 15px1.1vw
+    &:hover
+      color: variables.$highlight
 
   &__price
     font-family: variables.$font-bold

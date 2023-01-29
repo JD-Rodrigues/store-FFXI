@@ -16,7 +16,8 @@ export default function ItemDescription() {
       <main className="container">
         <article className="item">
           <section  className="item__abstract">
-            <img 
+            <div className="item__abstract__pic-info__wrapper">
+              <img 
               src="/gallery__images/item__desc.jpg"
             className="item__abstract__pic" />
             <div className="item__abstract__info">
@@ -26,18 +27,28 @@ export default function ItemDescription() {
               <p className="item__abstract__text">
                 Tifa, from FINAL FANTASY VII REMAKE, returns to the STATIC ARTS statuette line, this time in a dress a little more exotic than she is used to!
               </p>
-              <Link href="#">
-                <p className="item__abstract__details">See full product details</p>
+              <Link href="#item__description" className="item__abstract__details">
+                <p>See full product details</p>
               </Link>
             </div>
+            </div>
+            
             <div className="item__abstract__price-order">
               <p className="item__abstract__price">
                 R$199.00
               </p>
-              <OrderButton />
+              <OrderButton text="ADD TO CART" />
             </div>
           </section>
-          <section className="item__description">
+          <section className="item__description" id="item__description">
+            <header className="item__description__title"
+            >
+              <h2>
+                Description
+              </h2>
+            </header>
+            
+          <section className="item__description__text">
             <p>
               Tifa, from FINAL FANTASY VII REMAKE, returns to the STATIC ARTS statuette line, this time in a dress a little more exotic than she is used to!
             </p><br/>
@@ -48,6 +59,7 @@ export default function ItemDescription() {
             <p>
               Chair & Base Included
             </p>
+          </section>            
           </section>
         </article>
       </main>

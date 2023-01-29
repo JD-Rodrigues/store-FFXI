@@ -4,33 +4,102 @@
 .item
   @include mixins.flex(column)
   padding: 7.3vw 0
-  border: pink solid
+  row-gap: 2.9vw
   @include mixins.tablet
     padding: 100px 0
+    row-gap: 40px
 
   &__abstract
-    @include mixins.flex()
+    padding-bottom: 1.8vw
+    box-shadow: 0 0.2vw  variables.$divisory-color
+    @include mixins.flex($align:flex-start) 
     column-gap: 3.6vw
-    @include mixins.tablet
-      @include mixins.flex(column)
+    @include mixins.notebook
+      flex-wrap: wrap
+
+    &__pic-info__wrapper
+      @include mixins.flex($align:flex-start) 
+      column-gap: 3.6vw
+      @include mixins.tablet
+        @include mixins.flex(column)
 
     &__pic
-      border: red solid
+      width: 100%
+      box-shadow: 0.21vw 0.21vw 0.35vw rgb(0 0 0 / 16%)
       @include mixins.tablet
+        max-width: 350px
+        box-shadow: 3px 3px 5px rgb(0 0 0 / 16%)
         order: 2
     
     &__info
+      @include mixins.flex(column, $align:flex-start)
+      width: 150%
+      padding: 2.5vw 0
+      row-gap: 2.0vw
       @include mixins.tablet
+        width: 100%
         order: 1
     
     &__title
-      border: blue solid
-      
+      font-family: variables.$font-black
+      font-size: 1.75vw      
+      @include mixins.tablet
+        font-size: 16px
+        line-height: 24px
+        padding: 0
+
 
     &__text
-      border: green solid
+      line-height: 1.75vw
+      @include mixins.tablet
+        display: none
+
+    &__details
+      color: variables.$dark
+      text-decoration: none
+      border-bottom: variables.$highlight solid 0.1vw
+      &:hover
+        color: variables.$highlight
 
     &__price-order
-      border: purple solid
+      width: 22vw
+      padding: 1vw 2.9vw 
+      margin-top: 8vw
+      font-family: variables.$font-black
+      font-size: 1.75vw
+      border: solid variables.$divisory-color 0.07vw
+      @include mixins.notebook
+        @include mixins.flex(column, $align:flex-start)
+        padding: 20px 0
       @include mixins.tablet
-        order: 3
+        font-size: 24px
+    &__price
+      margin-bottom: 0.73vw
+      @include mixins.tablet
+        margin-bottom: 15px
+      
+.item__description 
+  @include mixins.flex(column, $align:flex-start)
+  padding: 0 5.85vw
+  @include mixins.tablet
+    padding: 50px 0
+
+
+  &__title
+    font-size: 1.4vw
+    border-bottom: variables.$highlight solid 0.2vw
+    padding-bottom: 0.7vw
+    @include mixins.tablet
+      font-size: 16px
+      border-bottom: variables.$highlight solid 2px
+      padding-bottom: 10px
+
+  &__text
+    padding: 3vw 0
+    font-size: 1vw
+    line-height: 1.75vw
+    border-top: variables.$divisory-color solid  0.07vw
+    @include mixins.tablet
+      font-size: 14px
+      line-height: 24px
+      

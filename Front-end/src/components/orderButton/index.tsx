@@ -1,7 +1,9 @@
-const OrderButton = () => {
+import { TOrderButtonProps } from "src/types"
+
+const OrderButton = ({text}:TOrderButtonProps) => {
   return(
     <button className="order__button">
-          ADD TO CART
+          {text}
     </button>  
   )
 }

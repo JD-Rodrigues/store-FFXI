@@ -73,12 +73,6 @@ const Header = () => {
           </Link>
           <Link
             href="" 
-            className="header__menu__item link"
-          >
-            {JSON.stringify(showMenu)}
-          </Link>
-          <Link
-            href="" 
             className="header__menu__item link menu__login__link"
           >
             Log in/Create account

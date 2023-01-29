@@ -10,5 +10,9 @@ type TGalleryCard = {
   price: number
 }
 
-export type {MainContentProps, TGalleryCard}
+type TOrderButtonProps = {
+  text:string
+}
+
+export type {MainContentProps, TGalleryCard, TOrderButtonProps}
 

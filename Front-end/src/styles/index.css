@@ -40,23 +40,39 @@
   justify-content: space-between;
   align-items: center;
   padding: 7.3vw 0;
-  border: pink solid;
+  row-gap: 2.9vw;
 }
 @media (max-width: 768px) {
   .item {
     padding: 100px 0;
+    row-gap: 40px;
   }
 }
 .item__abstract {
+  padding-bottom: 1.8vw;
+  box-shadow: 0 0.2vw #ddd;
   width: 100%;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-start;
+  column-gap: 3.6vw;
+}
+@media (max-width: 1200px) {
+  .item__abstract {
+    flex-wrap: wrap;
+  }
+}
+.item__abstract__pic-info__wrapper {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
   column-gap: 3.6vw;
 }
 @media (max-width: 768px) {
-  .item__abstract {
+  .item__abstract__pic-info__wrapper {
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -65,30 +81,126 @@
   }
 }
 .item__abstract__pic {
-  border: red solid;
+  width: 100%;
+  box-shadow: 0.21vw 0.21vw 0.35vw rgba(0, 0, 0, 0.16);
 }
 @media (max-width: 768px) {
   .item__abstract__pic {
+    max-width: 350px;
+    box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.16);
     order: 2;
   }
 }
+.item__abstract__info {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  width: 150%;
+  padding: 2.5vw 0;
+  row-gap: 2vw;
+}
 @media (max-width: 768px) {
   .item__abstract__info {
+    width: 100%;
     order: 1;
   }
 }
 .item__abstract__title {
-  border: blue solid;
+  font-family: Proxima-Nova-Black;
+  font-size: 1.75vw;
+}
+@media (max-width: 768px) {
+  .item__abstract__title {
+    font-size: 16px;
+    line-height: 24px;
+    padding: 0;
+  }
 }
 .item__abstract__text {
-  border: green solid;
+  line-height: 1.75vw;
+}
+@media (max-width: 768px) {
+  .item__abstract__text {
+    display: none;
+  }
+}
+.item__abstract__details {
+  color: #000;
+  text-decoration: none;
+  border-bottom: #c80000 solid 0.1vw;
+}
+.item__abstract__details:hover {
+  color: #c80000;
 }
 .item__abstract__price-order {
-  border: purple solid;
+  width: 22vw;
+  padding: 1vw 2.9vw;
+  margin-top: 8vw;
+  font-family: Proxima-Nova-Black;
+  font-size: 1.75vw;
+  border: solid #ddd 0.07vw;
+}
+@media (max-width: 1200px) {
+  .item__abstract__price-order {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 20px 0;
+  }
 }
 @media (max-width: 768px) {
   .item__abstract__price-order {
-    order: 3;
+    font-size: 24px;
+  }
+}
+.item__abstract__price {
+  margin-bottom: 0.73vw;
+}
+@media (max-width: 768px) {
+  .item__abstract__price {
+    margin-bottom: 15px;
+  }
+}
+
+.item__description {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 0 5.85vw;
+}
+@media (max-width: 768px) {
+  .item__description {
+    padding: 50px 0;
+  }
+}
+.item__description__title {
+  font-size: 1.4vw;
+  border-bottom: #c80000 solid 0.2vw;
+  padding-bottom: 0.7vw;
+}
+@media (max-width: 768px) {
+  .item__description__title {
+    font-size: 16px;
+    border-bottom: #c80000 solid 2px;
+    padding-bottom: 10px;
+  }
+}
+.item__description__text {
+  padding: 3vw 0;
+  font-size: 1vw;
+  line-height: 1.75vw;
+  border-top: #ddd solid 0.07vw;
+}
+@media (max-width: 768px) {
+  .item__description__text {
+    font-size: 14px;
+    line-height: 24px;
   }
 }
 
@@ -141,6 +253,7 @@ input {
 
 html {
   font-size: 1.17vw;
+  scroll-behavior: smooth !important;
 }
 @media (max-width: 768px) {
   html {
@@ -303,7 +416,7 @@ address {
     border-bottom: transparent solid 0.15vw;
   }
   .header__menu__item:hover, .user__icon:hover, .cart__icon:hover {
-    border-bottom: #f00 solid 0.15vw;
+    border-bottom: #c80000 solid 0.15vw;
   }
 }
 
@@ -467,7 +580,7 @@ address {
 @media (min-width: 769px) {
   .category__name {
     font-size: 1.8vw;
-    border-bottom: #f00 solid 0.15vw;
+    border-bottom: #c80000 solid 0.15vw;
   }
 }
 
@@ -577,6 +690,8 @@ address {
 .product__card__title {
   font-size: 13px;
   text-transform: uppercase;
+  text-decoration: none;
+  color: inherit;
   line-height: 15px;
   display: block;
 }
@@ -590,6 +705,9 @@ address {
     font-size: 0.9vw;
     line-height: 15px1 0.1vw;
   }
+}
+.product__card__title:hover {
+  color: #c80000;
 }
 .product__card__price {
   font-family: Proxima-Nova-Bold;
