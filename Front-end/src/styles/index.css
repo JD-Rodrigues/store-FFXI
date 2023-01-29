@@ -434,6 +434,7 @@ address {
 @media (max-width: 768px) {
   .footer {
     padding: 30px;
+    align-content: center;
   }
 }
 @media (min-width: 1367px) {
