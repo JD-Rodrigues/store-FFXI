@@ -75,7 +75,7 @@
 
 .user__icon, .cart__icon 
   width: 25px
-  cursor: pointer
+  color: inherit
   @include mixins.desktop
     width: 1.88vw
     padding: 0.2vw 0
@@ -86,6 +86,8 @@
     border-bottom: transparent solid 0.15vw 
     &:hover
       border-bottom: variables.$highlight solid 0.15vw
+    &:visited
+      color: inherit
   
   
     

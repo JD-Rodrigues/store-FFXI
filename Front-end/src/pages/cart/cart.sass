@@ -1,0 +1,85 @@
+@use '../../basic_styles/mixins'
+@use '../../basic_styles/variables'
+@use '../../layout/main/main'
+
+
+.cart__wrapper
+  @extend .main__content
+  row-gap: 40px
+  @include mixins.desktop
+    padding: 100px 0
+  @include mixins.notebook
+    padding: 100px
+  @include mixins.tablet
+    padding: 100px 25px
+  @include mixins.XL-monitor
+    padding: 7.3vw
+    row-gap: 3vw
+
+.cart
+  @include mixins.flex($justify: center)
+  column-gap: 20px 
+  @include mixins.tablet
+    flex-direction: column
+  @include mixins.XL-monitor
+    column-gap: 1.46vw
+    
+
+  &__title
+    font-family: variables.$font-black
+    font-size: 2.2vw
+    @include mixins.notebook
+      font-size: 30px
+
+  &__summary
+    @include mixins.flex(column, $align:space-between)
+    width: 785px
+    border: variables.$divisory-color solid 1px  
+    @include mixins.notebook
+      width: 100%  
+    @include mixins.XL-monitor
+      width: 57.4vw
+      border: variables.$divisory-color solid 0.07vw  
+          
+    
+    &__title
+      font-family: variables.$font-bold
+      font-size: 1.6vw
+      border: none
+      border-bottom: variables.$divisory-color solid 1px
+      @include mixins.tablet
+        font-size: 18px      
+      @include mixins.XL-monitor
+        padding: 1.45vw
+        border-bottom: variables.$divisory-color solid 0.07vw    
+
+    &__title, &__items
+      padding: 20px
+      @include mixins.XL-monitor
+        padding: 1.45vw
+        border-bottom: variables.$divisory-color solid 0.07vw  
+
+
+    &__title, .cart__checkout
+      padding: 20px
+      @include mixins.XL-monitor
+        padding: 1.46vw
+
+    
+
+
+    
+
+  &__checkout
+    border: green solid
+    @include mixins.flex()
+    width: 350px
+    @include mixins.notebook
+      width: 290px  
+    @include mixins.tablet
+      width: 100%
+    @include mixins.XL-monitor
+      width: 25.6vw
+
+
+

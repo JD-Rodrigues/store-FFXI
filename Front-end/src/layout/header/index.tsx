@@ -80,9 +80,22 @@ const Header = () => {
         </ul>
       </nav>
       <div className="user__panel">
-      {screenWidth >= 768 && 
-        <User className="user__icon" />}
-        <Cart className="cart__icon" />
+      {
+        screenWidth >= 768 && 
+          <Link 
+            href="/profile"
+            className="user__icon"
+          >
+            <User />
+          </Link> 
+      }       
+          <Link 
+            href="/cart"
+            className="cart__icon" 
+          >
+            <Cart/>
+          </Link> 
+
       </div>
     </div>
   )

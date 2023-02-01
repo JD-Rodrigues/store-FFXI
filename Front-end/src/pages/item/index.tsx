@@ -1,15 +1,14 @@
 import Head from "next/head";
 import Link from "next/link";
 import { OrderButton } from "src/components/orderButton";
-import MainContent from "src/layout/main";
 
 
 export default function ItemDescription() {
   return (
     <>
       <Head>
-        <title>Kampler Store</title>
-        <meta name="description" content="Buy services and items to Final Fantasy XI Online" />
+        <title>Página do itmem | Kampler Store</title>
+        <meta name="description" content="Item description" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
