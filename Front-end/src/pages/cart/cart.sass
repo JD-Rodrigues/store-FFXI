@@ -19,6 +19,7 @@
 .cart
   @include mixins.flex($justify: center)
   column-gap: 20px 
+  row-gap: 20px 
   @include mixins.tablet
     flex-direction: column
   @include mixins.XL-monitor
@@ -37,6 +38,8 @@
     border: variables.$divisory-color solid 1px  
     @include mixins.notebook
       width: 100%  
+    @include mixins.tablet  
+      order: 2
     @include mixins.XL-monitor
       width: 57.4vw
       border: variables.$divisory-color solid 0.07vw  
@@ -71,15 +74,31 @@
     
 
   &__checkout
-    border: green solid
-    @include mixins.flex()
+    border: variables.$divisory-color solid 1px
+    align-self: flex-start
+    padding: 20px
+    row-gap: 20px
+    @include mixins.flex(column)
     width: 350px
     @include mixins.notebook
       width: 290px  
     @include mixins.tablet
       width: 100%
+      padding: 10px
+      row-gap: 10px
+      order: 1
     @include mixins.XL-monitor
       width: 25.6vw
+      padding: 1.46vw
+      row-gap: 1.46vw
+      border: variables.$divisory-color solid 0.07vw
+
+  &__subtotal__wrapper
+    @include mixins.flex()
+    font-family: variables.$font-bold
+    font-size: 18px
+    @include mixins.XL-monitor
+      font-size: 1.3vw
 
 
 

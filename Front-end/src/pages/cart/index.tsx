@@ -1,9 +1,10 @@
 import Head from "next/head";
 import ItemCart from "src/components/itemCart";
+import { OrderButton } from "src/components/orderButton";
 import MainContent from "src/layout/main";
 
 
-export default function ItemDescription() {
+export default function Cart() {
   return (
     <>
       <Head>
@@ -29,13 +30,20 @@ export default function ItemDescription() {
               <ItemCart />
               <ItemCart />
               <ItemCart />
-              <ItemCart />
-              <ItemCart />
             </div>
 
           </section>
           <section className="cart__checkout">
-
+            <div className="cart__subtotal__wrapper">
+              <p className="cart__subtotal__title">
+                SUBTOTAL
+              </p>
+              <p className="cart__subtotal__value"
+              >
+                $1,814.96
+              </p>
+            </div>
+            <OrderButton text="LOGIN / CREATE AN ACCOUNT" />
           </section>
         </section>
       </article>

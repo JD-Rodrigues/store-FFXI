@@ -1,6 +1,7 @@
 import Image from "next/image"
 import { DiscordAlt, FacebookSquare, InstagramAlt, Paypal, WhatsappSquare} from "@styled-icons/boxicons-logos"
 import LogoLight from 'public/logo-light-transparent.png'
+import { Mail } from "@styled-icons/fluentui-system-filled"
 
 const Footer = () => {
   return (
@@ -14,11 +15,11 @@ const Footer = () => {
               <DiscordAlt
                 className="footer__social__logo" 
               />
-              <WhatsappSquare className="footer__social__logo"/>
               <InstagramAlt
               className="footer__social__logo"/>
               <FacebookSquare
               className="footer__social__logo"/>
+              <Mail className="footer__social__logo"/>
             </div>
           </address>
           <div className="footer__payment__options">
