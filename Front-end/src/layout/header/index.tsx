@@ -83,7 +83,7 @@ const Header = () => {
       {
         screenWidth >= 768 && 
           <Link 
-            href="/profile"
+            href="/login"
             className="user__icon"
           >
             <User />

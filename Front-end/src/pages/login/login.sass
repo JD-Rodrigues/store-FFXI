@@ -1,0 +1,28 @@
+
+@use '../../basic_styles/mixins'
+@use '../../basic_styles/variables'
+
+.login
+  @include mixins.flex(column)
+  width: 500px
+  height: auto
+  padding: 50px
+  row-gap: 40px
+  font-size: 13px
+  border: red solid
+  @include mixins.tablet
+    max-width: 500px
+    padding: 15px
+    row-gap: 30px
+
+  &__logo
+    width: 190px
+
+  &__label
+    font-family: variables.$font-bold
+    
+
+  &__button
+    width: 100%
+    height: 40px
+    border: green solid
