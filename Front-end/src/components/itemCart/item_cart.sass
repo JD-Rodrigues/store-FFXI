@@ -10,6 +10,7 @@
   @include mixins.XL-monitor
     border-bottom: variables.$divisory-color solid 0.07vw
     padding: 0.36vw
+    column-gap: 1.1vw
 
   &:last-child
     border: none
@@ -27,6 +28,10 @@
     row-gap: 10px
     @include mixins.tablet
       @include mixins.flex(column, $align: flex-start)
+    @include mixins.XL-monitor
+      column-gap: 1.1vw
+      font-size: 0.95vw
+      row-gap: 0.73vw
 
 
   &__description
@@ -34,8 +39,12 @@
     &__title
       font-family: variables.$font-bold
       line-height: 24px
+      @include mixins.XL-monitor
+        line-height: 1.75vw
     &__text
       line-height: 20px
+      @include mixins.XL-monitor
+        line-height: 1.46vw
       
     
 
@@ -49,6 +58,12 @@
     height: 45px
     padding: 10px 
     background-color: white
+    @include mixins.XL-monitor
+      border: solid variables.$divisory-color 0.07vw
+      width: 5.85vw
+      height: 3.29vw
+      padding: 0.73vw
+      font-size: 0.95vw
   
     
 
@@ -61,6 +76,9 @@
     @include mixins.tablet
       width: 100%
       justify-content: space-between
+    @include mixins.XL-monitor
+      width: 12.4vw
+      column-gap: 1.1vw
 
   &__price
     font-family: variables.$font-black
@@ -69,6 +87,9 @@
   &__delete
     width: 18px
     color: variables.$volume-color 
+    @include mixins.XL-monitor
+      width: 1.3vw
+      
 
 
     

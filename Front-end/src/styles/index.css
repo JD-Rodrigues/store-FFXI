@@ -888,6 +888,7 @@ address {
   .item__cart {
     border-bottom: #ddd solid 0.07vw;
     padding: 0.36vw;
+    column-gap: 1.1vw;
   }
 }
 .item__cart:last-child {
@@ -920,6 +921,13 @@ address {
     align-items: flex-start;
   }
 }
+@media (min-width: 1367px) {
+  .item__cart__details {
+    column-gap: 1.1vw;
+    font-size: 0.95vw;
+    row-gap: 0.73vw;
+  }
+}
 .item__cart__description {
   width: 100%;
 }
@@ -927,8 +935,18 @@ address {
   font-family: Proxima-Nova-Bold;
   line-height: 24px;
 }
+@media (min-width: 1367px) {
+  .item__cart__description__title {
+    line-height: 1.75vw;
+  }
+}
 .item__cart__description__text {
   line-height: 20px;
+}
+@media (min-width: 1367px) {
+  .item__cart__description__text {
+    line-height: 1.46vw;
+  }
 }
 .item__cart__quantity {
   border: solid #ddd 1px;
@@ -938,6 +956,15 @@ address {
   height: 45px;
   padding: 10px;
   background-color: white;
+}
+@media (min-width: 1367px) {
+  .item__cart__quantity {
+    border: solid #ddd 0.07vw;
+    width: 5.85vw;
+    height: 3.29vw;
+    padding: 0.73vw;
+    font-size: 0.95vw;
+  }
 }
 .item__cart__price-delete {
   width: 100%;
@@ -954,12 +981,23 @@ address {
     justify-content: space-between;
   }
 }
+@media (min-width: 1367px) {
+  .item__cart__price-delete {
+    width: 12.4vw;
+    column-gap: 1.1vw;
+  }
+}
 .item__cart__price {
   font-family: Proxima-Nova-Black;
 }
 .item__cart__delete {
   width: 18px;
   color: #666;
+}
+@media (min-width: 1367px) {
+  .item__cart__delete {
+    width: 1.3vw;
+  }
 }
 
 /*# sourceMappingURL=index.css.map */
