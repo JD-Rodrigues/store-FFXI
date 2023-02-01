@@ -408,7 +408,6 @@
   padding: 50px;
   row-gap: 40px;
   font-size: 13px;
-  border: red solid;
 }
 @media (max-width: 768px) {
   .login {
