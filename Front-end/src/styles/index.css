@@ -895,6 +895,7 @@ address {
   border: none;
   color: #FFF;
   font-size: 0.8rem;
+  cursor: pointer;
 }
 @media (min-width: 1367px) {
   .order__button {
