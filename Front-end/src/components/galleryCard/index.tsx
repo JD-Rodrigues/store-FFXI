@@ -9,7 +9,7 @@ const GalleryCard = ({title, pic, price}:TGalleryCard) => {
     <div className='product__card'>
       <div className='product__card__info' >
         <Link 
-        href="/item"
+        href="/item_description"
         className="product__card__pic__wrapper">
           <img
             className='product__card__pic'
