@@ -3,8 +3,10 @@
 @use '../../basic_styles/variables'
   
 .profile__header
-  padding-top: 50px
+  padding-top: 3.6vw
   color: variables.$light
+  @include mixins.tablet
+    padding-top: 50px
 
   &__cover
     @include mixins.flex($align:flex-end)
@@ -45,3 +47,18 @@
   background-color: #081420
   font-size: 1.75vw
   padding: 0.8vw 7.3vw
+
+.profile__main
+  padding: 5vw 7.3vw
+
+  &__history
+    @include mixins.flex(column, $align:flex-start)
+    padding: 2vw 0
+    row-gap: 1.8vw
+    border-top: variables.$divisory-color 0.07vw solid
+
+  &__title
+    font-family: variables.$font-black
+    font-size: 2.6vw
+    color: variables.$highlight
+    margin-bottom: 1vw

@@ -1,0 +1,90 @@
+@use '../../basic_styles/mixins' 
+@use '../../basic_styles/variables' 
+@use '../orderButton/order_button' 
+
+.item__history
+  width: 100%
+  font-size: 1vw
+  border: variables.$divisory-color 0.07vw solid
+  @include mixins.tablet
+    font-size: 13px
+    border: variables.$divisory-color 1px solid
+
+  &__header
+    @include mixins.flex
+    border-bottom: variables.$divisory-color 0.07vw solid
+    @include mixins.tablet
+      border-bottom: variables.$divisory-color 1px solid
+      @include mixins.flex(column, $align:space-between)
+
+    &__cell      
+      padding: 1vw
+      @include mixins.flex(column, $align:flex-start)
+      row-gap: 0.5vw
+      border-left: variables.$divisory-color 0.07vw solid
+      @include mixins.tablet
+        @include mixins.flex($justify:space-between)
+        padding: 15px
+        border-top: variables.$divisory-color 1px solid
+        border-left: none
+        
+
+      &:first-child
+        border: none
+      
+      &:nth-child(2)
+        @include mixins.tablet 
+        border: none
+        
+    
+    &__label
+      font-family: variables.$font-bold
+      color: variables.$volume-color
+
+
+  &__show-hide-btn
+    width: 1.5vw
+    margin: auto
+    text-align: center   
+    @include mixins.tablet 
+      display: none
+      
+        
+  &__content
+    @include mixins.flex($align:flex-start)
+    padding: 1vw
+    column-gap: 1vw
+    @include mixins.tablet 
+      padding: 15px
+      column-gap: 15px
+
+  &__pic
+    width:6.2vw
+    @include mixins.tablet 
+      width: 85px
+
+  &__details
+    @include mixins.flex(column, $align:flex-start)
+    row-gap: 0.7vw
+    @include mixins.tablet 
+      row-gap: 10px
+
+  &__title
+    font-family: variables.$font-bold
+    letter-spacing: 0.02vw
+
+  &__rebuy__wrapper    
+    width: 7.7vw
+    height: 1.8vw
+    background-color: variables.$order-button
+    border: none
+    color: variables.$light
+    font-size: 0.8rem
+    cursor: pointer
+    @include mixins.tablet 
+      width: 105px
+      height: 25px
+  
+.show-hide
+  @include mixins.tablet 
+    display: none

@@ -1,4 +1,6 @@
 import Head from "next/head"
+import ItemHistory from "src/components/item_history"
+import MainContent from "src/layout/main"
 
 
 const Profile = () => {
@@ -27,6 +29,16 @@ const Profile = () => {
           WELCOME
         </section>
       </header>
+      <main className="profile__main">
+        <article className="profile__main__history">
+          <h1 className="profile__main__title">
+            PURCHASE HISTORY
+          </h1>
+          <ItemHistory />
+          <ItemHistory />
+          <ItemHistory />
+        </article>
+      </main>
     </>
   )
 }

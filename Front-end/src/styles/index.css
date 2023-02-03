@@ -204,6 +204,154 @@
   }
 }
 
+.order__button {
+  width: 100%;
+  height: 40px;
+  background-color: #7bbf1c;
+  border: none;
+  color: #FFF;
+  font-size: 0.8rem;
+  cursor: pointer;
+}
+@media (min-width: 1367px) {
+  .order__button {
+    height: 2.9vw;
+  }
+}
+
+.item__history {
+  width: 100%;
+  font-size: 1vw;
+  border: #ddd 0.07vw solid;
+}
+@media (max-width: 768px) {
+  .item__history {
+    font-size: 13px;
+    border: #ddd 1px solid;
+  }
+}
+.item__history__header {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: #ddd 0.07vw solid;
+}
+@media (max-width: 768px) {
+  .item__history__header {
+    border-bottom: #ddd 1px solid;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: space-between;
+  }
+}
+.item__history__header__cell {
+  padding: 1vw;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  row-gap: 0.5vw;
+  border-left: #ddd 0.07vw solid;
+}
+@media (max-width: 768px) {
+  .item__history__header__cell {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    border-top: #ddd 1px solid;
+    border-left: none;
+  }
+}
+.item__history__header__cell:first-child {
+  border: none;
+}
+.item__history__header__cell:nth-child(2) {
+  border: none;
+}
+.item__history__header__label {
+  font-family: Proxima-Nova-Bold;
+  color: #666;
+}
+.item__history__show-hide-btn {
+  width: 1.5vw;
+  margin: auto;
+  text-align: center;
+}
+@media (max-width: 768px) {
+  .item__history__show-hide-btn {
+    display: none;
+  }
+}
+.item__history__content {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 1vw;
+  column-gap: 1vw;
+}
+@media (max-width: 768px) {
+  .item__history__content {
+    padding: 15px;
+    column-gap: 15px;
+  }
+}
+.item__history__pic {
+  width: 6.2vw;
+}
+@media (max-width: 768px) {
+  .item__history__pic {
+    width: 85px;
+  }
+}
+.item__history__details {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  row-gap: 0.7vw;
+}
+@media (max-width: 768px) {
+  .item__history__details {
+    row-gap: 10px;
+  }
+}
+.item__history__title {
+  font-family: Proxima-Nova-Bold;
+  letter-spacing: 0.02vw;
+}
+.item__history__rebuy__wrapper {
+  width: 7.7vw;
+  height: 1.8vw;
+  background-color: #7bbf1c;
+  border: none;
+  color: #FFF;
+  font-size: 0.8rem;
+  cursor: pointer;
+}
+@media (max-width: 768px) {
+  .item__history__rebuy__wrapper {
+    width: 105px;
+    height: 25px;
+  }
+}
+
+@media (max-width: 768px) {
+  .show-hide {
+    display: none;
+  }
+}
+
 .main__content, .cart__wrapper {
   width: 100%;
   display: flex;
@@ -447,8 +595,13 @@
 }
 
 .profile__header {
-  padding-top: 50px;
+  padding-top: 3.6vw;
   color: #FFF;
+}
+@media (max-width: 768px) {
+  .profile__header {
+    padding-top: 50px;
+  }
 }
 .profile__header__cover {
   width: 100%;
@@ -490,6 +643,26 @@
   background-color: #081420;
   font-size: 1.75vw;
   padding: 0.8vw 7.3vw;
+}
+
+.profile__main {
+  padding: 5vw 7.3vw;
+}
+.profile__main__history {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 2vw 0;
+  row-gap: 1.8vw;
+  border-top: #ddd 0.07vw solid;
+}
+.profile__main__title {
+  font-family: Proxima-Nova-Black;
+  font-size: 2.6vw;
+  color: #c80000;
+  margin-bottom: 1vw;
 }
 
 *, *:before, *:after {
@@ -980,21 +1153,6 @@ address {
 @media (min-width: 1367px) {
   .product__card__price {
     font-size: 1.3vw;
-  }
-}
-
-.order__button {
-  width: 100%;
-  height: 40px;
-  background-color: #7bbf1c;
-  border: none;
-  color: #FFF;
-  font-size: 0.8rem;
-  cursor: pointer;
-}
-@media (min-width: 1367px) {
-  .order__button {
-    height: 2.9vw;
   }
 }
 
