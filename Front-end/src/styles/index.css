@@ -446,6 +446,52 @@
   }
 }
 
+.profile__header {
+  padding-top: 50px;
+  color: #FFF;
+}
+.profile__header__cover {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-end;
+  height: 33vw;
+  padding: 2.2vw 1.5vw;
+  background-image: url("/profile-cover.png");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+.profile__header__name {
+  font-family: Proxima-Nova-Black;
+  text-transform: uppercase;
+  letter-spacing: 0.15vw;
+  font-size: 3vw;
+  margin-bottom: 0.75vw;
+}
+.profile__header__email {
+  font-family: Proxima-Nova-Bold;
+  font-size: 1.8vw;
+}
+.profile__header__pic {
+  width: 100%;
+  border-radius: 50%;
+}
+.profile__header__pic__wrapper {
+  width: 9.5vw;
+  height: 9.5vw;
+  padding: 0.5vw;
+  border: #FFF solid 0.36vw;
+  border-radius: 50%;
+}
+
+.profile__welcome-tab {
+  background-color: #081420;
+  font-size: 1.75vw;
+  padding: 0.8vw 7.3vw;
+}
+
 *, *:before, *:after {
   box-sizing: border-box;
 }

@@ -1,0 +1,47 @@
+
+@use '../../basic_styles/mixins'
+@use '../../basic_styles/variables'
+  
+.profile__header
+  padding-top: 50px
+  color: variables.$light
+
+  &__cover
+    @include mixins.flex($align:flex-end)
+    height: 33vw
+    padding: 2.2vw 1.5vw
+    background-image: url('/profile-cover.png')
+    background-position: center
+    background-size: cover
+    background-repeat: no-repeat
+
+  &__name
+    font-family: variables.$font-black
+    text-transform: uppercase
+    letter-spacing: 0.15vw
+    font-size: 3vw
+    margin-bottom: 0.75vw
+    
+
+
+  &__email
+    font-family: variables.$font-bold
+    font-size: 1.8vw
+    
+
+
+  &__pic
+    width: 100%
+    border-radius: 50%
+
+    &__wrapper
+      width: 9.5vw
+      height: 9.5vw
+      padding: 0.5vw
+      border: variables.$light solid 0.36vw
+      border-radius: 50%
+
+.profile__welcome-tab
+  background-color: #081420
+  font-size: 1.75vw
+  padding: 0.8vw 7.3vw
