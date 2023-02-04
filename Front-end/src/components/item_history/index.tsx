@@ -1,14 +1,22 @@
+import { useState } from "react"
 import { OrderButton } from "../orderButton"
 
 
 const ItemHistory = () => {
+  const [expandItem, setExpandItem] = useState(false)
+
+  const expandHideItem = () => {
+    setExpandItem(prevState => !prevState)
+  }
+
   return(
     <article className="item__history">
       <header className="item__history__header">
         <div 
-          className="item__history__header__cell show-hide"          
+          className="item__history__header__cell show-hide" 
+          onClick={expandHideItem}         
         >
-          <p className="item__history__show-hide-btn">━</p>
+          <p className="item__history__show-hide-btn">{`${expandItem ? "━" : "✚"}`}</p>
         </div>
         <div className="item__history__header__cell">
           <p className="item__history__header__label">
@@ -65,7 +73,7 @@ const ItemHistory = () => {
           </p>
         </div>
       </header>
-      <section className="item__history__content">
+      <section className={`${expandItem ? "item__history__content" : "reduce__history__item"}`}>
         <img 
           className="item__history__pic"
           src="/gallery__images/item__desc.jpg"

@@ -284,6 +284,7 @@
   width: 1.5vw;
   margin: auto;
   text-align: center;
+  cursor: pointer;
 }
 @media (max-width: 768px) {
   .item__history__show-hide-btn {
@@ -350,6 +351,10 @@
   .show-hide {
     display: none;
   }
+}
+
+.reduce__history__item {
+  display: none;
 }
 
 .main__content, .cart__wrapper {
