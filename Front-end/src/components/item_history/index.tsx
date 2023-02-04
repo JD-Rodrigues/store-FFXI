@@ -3,7 +3,7 @@ import { OrderButton } from "../orderButton"
 
 
 const ItemHistory = () => {
-  const [expandItem, setExpandItem] = useState(false)
+  const [expandItem, setExpandItem] = useState(true)
 
   const expandHideItem = () => {
     setExpandItem(prevState => !prevState)
