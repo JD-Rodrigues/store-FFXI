@@ -47,6 +47,8 @@
   background-color: #081420
   font-size: 1.75vw
   padding: 0.8vw 7.3vw
+  @include mixins.tablet
+    font-size: 20px
 
 .profile__main
   padding: 5vw 7.3vw
@@ -56,9 +58,14 @@
     padding: 2vw 0
     row-gap: 1.8vw
     border-top: variables.$divisory-color 0.07vw solid
+    @include mixins.tablet
+      row-gap: 20px
 
   &__title
     font-family: variables.$font-black
     font-size: 2.6vw
     color: variables.$highlight
     margin-bottom: 1vw
+    @include mixins.tablet
+      font-size: 20px
+      

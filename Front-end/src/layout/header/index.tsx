@@ -72,7 +72,7 @@ const Header = () => {
             Weapons
           </Link>
           <Link
-            href="" 
+            href="/login" 
             className="header__menu__item link menu__login__link"
           >
             Log in/Create account

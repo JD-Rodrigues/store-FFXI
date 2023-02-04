@@ -644,6 +644,11 @@
   font-size: 1.75vw;
   padding: 0.8vw 7.3vw;
 }
+@media (max-width: 768px) {
+  .profile__welcome-tab {
+    font-size: 20px;
+  }
+}
 
 .profile__main {
   padding: 5vw 7.3vw;
@@ -658,11 +663,21 @@
   row-gap: 1.8vw;
   border-top: #ddd 0.07vw solid;
 }
+@media (max-width: 768px) {
+  .profile__main__history {
+    row-gap: 20px;
+  }
+}
 .profile__main__title {
   font-family: Proxima-Nova-Black;
   font-size: 2.6vw;
   color: #c80000;
   margin-bottom: 1vw;
+}
+@media (max-width: 768px) {
+  .profile__main__title {
+    font-size: 20px;
+  }
 }
 
 *, *:before, *:after {
