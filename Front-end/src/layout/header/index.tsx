@@ -72,7 +72,7 @@ const Header = () => {
             Weapons
           </Link>
           <Link
-            href="/login" 
+            href="/profile" 
             className="header__menu__item link menu__login__link"
           >
             Log in/Create account
@@ -83,7 +83,7 @@ const Header = () => {
       {
         screenWidth >= 768 && 
           <Link 
-            href="/login"
+            href="/profile"
             className="user__icon"
           >
             <User />
