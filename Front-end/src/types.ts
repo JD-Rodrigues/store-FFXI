@@ -1,7 +1,12 @@
+import { PrismicDocument } from "@prismicio/types";
 import GalleryCard from "./components/galleryCard";
 
 interface MainContentProps {
   children: React.ReactNode;
+}
+
+interface IHomeProps {
+  products: PrismicDocument[]
 }
 
 type TGalleryCard = {
@@ -14,5 +19,7 @@ type TOrderButtonProps = {
   text:string
 }
 
-export type {MainContentProps, TGalleryCard, TOrderButtonProps}
+
+
+export type {MainContentProps, TGalleryCard, TOrderButtonProps, IHomeProps}
 

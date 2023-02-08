@@ -1,12 +1,23 @@
 import Head from 'next/head'
-import { Inter } from '@next/font/google'
 import MainContent from 'src/layout/main'
 import GalleryCard from 'src/components/galleryCard'
+import { getAllProducts } from 'src/services'
+import { IHomeProps } from 'src/types'
+import { PrismicDocument } from '@prismicio/types'
 
 
-const inter = Inter({ subsets: ['latin'] })
+export const getStaticProps = async () => {
+  const products = await getAllProducts()
 
-export default function Home() {
+  return {
+    props: {
+      products
+    }
+  }
+}
+
+export default function Home({products}:IHomeProps) {
+
   return (
     <>
       <Head>
@@ -20,33 +31,20 @@ export default function Home() {
           className='category__name'>
             FEATURED ITEMS
         </h1>
-        <section className='gallery'>
-          <GalleryCard 
-            title='Account - lvl 99 - All subjobs' 
-            pic='/gallery__images/account.jpg'
-            price={250.00}
-          />
-          <GalleryCard 
-            title='Epic weapon - Conqueror'
-            pic='/gallery__images/conqueror.jpg'
-            price={75}
-          />
-          <GalleryCard 
-            title='Leveling - Job 1-50'
-            pic='/gallery__images/levelup.jpg'
-            price={125}
-          />
-          <GalleryCard 
-            title='Missions - ranks 1-10'
-            pic='/gallery__images/missions.webp'
-            price={75}
-          />
-          <GalleryCard 
-            title='Epic weapon - Nirvana'
-            pic='/gallery__images/nirvana.webp'
-            price={75}
-          />
-        </section>
+        <ul className='gallery'>
+          {
+            products.map((product:PrismicDocument)=>
+              <li 
+              key={product.id}
+              >
+                <GalleryCard 
+                  title={product.data.title}
+                  pic={product.data.gallery_image.url}
+                  price={product.data.price}
+                />
+              </li>)}
+          
+        </ul>
       </MainContent>
     </>
   )
