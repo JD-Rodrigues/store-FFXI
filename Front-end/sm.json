@@ -1,7 +1,8 @@
 {
-  "apiEndpoint": "https://kampler.prismic.io/api/v2",
+  "apiEndpoint": "https://prismic-next-tutorial-2.prismic.io/api/v2",
   "libraries": [
-    "@/slices"
+    "@/slices",
+    "@/customTypes"
   ],
   "_latest": "0.6.1"
 }

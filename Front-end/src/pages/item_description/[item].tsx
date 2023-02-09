@@ -1,3 +1,4 @@
+import { PrismicRichText } from "@prismicio/react";
 import { PrismicDocument } from "@prismicio/types";
 import Head from "next/head";
 import Link from "next/link";
@@ -54,19 +55,23 @@ export default function ItemDescription({product}:IItemProps) {
           <section  className="item__abstract">
             <div className="item__abstract__pic-info__wrapper">
               <img 
-              src={product.data.internal_image.url}
-            className="item__abstract__pic" />
-            <div className="item__abstract__info">
-              <h1 className="item__abstract__title">
-                {product.data.title}
-              </h1>
-              <p className="item__abstract__text">
-                {`${description.substring(0,150)}...`}
-              </p>
-              <Link href="#item__description" className="item__abstract__details">
-                <p>See full product details</p>
-              </Link>
-            </div>
+                src={product.data.internal_image.url}
+                className="item__abstract__pic" 
+              />
+              <div className="item__abstract__info">
+                <h1 className="item__abstract__title">
+                  {product.data.title}
+                </h1>
+                <p className="item__abstract__text">
+                  {`${description.substring(0,200)}...`}
+                </p>
+                <Link 
+                  href="#item__description" 
+                  className="item__abstract__details"
+                >
+                  <p>See full product details</p>
+                </Link>
+              </div>
             </div>
             
             <div className="item__abstract__price-order">
@@ -85,7 +90,7 @@ export default function ItemDescription({product}:IItemProps) {
             </header>
             
           <section className="item__description__text">
-            {description}
+            <PrismicRichText field={product.data.description} />
           </section>            
           </section>
         </article>
