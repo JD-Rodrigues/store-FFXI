@@ -90,7 +90,12 @@ export default function ItemDescription({product}:IItemProps) {
             </header>
             
           <section className="item__description__text">
-            <PrismicRichText field={product.data.description} />
+            <PrismicRichText 
+              field={product.data.description} 
+              // components = {{
+              //   strong: ({children}) => <b>{children}</b>
+              // }}
+            />
           </section>            
           </section>
         </article>
