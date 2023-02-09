@@ -8,6 +8,13 @@ export const getAllProducts = async () => {
       }
   })
 
-  console.log(products)
+  // console.log(products)
   return products
 }
+
+export const getProductByUid = async (uid:string) => {
+  const product = await client.getByUID('item', uid)
+
+  return product
+}
+

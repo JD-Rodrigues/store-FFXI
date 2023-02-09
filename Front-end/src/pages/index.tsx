@@ -41,6 +41,7 @@ export default function Home({products}:IHomeProps) {
                   title={product.data.title}
                   pic={product.data.gallery_image.url}
                   price={product.data.price}
+                  path={product.uid}
                 />
               </li>)}
           

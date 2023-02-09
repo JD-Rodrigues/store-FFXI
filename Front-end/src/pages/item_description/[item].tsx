@@ -1,9 +1,46 @@
+import { PrismicDocument } from "@prismicio/types";
 import Head from "next/head";
 import Link from "next/link";
 import { OrderButton } from "src/components/orderButton";
+import { getAllProducts } from "src/services";
+import { getProductByUid } from "src/services/prismicFunctions";
+import { IGetStaticProps, IItemProps } from "src/types";
+
+export const getStaticPaths = async () => {
+  const products = await getAllProducts()
+  const paths = products.map((product:PrismicDocument)=> {
+      return {
+        params:{
+          item: product.uid
+        }
+      }
+  }
+    
+  )
+
+  return {
+    paths,
+    fallback: false
+  }
+}
+
+export const getStaticProps = async ({params}:IGetStaticProps) => {
+  const product = await getProductByUid(params.item)
+
+  return {
+    props: {
+      product
+    }
+  }
+}
 
 
-export default function ItemDescription() {
+export default function ItemDescription({product}:IItemProps) {
+
+  console.log(product)
+
+  const description = product.data.description[0].text
+
   return (
     <>
       <Head>
@@ -17,14 +54,14 @@ export default function ItemDescription() {
           <section  className="item__abstract">
             <div className="item__abstract__pic-info__wrapper">
               <img 
-              src="/gallery__images/item__desc.jpg"
+              src={product.data.internal_image.url}
             className="item__abstract__pic" />
             <div className="item__abstract__info">
               <h1 className="item__abstract__title">
-                FINAL FANTASY VII REMAKE™ STATIC ARTS TIFA LOCKHART EXOTIC DRESS VER.
+                {product.data.title}
               </h1>
               <p className="item__abstract__text">
-                Tifa, from FINAL FANTASY VII REMAKE, returns to the STATIC ARTS statuette line, this time in a dress a little more exotic than she is used to!
+                {`${description.substring(0,150)}...`}
               </p>
               <Link href="#item__description" className="item__abstract__details">
                 <p>See full product details</p>
@@ -34,7 +71,7 @@ export default function ItemDescription() {
             
             <div className="item__abstract__price-order">
               <p className="item__abstract__price">
-                R$199.00
+              {product.data.price}
               </p>
               <OrderButton text="ADD TO CART" />
             </div>
@@ -48,16 +85,7 @@ export default function ItemDescription() {
             </header>
             
           <section className="item__description__text">
-            <p>
-              Tifa, from FINAL FANTASY VII REMAKE, returns to the STATIC ARTS statuette line, this time in a dress a little more exotic than she is used to!
-            </p><br/>
-            <p>
-              The owner of the Seventh Heaven bar goes through a total image makeover that includes a flower ornament in her hair and a luxurious obi wrapped around her. Tifa sits on a stool with her hands placed on her lap, awaiting her mission at Corneos mansion.
-              The meticulous details, from the flowing texture of the dress sleeves to Tifas dignified expression and silhouette, make this STATIC ARTS figure truly a sight to behold.
-            </p><br/>
-            <p>
-              Chair & Base Included
-            </p>
+            {description}
           </section>            
           </section>
         </article>

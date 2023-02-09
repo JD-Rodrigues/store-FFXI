@@ -4,12 +4,12 @@ import { TGalleryCard } from "src/types"
 import { OrderButton } from "../orderButton"
 
 
-const GalleryCard = ({title, pic, price}:TGalleryCard) => {
+const GalleryCard = ({title, pic, price, path}:TGalleryCard) => {
   return (
     <div className='product__card'>
       <div className='product__card__info' >
         <Link 
-        href="/item_description"
+        href={`/item_description/${path}`}
         className="product__card__pic__wrapper">
           <img
             className='product__card__pic'
@@ -19,7 +19,7 @@ const GalleryCard = ({title, pic, price}:TGalleryCard) => {
         </Link>
         <div className="product__card__title-price__wrapper">
           <Link 
-            href="/item" 
+            href={`/item_description/${path}`}
             className='product__card__title'
           >
             <p>{title}</p>

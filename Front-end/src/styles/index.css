@@ -81,7 +81,7 @@
   }
 }
 .item__abstract__pic {
-  width: 100%;
+  width: 25.6vw;
   box-shadow: 0.21vw 0.21vw 0.35vw rgba(0, 0, 0, 0.16);
 }
 @media (max-width: 768px) {
