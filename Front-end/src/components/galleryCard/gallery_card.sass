@@ -10,14 +10,17 @@
   justify-content: space-between
   row-gap: 5px
   transition: .5s
+  
+  @include mixins.tablet
+    width: 80vw    
+    height: 210px
+
   @include mixins.XL-monitor
     width: 16.8vw
     height: 36.6vw
     padding: 1.5vw 1vw
     row-gap: 0.36vw
-  @include mixins.tablet
-    width: 100%
-    height: 210px
+  
 
   &:hover
     box-shadow: 1px 1px 10px variables.$volume-color
@@ -68,6 +71,7 @@
       row-gap: 1.8vw
   
   &__title
+    width: 100%
     font-size: 13px
     text-transform: uppercase
     text-decoration: none
