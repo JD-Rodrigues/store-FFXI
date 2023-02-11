@@ -18,6 +18,10 @@ const Header = () => {
     setShowMenu(prevState => !prevState)
   }
 
+  const hideMenuByLinks = () => {
+    screenWidth <= 768 && setShowMenu(false)
+  }
+
 
   useEffect(()=>{   
     window.addEventListener('resize', ()=> {
@@ -50,30 +54,35 @@ const Header = () => {
           <Link
             href="/category/weapons" 
             className="header__menu__item link"
+            onClick={hideMenuByLinks}
           >
             Weapons
           </Link>
           <Link
             href="/category/missions" 
             className="header__menu__item link"
+            onClick={hideMenuByLinks}
           >
             Missions
           </Link>
           <Link
             href="/category/levelling" 
             className="header__menu__item link"
+            onClick={hideMenuByLinks}
           >
             Power leveling
           </Link>
           <Link 
             href="/category/accounts" 
             className="header__menu__item link"
+            onClick={hideMenuByLinks}
           >
             Accounts
           </Link>
           <Link
             href="/profile" 
             className="header__menu__item link menu__login__link"
+            onClick={hideMenuByLinks}
           >
             Log in/Create account
           </Link>
