@@ -13,9 +13,15 @@ interface IItemProps {
   product: PrismicDocument
 }
 
-interface IGetStaticProps {
+interface IGetStaticItemProps {
   params: {
       item: string
+  };
+}[]
+
+interface IGetStaticCategoryProps {
+  params: {
+      category: string
   };
 }[]
 
@@ -34,5 +40,5 @@ type TOrderButtonProps = {
 
 
 
-export type {MainContentProps, TGalleryCard, TOrderButtonProps, IHomeProps, IGetStaticProps, IItemProps}
+export type {MainContentProps, TGalleryCard, TOrderButtonProps, IHomeProps, IGetStaticItemProps, IItemProps, IGetStaticCategoryProps}
 

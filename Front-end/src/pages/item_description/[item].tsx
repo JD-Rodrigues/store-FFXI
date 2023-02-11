@@ -5,7 +5,7 @@ import Link from "next/link";
 import { OrderButton } from "src/components/orderButton";
 import { getAllProducts } from "src/services";
 import { getProductByUid } from "src/services/prismicFunctions";
-import { IGetStaticProps, IItemProps } from "src/types";
+import { IGetStaticItemProps, IItemProps } from "src/types";
 
 export const getStaticPaths = async () => {
   const products = await getAllProducts()
@@ -25,7 +25,7 @@ export const getStaticPaths = async () => {
   }
 }
 
-export const getStaticProps = async ({params}:IGetStaticProps) => {
+export const getStaticProps = async ({params}:IGetStaticItemProps) => {
   const product = await getProductByUid(params.item)
 
   return {

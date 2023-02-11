@@ -47,29 +47,29 @@ const Header = () => {
       
       <nav className="header__menu">
         <ul className={ showMenu ? 'show__menu' : 'header__menu__list'} >
-          <Link 
-            href="" 
+          <Link
+            href="/category/weapons" 
             className="header__menu__item link"
           >
-            Accounts
+            Weapons
           </Link>
           <Link
-            href="" 
+            href="/category/missions" 
             className="header__menu__item link"
           >
             Missions
           </Link>
           <Link
-            href="" 
+            href="/category/levelling" 
             className="header__menu__item link"
           >
             Power leveling
           </Link>
-          <Link
-            href="" 
+          <Link 
+            href="/category/accounts" 
             className="header__menu__item link"
           >
-            Weapons
+            Accounts
           </Link>
           <Link
             href="/profile" 
