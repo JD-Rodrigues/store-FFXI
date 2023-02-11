@@ -37,6 +37,8 @@ export const getStaticProps = async ({params}:IGetStaticCategoryProps) => {
 
 export default function Home({products}:IHomeProps) {
 
+  const category = products[0].tags[0]
+
   return (
     <>
       <Head>
@@ -48,7 +50,7 @@ export default function Home({products}:IHomeProps) {
       <MainContent>
         <h1  
           className='category__name'>
-            FEATURED ITEMS
+            {category}
         </h1>
         <ul className='gallery'>
           {

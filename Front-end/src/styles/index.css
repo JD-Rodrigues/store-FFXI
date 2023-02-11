@@ -10,6 +10,10 @@
   font-family: Proxima-Nova-Black;
   src: url(/fonts/Proxima_Nova_Black.otf);
 }
+.category__name {
+  text-transform: uppercase;
+}
+
 .gallery {
   width: 100%;
   display: flex;
