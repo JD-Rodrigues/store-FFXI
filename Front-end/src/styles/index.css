@@ -1056,7 +1056,7 @@ address {
 }
 @media (max-width: 768px) {
   .product__card {
-    width: 80vw;
+    width: 90vw;
     height: 210px;
   }
 }
