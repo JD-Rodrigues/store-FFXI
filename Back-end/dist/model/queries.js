@@ -38,5 +38,5 @@ const create = (coll, query) => __awaiter(void 0, void 0, void 0, function* () {
     }
 });
 exports.create = create;
-read('costumers').then(console.log)
+// read('costumers').then(console.log)
 //# sourceMappingURL=queries.js.map
