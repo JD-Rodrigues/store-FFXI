@@ -3,9 +3,10 @@
       "target": "ES2015",
       "module": "commonjs",
       "outDir": "./dist",
-      "sourceMap": true,
+      "sourceMap": true
+      
       
   },
-  "include": ["./controller/**/*", "./model/**/*", "**/*"],
-  "exclude": ["node_modules"]
+  "include": ["./controller/**/*", "./model/**/*", "**/*", ".env/**/*"],
+  "exclude": ["node_modules"],
 }
