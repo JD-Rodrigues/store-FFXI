@@ -33,7 +33,6 @@ const Header = () => {
   useEffect(()=> {
     const menuButton = document.querySelector('.mobile__menu__btn')
     menuButton !== null && menuButton.addEventListener('click', changeShowMenu)
-    console.log(showMenu)
   },[])
  
   return (

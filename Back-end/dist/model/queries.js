@@ -23,9 +23,10 @@ const read = (coll, filter = {}) => __awaiter(void 0, void 0, void 0, function* 
         yield data.forEach(doc => docs.push(doc));
         return docs;
     }
-    finally {
-        client.close();
+    catch (err) {
+        console.log(err);
     }
+    client.close();
 });
 exports.read = read;
 const create = (coll, query) => __awaiter(void 0, void 0, void 0, function* () {
@@ -33,9 +34,10 @@ const create = (coll, query) => __awaiter(void 0, void 0, void 0, function* () {
         const collection = client.db('store').collection(coll);
         yield collection.insertOne(query);
     }
-    finally {
-        client.close();
+    catch (err) {
+        console.log(err);
     }
+    client.close();
 });
 exports.create = create;
 // read('costumers').then(console.log)
