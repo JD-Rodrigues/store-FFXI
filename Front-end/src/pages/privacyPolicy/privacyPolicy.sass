@@ -1,0 +1,22 @@
+@use '../../basic_styles/mixins'
+@use '../../basic_styles/variables'
+  
+.privacy__policy
+  font-size: 1.2vw
+  line-height: 2vw
+  @include mixins.flex(column, $align:justify)
+  @include mixins.tablet
+    font-size: 14px
+    line-height: 24px
+    
+  
+  & h2
+    font-family: variables.$font-bold
+    font-size: 1.4vw
+    text-align: center
+    align-self: center
+    @include mixins.tablet
+      font-size: 16px
+
+  & p
+    margin-bottom: 1vw    

@@ -1,7 +1,7 @@
 import Head from 'next/head'
 import MainContent from 'src/layout/main'
 import GalleryCard from 'src/components/galleryCard'
-import { checkUserInDatabase, getAllProducts } from 'src/services'
+import { getAllProducts } from 'src/services'
 import { IHomeProps } from 'src/types'
 import { PrismicDocument } from '@prismicio/types'
 
@@ -17,7 +17,7 @@ export const getStaticProps = async () => {
 }
 
 export default function Home({products}:IHomeProps) {
-  checkUserInDatabase('aisauihaiu')
+  
   return (
     <>
       <Head>
