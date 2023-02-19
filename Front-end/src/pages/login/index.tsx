@@ -1,8 +1,12 @@
 import Head from "next/head"
 import MainContent from "src/layout/main"
+import { GoogleLogin } from '@react-oauth/google';
+
 
 
 const Login = () => {
+  
+ 
   return (
     <>    
       <Head>
@@ -19,12 +23,15 @@ const Login = () => {
           />
           <p className="login__label">
             LOG IN USING YOUR GOOGLE ACCOUNT
-          </p>
-          <div 
-            id="buttonLogin"
-            className="login__button"
-          >
-          </div>
+          </p>          
+          <GoogleLogin
+            onSuccess={credentialResponse => {
+              console.log(credentialResponse);
+            }}
+            onError={() => {
+              console.log('Login Failed');
+            }}
+          />          
         </article>
       </MainContent>
     </>
