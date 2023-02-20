@@ -14,8 +14,9 @@ router.get('/costumers/:id', async (req, res)=> {
 })
 
 router.post('/costumers', async (req, res)=> {
-  await create('costumers',req.body.costumer)
-  res.send('Cliente cadastrado!')
+  console.log("Epaaa") 
+  await create('costumers',req.body.user)
+  res.json('Cliente cadastrado!')
 })
 
 router.get('/cart', (req, res)=> {
@@ -23,5 +24,5 @@ router.get('/cart', (req, res)=> {
 })
 
 router.put('/cart', (req, res)=> {
-  res.send('Atualizar cart')
-})
+  res.send('Atualizar cart')    
+}) 

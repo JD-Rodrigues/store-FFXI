@@ -2,14 +2,28 @@ import Head from "next/head"
 import MainContent from "src/layout/main"
 import { CredentialResponse, GoogleLogin } from '@react-oauth/google';
 import jwt_decode from 'jwt-decode'
+import { createUser } from "src/services/costumersApiFunctions";
+import { TCredential } from "src/types";
 
 
 
 
 const Login = () => {
 
-  const credentialResponseHandler = (response:CredentialResponse) => {
-    const credential = response.credential &&  jwt_decode(response.credential)
+  const credentialResponseHandler = async (response:CredentialResponse) => {
+    const credential: "" | TCredential | undefined = response.credential &&  jwt_decode(response.credential)
+    
+    
+    await createUser(
+      {
+        name: credential && credential.name,
+        email: credential && credential.email,
+        gid: credential && credential.sub,
+        pic: credential && credential.picture,
+        cart: {}
+      }
+      
+    )
     console.log(credential)
   }
  

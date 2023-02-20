@@ -40,6 +40,6 @@ export const update = async (coll, filter, query) => {
   client.close()
 }
 
-// read('costumers').then(console.log)
-
-update('costumers', {name: 'Amélia Rodrigues'}, {$set: {cart:{ cartId: 'new ObjectId()'}}}) 
+read('costumers').then(console.log)
+// create('costumers', {name: 'Olívia Palito'})
+// update('costumers', {name: 'Amélia Rodrigues'}, {$set: {cart:{ cartId: 'new ObjectId()'}}}) 

@@ -20,8 +20,9 @@ exports.router.get('/costumers/:id', (req, res) => __awaiter(void 0, void 0, voi
     res.json(foundCostumer.length > 0 ? true : false);
 }));
 exports.router.post('/costumers', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    yield (0, queries_1.create)('costumers', req.body.costumer);
-    res.send('Cliente cadastrado!');
+    console.log("Epaaa");
+    yield (0, queries_1.create)('costumers', req.body.user);
+    res.json('Cliente cadastrado!');
 }));
 exports.router.get('/cart', (req, res) => {
     res.send('Obter cart');

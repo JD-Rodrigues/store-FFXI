@@ -9,6 +9,7 @@ export const app = express()
 app.use(cors({origin: '*'}))
 app.use(express.json())
 app.use(router)
+app.use(express.urlencoded({extended: true}))
 
 const port = process.env.PORT
 

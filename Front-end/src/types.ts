@@ -29,7 +29,13 @@ interface IAuthContextProps {
   children: React.ReactNode
 }
 
-
+interface IcreateUserParam {
+  name: string | undefined
+  email: string | undefined
+  gid: string | undefined
+  pic: string | undefined
+  cart: {}
+}
 
 type TGalleryCard = {
   title:string
@@ -47,7 +53,24 @@ type TAuthContextValue = {
   setLogged?: React.Dispatch<React.SetStateAction<boolean>>
 }
 
+type TCredential = {
+  aud: string
+  azp: string
+  email: string
+  email_verified: boolean
+  exp: number
+  family_name: string
+  given_name: string
+  iat: number
+  iss: string
+  jti: string
+  name: string
+  nbf: number
+  picture: string
+  sub: string
+}
 
 
-export type {MainContentProps, TGalleryCard, TOrderButtonProps, IHomeProps, IGetStaticItemProps, IItemProps, IGetStaticCategoryProps, IAuthContextProps, TAuthContextValue}
+
+export type {MainContentProps, TGalleryCard, TOrderButtonProps, IHomeProps, IGetStaticItemProps, IItemProps, IGetStaticCategoryProps, IAuthContextProps, TAuthContextValue, IcreateUserParam, TCredential}
 
