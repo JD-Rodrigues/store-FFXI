@@ -47,8 +47,17 @@
   background-color: #081420
   font-size: 1.75vw
   padding: 0.8vw 7.3vw
+  @include mixins.flex
   @include mixins.tablet
     font-size: 20px
+
+.logout__button
+  text-decoration: underline
+  cursor: pointer
+  transition: .3s
+
+  &:hover
+      color: variables.$highlight
 
 .profile__main
   padding: 5vw 7.3vw

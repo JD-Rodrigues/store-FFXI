@@ -4,6 +4,8 @@ import GalleryCard from 'src/components/galleryCard'
 import { getAllProducts } from 'src/services'
 import { IHomeProps } from 'src/types'
 import { PrismicDocument } from '@prismicio/types'
+import { useContext } from 'react'
+import { AuthContext } from 'src/contexts/authContextProvider'
 
 
 export const getStaticProps = async () => {
@@ -17,6 +19,7 @@ export const getStaticProps = async () => {
 }
 
 export default function Home({products}:IHomeProps) {
+  const {logged, setLogged} = useContext(AuthContext)
   
   return (
     <>

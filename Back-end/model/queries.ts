@@ -29,4 +29,17 @@ export const create = async (coll, query) => {
   client.close()
 }
 
+export const update = async (coll, filter, query) => {
+  try {
+    const collection = client.db('store').collection(coll)
+    await collection.updateOne(filter, query)
+  }catch(err) {
+    console.log(err)
+  } 
+
+  client.close()
+}
+
 // read('costumers').then(console.log)
+
+update('costumers', {name: 'Amélia Rodrigues'}, {$set: {cart:{ cartId: 'new ObjectId()'}}}) 

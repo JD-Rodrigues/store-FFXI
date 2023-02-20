@@ -1,11 +1,17 @@
 import Head from "next/head"
 import MainContent from "src/layout/main"
-import { GoogleLogin } from '@react-oauth/google';
+import { CredentialResponse, GoogleLogin } from '@react-oauth/google';
+import jwt_decode from 'jwt-decode'
+
 
 
 
 const Login = () => {
-  
+
+  const credentialResponseHandler = (response:CredentialResponse) => {
+    const credential = response.credential &&  jwt_decode(response.credential)
+    console.log(credential)
+  }
  
   return (
     <>    
@@ -25,9 +31,7 @@ const Login = () => {
             LOG IN USING YOUR GOOGLE ACCOUNT
           </p>          
           <GoogleLogin
-            onSuccess={credentialResponse => {
-              console.log(credentialResponse);
-            }}
+            onSuccess={response => credentialResponseHandler(response)}
             onError={() => {
               console.log('Login Failed');
             }}

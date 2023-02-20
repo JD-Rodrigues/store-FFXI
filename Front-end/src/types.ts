@@ -25,6 +25,10 @@ interface IGetStaticCategoryProps {
   };
 }[]
 
+interface IAuthContextProps {
+  children: React.ReactNode
+}
+
 
 
 type TGalleryCard = {
@@ -38,7 +42,12 @@ type TOrderButtonProps = {
   text:string
 }
 
+type TAuthContextValue = {
+  logged?: boolean
+  setLogged?: React.Dispatch<React.SetStateAction<boolean>>
+}
 
 
-export type {MainContentProps, TGalleryCard, TOrderButtonProps, IHomeProps, IGetStaticItemProps, IItemProps, IGetStaticCategoryProps}
+
+export type {MainContentProps, TGalleryCard, TOrderButtonProps, IHomeProps, IGetStaticItemProps, IItemProps, IGetStaticCategoryProps, IAuthContextProps, TAuthContextValue}
 

@@ -714,11 +714,25 @@
   background-color: #081420;
   font-size: 1.75vw;
   padding: 0.8vw 7.3vw;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
 }
 @media (max-width: 768px) {
   .profile__welcome-tab {
     font-size: 20px;
   }
+}
+
+.logout__button {
+  text-decoration: underline;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.logout__button:hover {
+  color: #c80000;
 }
 
 .profile__main {

@@ -9,7 +9,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.create = exports.read = void 0;
+exports.update = exports.create = exports.read = void 0;
 const { client } = require('./connection.settings');
 //No primeiro parâmetro, recebe o nome da collection onde buscará os dados.
 // Se receber um objeto, com um par de chave e valor, no segundo parâmetro, retorna um documento filtrado pelo parâmetro recebido.
@@ -40,5 +40,17 @@ const create = (coll, query) => __awaiter(void 0, void 0, void 0, function* () {
     client.close();
 });
 exports.create = create;
+const update = (coll, filter, query) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        const collection = client.db('store').collection(coll);
+        yield collection.updateOne(filter, query);
+    }
+    catch (err) {
+        console.log(err);
+    }
+    client.close();
+});
+exports.update = update;
 // read('costumers').then(console.log)
+// (0, exports.update)('costumers', { name: 'Amélia Rodrigues' }, { $set: { cart: { date: Date() } } })
 //# sourceMappingURL=queries.js.map

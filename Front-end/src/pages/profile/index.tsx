@@ -1,6 +1,6 @@
 import Head from "next/head"
 import ItemHistory from "src/components/item_history"
-import MainContent from "src/layout/main"
+
 
 
 const Profile = () => {
@@ -26,7 +26,8 @@ const Profile = () => {
           </div>
         </section>
         <section className="profile__welcome-tab">
-          WELCOME
+          <p>WELCOME</p>
+          <p className="logout__button">LOGOUT</p>
         </section>
       </header>
       <main className="profile__main">
