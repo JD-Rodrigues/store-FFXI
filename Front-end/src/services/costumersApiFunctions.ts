@@ -1,7 +1,7 @@
 import { IcreateUserParam } from "src/types"
 
 
-export const checkUserInDatabase = async (gid:string) => {
+export const checkUserInDatabase = async (gid:string | (() => string)) => {
   const res = await fetch(`http://localhost:3002/costumers/${gid}`)
   return res.json()
 }

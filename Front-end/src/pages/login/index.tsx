@@ -2,28 +2,67 @@ import Head from "next/head"
 import MainContent from "src/layout/main"
 import { CredentialResponse, GoogleLogin } from '@react-oauth/google';
 import jwt_decode from 'jwt-decode'
-import { createUser } from "src/services/costumersApiFunctions";
+import { checkUserInDatabase, createUser } from "src/services/costumersApiFunctions";
 import { TCredential } from "src/types";
+import { useContext, useEffect } from "react";
+import { AuthContext } from "src/contexts/authContextProvider";
+import { login } from "src/services/authFunctions";
+import { useRouter } from "next/router";
 
 
 
 
 const Login = () => {
+  const context = useContext(AuthContext)
+  const router = useRouter()
+
+  const loginLogoutHandler = async (
+    googleId: string | (() => string), 
+    setLogged:React.Dispatch<React.SetStateAction<boolean>>, credential: "" | TCredential | undefined
+    ) => {
+    const userExists =  await checkUserInDatabase(googleId)
+    if(userExists) {
+      login(googleId, context.setLogged!)
+    } else {
+      await createUser(
+        {
+          name: credential && credential.name,
+          email: credential && credential.email,
+          gid: credential && credential.sub,
+          pic: credential && credential.picture,
+          cart: {}
+        }        
+      )
+
+      await loginLogoutHandler(googleId, setLogged, credential)
+      
+    }
+  }
+
+  useEffect(()=> {
+    context.logged === true && router.push('/profile')
+  },[context.logged])
 
   const credentialResponseHandler = async (response:CredentialResponse) => {
+
     const credential: "" | TCredential | undefined = response.credential &&  jwt_decode(response.credential)
+
+    const googleId = credential!.sub
+    console.log(typeof googleId)
+    await loginLogoutHandler(googleId, context.setLogged!, credential)
     
+    console.log(context.logged)
     
-    await createUser(
-      {
-        name: credential && credential.name,
-        email: credential && credential.email,
-        gid: credential && credential.sub,
-        pic: credential && credential.picture,
-        cart: {}
-      }
+    // await createUser(
+    //   {
+    //     name: credential && credential.name,
+    //     email: credential && credential.email,
+    //     gid: credential && credential.sub,
+    //     pic: credential && credential.picture,
+    //     cart: {}
+    //   }
       
-    )
+    // ) 
     console.log(credential)
   }
  

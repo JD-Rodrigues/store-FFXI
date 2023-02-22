@@ -20,7 +20,7 @@ router.post('/costumers', async (req, res)=> {
 })
 
 router.get('/cart', (req, res)=> {
-  res.send('Obter cart')
+  res.send('Obter cart')   
 })
 
 router.put('/cart', (req, res)=> {

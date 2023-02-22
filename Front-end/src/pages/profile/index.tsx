@@ -1,9 +1,20 @@
 import Head from "next/head"
+import { useRouter } from "next/router"
+import { useContext, useEffect } from "react"
 import ItemHistory from "src/components/item_history"
+import { AuthContext } from "src/contexts/authContextProvider"
+import { logout } from "src/services/authFunctions"
 
 
 
 const Profile = () => {
+  const context = useContext(AuthContext)
+  const router = useRouter()
+
+  useEffect(()=> {
+    context.logged === false && router.push('/login')
+  },[context.logged])
+
   return(
     <>
       <Head>
@@ -27,7 +38,15 @@ const Profile = () => {
         </section>
         <section className="profile__welcome-tab">
           <p>WELCOME</p>
-          <p className="logout__button">LOGOUT</p>
+          <p 
+            className="logout__button"
+            onClick={()=> {
+              logout(context.setLogged!)
+              console.log(context.logged)
+            }}
+          > 
+            LOGOUT
+          </p>
         </section>
       </header>
       <main className="profile__main">
