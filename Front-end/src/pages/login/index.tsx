@@ -20,10 +20,10 @@ const Login = () => {
     googleId: string | (() => string), 
     setLogged:React.Dispatch<React.SetStateAction<boolean>>, credential: "" | TCredential | undefined
     ) => {
-    const userExists =  await checkUserInDatabase(googleId)
-    console.log(typeof userExists)
-    if(userExists) {
-      login(googleId, context.setLogged!)
+    const userFound =  await checkUserInDatabase(googleId)
+    
+    if(await userFound.length > 0) {
+      login(userFound[0].gid, context.setLogged!)
     } else {
       await createUser(
         {
@@ -35,7 +35,7 @@ const Login = () => {
         }        
       )
 
-      await loginLogoutHandler(googleId, setLogged, credential)
+      login(googleId, context.setLogged!)
       
     }
   }

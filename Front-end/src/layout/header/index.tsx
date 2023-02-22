@@ -1,6 +1,7 @@
 import { Cart, User } from "@styled-icons/boxicons-regular"
 import Image from "next/image"
 import Link from "next/link"
+import { useRouter } from "next/router"
 import logo from 'public/logo.png'
 import { useEffect, useState } from "react"
 
@@ -9,6 +10,9 @@ import { useEffect, useState } from "react"
 const Header = () => {
   const [screenWidth, setScreenWidth] = useState(Number)
   const [showMenu, setShowMenu] = useState(false)
+  const router = useRouter()
+
+  const userIconPath = router.route === "/profile" ? "/profile" : "/login"
 
   const setWindowWidth = () => {
     setScreenWidth(window.innerWidth)
@@ -23,6 +27,7 @@ const Header = () => {
   }
 
 
+
   useEffect(()=>{   
     window.addEventListener('resize', ()=> {
       setWindowWidth()
@@ -35,6 +40,7 @@ const Header = () => {
     menuButton !== null && menuButton.addEventListener('click', changeShowMenu)
   },[])
  
+  
   return (
     <div className='header container'>
       <p className="mobile__menu__btn">Menu</p>
@@ -79,7 +85,7 @@ const Header = () => {
             Accounts
           </Link>
           <Link
-            href="/profile" 
+            href={userIconPath} 
             className="header__menu__item link menu__login__link"
             onClick={hideMenuByLinks}
           >
@@ -91,7 +97,7 @@ const Header = () => {
       {
         screenWidth >= 768 && 
           <Link 
-            href="/profile"
+            href={userIconPath}
             className="user__icon"
           >
             <User />
