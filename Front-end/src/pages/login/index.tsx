@@ -21,6 +21,7 @@ const Login = () => {
     setLogged:React.Dispatch<React.SetStateAction<boolean>>, credential: "" | TCredential | undefined
     ) => {
     const userExists =  await checkUserInDatabase(googleId)
+    console.log(typeof userExists)
     if(userExists) {
       login(googleId, context.setLogged!)
     } else {
@@ -48,7 +49,7 @@ const Login = () => {
     const credential: "" | TCredential | undefined = response.credential &&  jwt_decode(response.credential)
 
     const googleId = credential!.sub
-    console.log(typeof googleId)
+    
     await loginLogoutHandler(googleId, context.setLogged!, credential)
     
     console.log(context.logged)

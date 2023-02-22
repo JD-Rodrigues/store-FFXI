@@ -15,7 +15,7 @@ export const read = async (coll, filter = {}) => {
   } catch (err) {
     console.log(err);
   }
-  client.close()
+  client.close()  
 }
 
 export const create = async (coll, query) => {

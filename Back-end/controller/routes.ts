@@ -7,8 +7,8 @@ export const router = express.Router()
 router.get('/costumers/:id', async (req, res)=> {
   const costumerToCheck = req.params.id
   const costumersInDb = await read('costumers')
-  const foundCostumer = costumersInDb.filter(costumer=> costumer.cod === costumerToCheck )
-
+  const foundCostumer = costumersInDb.filter(costumer=> costumer.gid === costumerToCheck )
+  console.log(foundCostumer) 
   res.json(foundCostumer.length > 0 ? true : false)
   
 })
