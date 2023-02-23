@@ -2,13 +2,13 @@ import { IcreateUserParam } from "src/types"
 
 
 export const checkUserInDatabase = async (gid:string | (() => string)) => {
-  const res = await fetch(`http://localhost:3002/costumers/${gid}`)
+  const res = await fetch(`https://kampler-store-api-costumers.onrender.com/costumers/${gid}`)
   return res.json()
 }
 
 export const createUser = async (userObject:IcreateUserParam) => {
   
-  const res = await fetch(`http://localhost:3002/costumers`, {
+  const res = await fetch(`https://kampler-store-api-costumers.onrender.com/costumers`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json"
