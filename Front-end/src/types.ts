@@ -48,9 +48,20 @@ type TOrderButtonProps = {
   text:string
 }
 
+type TUserObject = {
+  _id: string
+  name: string
+  email: string
+  gid: string
+  pic: string
+  cart: {}
+}
+
 type TAuthContextValue = {
   logged?: boolean
   setLogged?: React.Dispatch<React.SetStateAction<boolean>>
+  user?:TUserObject | undefined
+  setUser?: React.Dispatch<React.SetStateAction<undefined>>
 }
 
 type TCredential = {
@@ -72,5 +83,5 @@ type TCredential = {
 
 
 
-export type {MainContentProps, TGalleryCard, TOrderButtonProps, IHomeProps, IGetStaticItemProps, IItemProps, IGetStaticCategoryProps, IAuthContextProps, TAuthContextValue, IcreateUserParam, TCredential}
+export type { MainContentProps, TGalleryCard, TOrderButtonProps, IHomeProps, IGetStaticItemProps, IItemProps, IGetStaticCategoryProps, IAuthContextProps, TAuthContextValue, TUserObject, IcreateUserParam, TCredential }
 

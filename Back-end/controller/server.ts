@@ -13,5 +13,5 @@ app.use(express.urlencoded({extended: true}))
 
 const port = process.env.PORT
 
-app.listen(port,()=>console.info('Server ON in port' + port))
+app.listen(port,()=>console.info('Server ON in port ' + port))
 

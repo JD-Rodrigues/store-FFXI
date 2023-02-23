@@ -16,9 +16,9 @@ exports.router = express.Router();
 exports.router.get('/costumers/:id', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const costumerToCheck = req.params.id;
     const costumersInDb = yield (0, queries_1.read)('costumers');
-    const foundCostumer = costumersInDb.filter(costumer => costumer.gid === costumerToCheck);
-    console.log(foundCostumer);
-    res.json(foundCostumer.length > 0 ? true : false);
+    const foundCostumer = costumersInDb.length > 0 ? costumersInDb.filter(costumer => costumer.gid === costumerToCheck) : [];
+    // console.log(foundCostumer) 
+    res.json(foundCostumer);
 }));
 exports.router.post('/costumers', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     console.log("Epaaa");

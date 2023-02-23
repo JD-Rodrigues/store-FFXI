@@ -51,6 +51,8 @@ const update = (coll, filter, query) => __awaiter(void 0, void 0, void 0, functi
     client.close();
 });
 exports.update = update;
+//  const coll = client.db('store').collection('costumers') 
+//  coll.deleteMany({})
 (0, exports.read)('costumers').then(console.log);
 // create('costumers', {name: 'Olívia Palito'})
 // update('costumers', {name: 'Amélia Rodrigues'}, {$set: {cart:{ cartId: 'new ObjectId()'}}}) 

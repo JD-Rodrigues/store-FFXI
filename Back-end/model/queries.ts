@@ -40,6 +40,9 @@ export const update = async (coll, filter, query) => {
   client.close()
 }
 
+//  const coll = client.db('store').collection('costumers')
+//  coll.deleteMany({})
+
 read('costumers').then(console.log)
 // create('costumers', {name: 'Olívia Palito'})
 // update('costumers', {name: 'Amélia Rodrigues'}, {$set: {cart:{ cartId: 'new ObjectId()'}}}) 

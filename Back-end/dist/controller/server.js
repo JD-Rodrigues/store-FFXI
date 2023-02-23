@@ -11,5 +11,5 @@ exports.app.use(express.json());
 exports.app.use(router);
 exports.app.use(express.urlencoded({ extended: true }));
 const port = process.env.PORT;
-exports.app.listen(port, () => console.info('Server ON in port' + port));
+exports.app.listen(port, () => console.info('Server ON in port ' + port));
 //# sourceMappingURL=server.js.map

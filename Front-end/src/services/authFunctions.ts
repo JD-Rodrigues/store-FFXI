@@ -1,9 +1,9 @@
-export const login = (gid:string | (() => string), setLogged:React.Dispatch<React.SetStateAction<boolean>>) => {
-  sessionStorage.setItem(`gid`, JSON.stringify(gid))  
+export const login = (setLogged:React.Dispatch<React.SetStateAction<boolean>>) => {
+
   setLogged(true)
 }
 
 export const logout = (setLogged:React.Dispatch<React.SetStateAction<boolean>>)=> {
-  sessionStorage.removeItem(`gid`) 
+  
   setLogged(false) 
 }

@@ -15,6 +15,7 @@ import { useRouter } from "next/router";
 const Login = () => {
   const context = useContext(AuthContext)
   const router = useRouter()
+  
 
   const loginLogoutHandler = async (
     googleId: string | (() => string), 
@@ -23,7 +24,8 @@ const Login = () => {
     const userFound =  await checkUserInDatabase(googleId)
     
     if(await userFound.length > 0) {
-      login(userFound[0].gid, context.setLogged!)
+      login(context.setLogged!)
+      context.setUser!(userFound[0])
     } else {
       await createUser(
         {
@@ -35,7 +37,8 @@ const Login = () => {
         }        
       )
 
-      login(googleId, context.setLogged!)
+      login(context.setLogged!)
+      context.setUser!(userFound[0])
       
     }
   }
@@ -54,16 +57,6 @@ const Login = () => {
     
     console.log(context.logged)
     
-    // await createUser(
-    //   {
-    //     name: credential && credential.name,
-    //     email: credential && credential.email,
-    //     gid: credential && credential.sub,
-    //     pic: credential && credential.picture,
-    //     cart: {}
-    //   }
-      
-    // ) 
     console.log(credential)
   }
  

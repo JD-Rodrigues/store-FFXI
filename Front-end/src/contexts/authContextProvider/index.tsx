@@ -5,9 +5,10 @@ export const AuthContext = createContext<TAuthContextValue>({})
 
 export const AuthContextProvider = ({children}:IAuthContextProps) => {
   const [logged, setLogged] = useState(false)
+  const [user, setUser] = useState()
 
   return(
-    <AuthContext.Provider value={{logged, setLogged}}>
+    <AuthContext.Provider value={{logged, setLogged, user, setUser}}>
       {children}
     </AuthContext.Provider>
   )
