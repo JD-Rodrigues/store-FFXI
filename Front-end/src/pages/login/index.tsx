@@ -36,9 +36,10 @@ const Login = () => {
           cart: {}
         }        
       )
-
+      
+      const registredUser = await checkUserInDatabase(googleId)
+      context.setUser!(registredUser[0])
       login(context.setLogged!)
-      context.setUser!(userFound[0])
       
     }
   }

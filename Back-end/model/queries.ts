@@ -25,8 +25,6 @@ export const create = async (coll, query) => {
   }catch(err) {
     console.log(err)
   } 
-
-  client.close()
 }
 
 export const update = async (coll, filter, query) => {

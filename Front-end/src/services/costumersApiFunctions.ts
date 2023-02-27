@@ -8,7 +8,7 @@ export const checkUserInDatabase = async (gid:string | (() => string)) => {
 
 export const createUser = async (userObject:IcreateUserParam) => {
   
-  const res = await fetch(`https://kampler-store-api-costumers.onrender.com/costumers`, {
+  await fetch(`https://kampler-store-api-costumers.onrender.com/costumers`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json"
@@ -18,6 +18,6 @@ export const createUser = async (userObject:IcreateUserParam) => {
     })
   })
   
-  return await res.json()
+  
 }
 

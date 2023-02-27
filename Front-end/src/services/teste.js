@@ -11,4 +11,35 @@ const getProductsByTag = async (tag) => {
   return await products
 }
 
-getProductsByTag('weapons').then(console.log)
+// getProductsByTag('weapons').then(console.log)
+
+const checkUserInDatabase = async (gid) => {
+  const res = await fetch(`http://localhost:3002/costumers/${gid}`)
+  return res.json()
+}
+const createUser = async (userObject) => {
+  
+  await fetch(`http://localhost:3002/costumers`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+      user: userObject
+    })
+  })
+}
+
+const teste = async () => {
+  await checkUserInDatabase("108224890119545921791").then(console.log)
+  await createUser({
+  name: 'Murici Ramalho',
+  email: 'contato@ramalho.com',
+  gid: '108224890119545921791',
+  pic: 'https://minhaimagem.jpg',
+  cart: {}
+}      )
+ await checkUserInDatabase("108224890119545921791").then(console.log)
+}
+
+teste()
