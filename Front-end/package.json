@@ -31,7 +31,7 @@
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "typescript": "4.9.4",
-    "uuid": "^9.0.0"
+    "uuidv4": "^6.2.13"
   },
   "devDependencies": {
     "@prismicio/types": "^0.2.7",

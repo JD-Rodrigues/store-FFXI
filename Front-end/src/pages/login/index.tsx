@@ -8,6 +8,7 @@ import { useContext, useEffect } from "react";
 import { AuthContext } from "src/contexts/authContextProvider";
 import { login } from "src/services/authFunctions";
 import { useRouter } from "next/router";
+import {uuid} from 'uuidv4'
 
 
 
@@ -33,7 +34,12 @@ const Login = () => {
           email: credential && credential.email,
           gid: credential && credential.sub,
           pic: credential && credential.picture,
-          cart: {}
+          cart: {
+            orderId: uuid(),
+            date: Date(),
+            opened: false,
+            items: []
+          }
         }        
       )
       
