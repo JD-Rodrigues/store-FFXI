@@ -38,6 +38,7 @@ interface IcreateUserParam {
 }
 
 type TGalleryCard = {
+  id:string
   title:string
   pic: string
   price: number

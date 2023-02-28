@@ -59,6 +59,7 @@ export default function Home({products}:IHomeProps) {
               key={product.id}
               >
                 <GalleryCard 
+                  id = {product.id}
                   title={product.data.title}
                   pic={product.data.gallery_image.url}
                   price={product.data.price}

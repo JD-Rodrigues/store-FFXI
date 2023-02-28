@@ -4,9 +4,9 @@ import { TGalleryCard } from "src/types"
 import { OrderButton } from "../orderButton"
 
 
-const GalleryCard = ({title, pic, price, path}:TGalleryCard) => {
+const GalleryCard = ({id, title, pic, price, path}:TGalleryCard) => {
   return (
-    <div className='product__card'>
+    <div className='product__card' data-id={id}>
       <div className='product__card__info' >
         <Link 
         href={`/item_description/${path}`}

@@ -30,16 +30,4 @@ const createUser = async (userObject) => {
   })
 }
 
-const teste = async () => {
-  await checkUserInDatabase("108224890119545921791").then(console.log)
-  await createUser({
-  name: 'Murici Ramalho',
-  email: 'contato@ramalho.com',
-  gid: '108224890119545921791',
-  pic: 'https://minhaimagem.jpg',
-  cart: {}
-}      )
- await checkUserInDatabase("108224890119545921791").then(console.log)
-}
-
-teste()
+getProductsByTag('weapons').then(console.log)
