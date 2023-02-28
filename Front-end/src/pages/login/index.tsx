@@ -19,7 +19,7 @@ const Login = () => {
 
   const loginLogoutHandler = async (
     googleId: string | (() => string), 
-    setLogged:React.Dispatch<React.SetStateAction<boolean>>, credential: "" | TCredential | undefined
+    credential: "" | TCredential | undefined
     ) => {
     const userFound =  await checkUserInDatabase(googleId)
     
@@ -38,8 +38,13 @@ const Login = () => {
       )
       
       const registredUser = await checkUserInDatabase(googleId)
-      context.setUser!(registredUser[0])
-      login(context.setLogged!)
+      
+      if (registredUser.length > 0) {
+        context.setUser!(registredUser[0])
+        login(context.setLogged!)
+      }
+      
+      
       
     }
   }
@@ -54,7 +59,7 @@ const Login = () => {
 
     const googleId = credential!.sub
     
-    await loginLogoutHandler(googleId, context.setLogged!, credential)
+    await loginLogoutHandler(googleId, credential)
     
     console.log(context.logged)
     
