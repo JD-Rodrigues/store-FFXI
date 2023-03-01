@@ -18,6 +18,12 @@ export const getProductByUid = async (uid:string) => {
   return product
 }
 
+export const getProductByID = async (id:string) => {
+  const product = await client.getByID(id )
+
+  return product
+}
+
 export const getProductsByTag = async (tag:string) => {
   const products = await client.getAllByTag(tag)
 

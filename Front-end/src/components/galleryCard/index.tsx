@@ -6,7 +6,7 @@ import { OrderButton } from "../orderButton"
 
 const GalleryCard = ({id, title, pic, price, path}:TGalleryCard) => {
   return (
-    <div className='product__card' data-id={id}>
+    <div className='product__card'>
       <div className='product__card__info' >
         <Link 
         href={`/item_description/${path}`}
@@ -30,7 +30,10 @@ const GalleryCard = ({id, title, pic, price, path}:TGalleryCard) => {
           </p>
         </div>       
       </div>
-      <OrderButton text="ADD TO CART" />
+      <OrderButton 
+      text="ADD TO CART"
+      productId={id}
+      />
     </div>
   )
 }

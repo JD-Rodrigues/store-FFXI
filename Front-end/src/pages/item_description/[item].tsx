@@ -78,7 +78,10 @@ export default function ItemDescription({product}:IItemProps) {
               <p className="item__abstract__price">
               {product.data.price}
               </p>
-              <OrderButton text="ADD TO CART" />
+              <OrderButton 
+                text="ADD TO CART" 
+                productId={product.id}
+              />
             </div>
           </section>
           <section className="item__description" id="item__description">

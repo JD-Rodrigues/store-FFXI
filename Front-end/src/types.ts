@@ -29,6 +29,10 @@ interface IAuthContextProps {
   children: React.ReactNode
 }
 
+interface ICartContextProps {
+  children: React.ReactNode
+}
+
 interface IcreateUserParam {
   name: string | undefined
   email: string | undefined
@@ -36,6 +40,30 @@ interface IcreateUserParam {
   pic: string | undefined
   cart: {}
 }
+
+// interface IProduct {
+//   id: string
+//   uid: string
+//   url: null | string,
+//   type: string
+//   href: string
+//   tags: string[]
+//   first_publication_date: string
+//   last_publication_date: string
+//   slugs: string[]
+//   linked_documents: string[]
+//   lang: string
+//   alternate_languages:string[]
+//   data: {
+//     title: string
+//     gallery_image:{}
+//     internal_image: {}
+//     price: number,
+//     description: string[]
+//   }
+// }
+  
+
 
 type TGalleryCard = {
   id:string
@@ -47,6 +75,7 @@ type TGalleryCard = {
 
 type TOrderButtonProps = {
   text:string
+  productId:string
 }
 
 type TUserObject = {
@@ -64,6 +93,13 @@ type TAuthContextValue = {
   user?:TUserObject | undefined
   setUser?: React.Dispatch<React.SetStateAction<undefined>>
 }
+
+type TCartContextValue =  {
+  selectedProduct?: PrismicDocument
+  setSelectedProduct?:React.Dispatch<React.SetStateAction<any>> 
+}
+
+
 
 type TCredential = {
   aud: string
@@ -84,5 +120,5 @@ type TCredential = {
 
 
 
-export type { MainContentProps, TGalleryCard, TOrderButtonProps, IHomeProps, IGetStaticItemProps, IItemProps, IGetStaticCategoryProps, IAuthContextProps, TAuthContextValue, TUserObject, IcreateUserParam, TCredential }
+export type { MainContentProps, TGalleryCard, TOrderButtonProps, IHomeProps, IGetStaticItemProps, IItemProps, IGetStaticCategoryProps, IAuthContextProps, ICartContextProps, TAuthContextValue, TCartContextValue, TUserObject, IcreateUserParam, TCredential }
 
