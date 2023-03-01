@@ -25,10 +25,14 @@ exports.router.post('/costumers', (req, res) => __awaiter(void 0, void 0, void 0
     yield (0, queries_1.create)('costumers', req.body.user);
     res.json('Cliente cadastrado!');
 }));
-exports.router.get('/cart', (req, res) => {
-    res.send('Obter cart');
-});
-exports.router.put('/cart', (req, res) => {
-    res.send('Atualizar cart');
-});
+exports.router.get('/cart/:userId', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const gid = req.params.userId;
+    const user = yield (0, queries_1.read)('costumers', { gid: gid });
+    res.json(user[0].cart);
+}));
+exports.router.put('/cart/:userId', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const gid = req.params.userId;
+    yield (0, queries_1.update)('costumers', { gid: gid }, { cart: req.body.cart });
+    res.send('O cart foi atualizado!');
+}));
 //# sourceMappingURL=routes.js.map

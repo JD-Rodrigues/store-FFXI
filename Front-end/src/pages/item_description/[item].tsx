@@ -41,7 +41,8 @@ export default function ItemDescription({product}:IItemProps) {
   console.log(product)
 
   const description = product.data.description[0].text
-
+  const id = product.id
+  console.log(id)
   return (
     <>
       <Head>
@@ -80,7 +81,7 @@ export default function ItemDescription({product}:IItemProps) {
               </p>
               <OrderButton 
                 text="ADD TO CART" 
-                productId={product.id}
+                productId={id}
               />
             </div>
           </section>

@@ -1,4 +1,4 @@
-import { create, read } from "../model/queries"
+import { create, read, update } from "../model/queries"
 
 const express = require('express')
 
@@ -19,10 +19,14 @@ router.post('/costumers', async (req, res)=> {
   res.json('Cliente cadastrado!')
 })
 
-router.get('/cart', (req, res)=> {
-  res.send('Obter cart')   
+router.get('/cart/:userId', async (req, res)=> {
+  const gid = req.params.userId
+  const user = await read('costumers', {gid:gid})
+  res.json(user[0].cart)   
 })
 
-router.put('/cart', (req, res)=> {
-  res.send('Atualizar cart')    
+router.put('/cart/:userId', async (req, res)=> {
+  const gid = req.params.userId
+  await update('costumers', {gid:gid}, {cart:req.body.cart})
+  res.send('O cart foi atualizado!')     
 }) 

@@ -30,10 +30,11 @@ export const create = async (coll, query) => {
 export const update = async (coll, filter, query) => {
   try {
     const collection = client.db('store').collection(coll)
-    await collection.updateOne(filter, query)
+    await collection.updateOne(filter, {$set: query})
   }catch(err) {
     console.log(err)
   } 
 
-  client.close()
-}
+  // client.close()
+} 
+ 

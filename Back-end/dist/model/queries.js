@@ -42,12 +42,12 @@ exports.create = create;
 const update = (coll, filter, query) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const collection = client.db('store').collection(coll);
-        yield collection.updateOne(filter, query);
+        yield collection.updateOne(filter, { $set: query });
     }
     catch (err) {
         console.log(err);
     }
-    client.close();
+    // client.close()
 });
 exports.update = update;
 //# sourceMappingURL=queries.js.map

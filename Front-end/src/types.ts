@@ -118,7 +118,22 @@ type TCredential = {
   sub: string
 }
 
+type TCartItem = {
+  title:string
+  desc:string
+  pic: string
+  price: number
+  quant:number
+}
+
+type TCart = {
+  orderId: string
+  date: string
+  opened: boolean
+  items: TCartItem[]
+}
 
 
-export type { MainContentProps, TGalleryCard, TOrderButtonProps, IHomeProps, IGetStaticItemProps, IItemProps, IGetStaticCategoryProps, IAuthContextProps, ICartContextProps, TAuthContextValue, TCartContextValue, TUserObject, IcreateUserParam, TCredential }
+
+export type { MainContentProps, TGalleryCard, TOrderButtonProps, IHomeProps, IGetStaticItemProps, IItemProps, IGetStaticCategoryProps, IAuthContextProps, ICartContextProps, TAuthContextValue, TCartContextValue, TUserObject, IcreateUserParam, TCredential, TCart, TCartItem }
 
