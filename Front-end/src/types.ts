@@ -119,6 +119,7 @@ type TCredential = {
 }
 
 type TCartItem = {
+  id:string
   title:string
   desc:string
   pic: string

@@ -42,6 +42,6 @@ const updateCart = async (gid, newValues) => {
   })  
 }
 
-// updateCart('108224890119545921791', {orderId: 'meteoloco', date: '26-02-1989', opened: true, items:[{title: 'Bigorna ardente', description:'Uma bigorna incandescente', pic: 'http://image.png', price: 5.00, quant:2}]}).then(console.log)
+updateCart('108224890119545921791', {orderId: 'meteoloco', date: '26-02-1989', opened: true, items:[{title: 'Bigorna ardente', description:'Uma bigorna incandescente', pic: 'http://image.png', price: 5.00, quant:2}]}).then(console.log)
 
 // getProductsByTag('weapons').then(console.log)
