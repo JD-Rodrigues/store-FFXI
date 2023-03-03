@@ -7,12 +7,12 @@ import { PrismicDocument } from '@prismicio/types'
 import { useContext, useEffect } from 'react'
 import { AuthContext } from 'src/contexts/authContextProvider'
 import { CartContext } from 'src/contexts/cartContextProvider'
-import { getCart, updateCart } from 'src/services/costumersApiFunctions'
+
 
 
 export const getStaticProps = async () => {
   const products = await getAllProducts()
-
+  
   return {
     props: {
       products
@@ -21,8 +21,15 @@ export const getStaticProps = async () => {
 }
 
 export default function Home({products}:IHomeProps) {
-  const {logged, setLogged} = useContext(AuthContext)
-  const context = useContext(CartContext)
+  // const {logged, setLogged, user} = useContext(AuthContext)
+  // const context = useContext(CartContext)
+  // if(!('setSelectedProduct' in context)) {
+  //   throw new Error('Erro!')
+  // }  
+  // useEffect(()=> {
+  //   console.log(context.cart)
+  // },[])
+
   
   return (
     <>

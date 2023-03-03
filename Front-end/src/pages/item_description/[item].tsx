@@ -38,8 +38,6 @@ export const getStaticProps = async ({params}:IGetStaticItemProps) => {
 
 export default function ItemDescription({product}:IItemProps) {
 
-  console.log(product)
-
   const description = product.data.description[0].text
   const id = product.id
   console.log(id)

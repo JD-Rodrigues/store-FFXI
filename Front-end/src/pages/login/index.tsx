@@ -8,15 +8,21 @@ import { useContext, useEffect } from "react";
 import { AuthContext } from "src/contexts/authContextProvider";
 import { login } from "src/services/authFunctions";
 import { useRouter } from "next/router";
-import {uuid} from 'uuidv4'
+import {v4 as uuid} from 'uuid'
+import { getCart, setCartHandler } from "src/services/cartApiFunctions";
+import { CartContext } from "src/contexts/cartContextProvider";
 
 
 
 
 const Login = () => {
   const context = useContext(AuthContext)
+  const cartContext = useContext(CartContext)
   const router = useRouter()
   
+  if(!('setCart' in cartContext)) {
+    throw new Error()
+  }
 
   const loginLogoutHandler = async (
     googleId: string | (() => string), 
@@ -25,8 +31,9 @@ const Login = () => {
     const userFound =  await checkUserInDatabase(googleId)
     
     if(await userFound.length > 0) {
-      login(context.setLogged!)
       context.setUser!(userFound[0])
+      login(context.setLogged!)
+      await setCartHandler(userFound[0].gid, getCart, cartContext.setCart)      
     } else {
       await createUser(
         {
@@ -48,6 +55,8 @@ const Login = () => {
       if (registredUser.length > 0) {
         context.setUser!(registredUser[0])
         login(context.setLogged!)
+        
+        await setCartHandler(registredUser[0].gid, getCart, cartContext.setCart)
       }
       
       
@@ -67,10 +76,8 @@ const Login = () => {
     
     await loginLogoutHandler(googleId, credential)
     
-    console.log(context.logged)
-    
-    console.log(credential)
   }
+
  
   return (
     <>    

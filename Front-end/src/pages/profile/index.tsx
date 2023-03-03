@@ -3,17 +3,22 @@ import { useRouter } from "next/router"
 import { useContext, useEffect } from "react"
 import ItemHistory from "src/components/item_history"
 import { AuthContext } from "src/contexts/authContextProvider"
+import { CartContext } from "src/contexts/cartContextProvider"
 import { logout } from "src/services/authFunctions"
 
 
 
 const Profile = () => {
   const context = useContext(AuthContext)
+
   const router = useRouter()
+
+  
 
   useEffect(()=> {
     context.logged === false && router.push('/login')
   },[context.logged])
+
 
   return(
     <>

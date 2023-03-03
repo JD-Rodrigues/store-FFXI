@@ -41,27 +41,27 @@ interface IcreateUserParam {
   cart: {}
 }
 
-// interface IProduct {
-//   id: string
-//   uid: string
-//   url: null | string,
-//   type: string
-//   href: string
-//   tags: string[]
-//   first_publication_date: string
-//   last_publication_date: string
-//   slugs: string[]
-//   linked_documents: string[]
-//   lang: string
-//   alternate_languages:string[]
-//   data: {
-//     title: string
-//     gallery_image:{}
-//     internal_image: {}
-//     price: number,
-//     description: string[]
-//   }
-// }
+interface IProduct {
+  id: string
+  uid: string
+  url: null | string,
+  type: string
+  href: string
+  tags: string[]
+  first_publication_date: string
+  last_publication_date: string
+  slugs: string[]
+  linked_documents: string[]
+  lang: string
+  alternate_languages:string[]
+  data: {
+    title: string
+    gallery_image:{}
+    internal_image: {}
+    price: number,
+    description: string[]
+  }
+}
   
 
 
@@ -91,13 +91,15 @@ type TAuthContextValue = {
   logged?: boolean
   setLogged?: React.Dispatch<React.SetStateAction<boolean>>
   user?:TUserObject | undefined
-  setUser?: React.Dispatch<React.SetStateAction<undefined>>
+  setUser?: React.Dispatch<React.SetStateAction<TUserObject>> | React.Dispatch<React.SetStateAction<undefined>>
 }
 
 type TCartContextValue =  {
-  selectedProduct?: PrismicDocument
-  setSelectedProduct?:React.Dispatch<React.SetStateAction<any>> 
-}
+  selectedProduct: PrismicDocument | undefined
+  setSelectedProduct:React.Dispatch<React.SetStateAction<PrismicDocument>> 
+  cart?:TCart
+  setCart:React.Dispatch<React.SetStateAction<TCart>> 
+} | {}
 
 
 
@@ -136,5 +138,5 @@ type TCart = {
 
 
 
-export type { MainContentProps, TGalleryCard, TOrderButtonProps, IHomeProps, IGetStaticItemProps, IItemProps, IGetStaticCategoryProps, IAuthContextProps, ICartContextProps, TAuthContextValue, TCartContextValue, TUserObject, IcreateUserParam, TCredential, TCart, TCartItem }
+export type { MainContentProps, TGalleryCard, TOrderButtonProps, IHomeProps, IGetStaticItemProps, IItemProps, IProduct, IGetStaticCategoryProps, IAuthContextProps, ICartContextProps, TAuthContextValue, TCartContextValue, TUserObject, IcreateUserParam, TCredential, TCart, TCartItem }
 
