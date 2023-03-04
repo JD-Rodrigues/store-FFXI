@@ -1,5 +1,5 @@
 import { PrismicDocument } from "@prismicio/types"
-import { IProduct, TCart, TCartContextValue } from "src/types"
+import { IProduct, TCart, TCartContextValue, TUserObject } from "src/types"
 import { getProductByID } from "./prismicFunctions"
 
 
@@ -25,6 +25,23 @@ export const updateCart = async (gid:string, newValues:TCart) => {
   } catch (error) {
       console.log(error)
   }
+  
+}
+
+export const changeQuantity = async (user:TUserObject, cart:TCart, selectedProduct:PrismicDocument, setCart:React.Dispatch<React.SetStateAction<TCart>>, value = 0) => {
+  const updatedCart = cart
+
+  if(updatedCart.items.length > 0) {
+    updatedCart.items.forEach(item =>{
+      if(item.id === selectedProduct.id) {
+        value === 0 ? item.quant ++ : item.quant = value
+      }
+    })
+
+    await updateCart(user.gid, updatedCart)
+    await setCartHandler(user.gid, getCart, setCart)
+  }
+
   
 }
 
