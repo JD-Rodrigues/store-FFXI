@@ -26,9 +26,9 @@ export default function Home({products}:IHomeProps) {
   // if(!('setSelectedProduct' in context)) {
   //   throw new Error('Erro!')
   // }  
-  // useEffect(()=> {
-  //   console.log(context.cart)
-  // },[])
+  useEffect(()=> {
+    console.log(products[0])
+  },[])
 
   
   return (

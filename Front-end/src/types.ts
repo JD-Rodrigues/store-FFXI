@@ -51,9 +51,9 @@ interface IProduct {
   first_publication_date: string
   last_publication_date: string
   slugs: string[]
-  linked_documents: string[]
+  linked_documents: string[] | []
   lang: string
-  alternate_languages:string[]
+  alternate_languages: []
   data: {
     title: string
     gallery_image:{}

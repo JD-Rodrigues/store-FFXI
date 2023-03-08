@@ -12,7 +12,7 @@ export const getCart = async (gid:string) => {
 
 //Chamada quando o usuário adiciona um item ao carrinho. Se o item não existir, adiciona-o. Se já existir, aumenta sua quantidade em 1.
 
-const addItemToCart = ( cart:TCart, setCart: React.Dispatch<React.SetStateAction<TCart>>, product:PrismicDocument ) => {
+export const addItemToCart = ( cart:TCart, product:PrismicDocument, uuid:()=>string, Date:()=>string ) => {
   const updatedCart = cart
   
   if(updatedCart.items.length > 0) {
@@ -45,18 +45,25 @@ const addItemToCart = ( cart:TCart, setCart: React.Dispatch<React.SetStateAction
 }
 
 // Se o produto selecionado já existe no cart, chama  função changeQuantity(). Se ainda não existe, chama a função addItemToCart().
-const addOrChangeItem = async (user: TUserObject, cart:TCart, setCart: React.Dispatch<React.SetStateAction<TCart>>, product:PrismicDocument ) => {
+export const addOrChangeItem = async (
+    user: TUserObject, 
+    cart:TCart, 
+    setCart: React.Dispatch<React.SetStateAction<TCart>>, 
+    product:PrismicDocument, 
+    updateCart: (gid:string, updatedCart:TCart)=> void,
+    setCartHandler: (gid:string, getCart:(gid:string)=>Promise<TCart>, setCart: React.Dispatch<React.SetStateAction<TCart>>)=>void, 
+  ) => {
 
   const itemAlreadyInCart = cart.items.find(item => item.id === product.id)
 
   if(itemAlreadyInCart === undefined) {
-    const updatedCart = addItemToCart(cart, setCart, product)
+    const updatedCart = addItemToCart(cart, product, uuid, Date)
     await updateCart(user.gid, updatedCart)
     await setCartHandler(user.gid, getCart, setCart)
 
 
   } else {
-    await changeQuantity(user, cart, product, setCart)
+    await changeQuantity(user, cart, product, 'increment', updateCart, setCart, setCartHandler)
   }
 
   
@@ -83,20 +90,38 @@ export const updateCart = async (gid:string, newValues:TCart) => {
 
 // Chamada apenas quando o item já existe no carrinho. Tem por finalidade alterar a quantidade do item.
 
-export const changeQuantity = async (user:TUserObject, cart:TCart, selectedProduct:PrismicDocument, setCart:React.Dispatch<React.SetStateAction<TCart>>, value = 0) => {
+export const changeQuantity = async (
+  user:TUserObject, 
+  cart:TCart, 
+  selectedProduct:PrismicDocument, 
+  typeOfChange:string, 
+  updateCart: (gid:string,updatedCart:TCart)=> void, 
+  setCart:React.Dispatch<React.SetStateAction<TCart>>,
+  setCartHandler: (
+    gid:string, 
+    getCart:(gid:string)=> Promise<TCart>,
+    setCart:React.Dispatch<React.SetStateAction<TCart>>
+  )=> void, value = 0) => {
+
   const updatedCart = cart
-
-  if(updatedCart.items.length > 0) {
-    updatedCart.items.forEach(item =>{
-      if(item.id === selectedProduct.id) {
-        value === 0 ? item.quant ++ : item.quant = value
-      }
-    })
-
+  
+  updatedCart.items.forEach(async(item) =>{
+    if(item.id === selectedProduct.id) {
+        switch (typeOfChange) {
+        case 'increment':
+          value === 0 ? item.quant ++ : item.quant = value
+          break;
+        case 'decrement':
+          value === 0 ? item.quant -- : item.quant = value
+        default:
+          console.log('Está faltando o 3º parâmetro da função. Defina se deseja incrementar ou decrementar a quantidade do item.')
+          break;
+        }
+    }
+    
     await updateCart(user.gid, updatedCart)
     await setCartHandler(user.gid, getCart, setCart)
-  }
-
+  })
   
 }
 
