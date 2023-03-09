@@ -9,7 +9,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.update = exports.create = exports.read = void 0;
+exports.remove = exports.update = exports.create = exports.read = void 0;
 const { client } = require('./connection.settings');
 //No primeiro parâmetro, recebe o nome da collection onde buscará os dados.
 // Se receber um objeto, com um par de chave e valor, no segundo parâmetro, retorna um documento filtrado pelo parâmetro recebido.
@@ -50,4 +50,16 @@ const update = (coll, filter, query) => __awaiter(void 0, void 0, void 0, functi
     // client.close()
 });
 exports.update = update;
+const remove = (coll, filter) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        const collection = client.db('store').collection(coll);
+        yield collection.deleteOne(filter);
+    }
+    catch (err) {
+        console.log(err);
+    }
+    client.close();
+});
+exports.remove = remove;
+
 //# sourceMappingURL=queries.js.map

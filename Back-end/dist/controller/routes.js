@@ -35,4 +35,9 @@ exports.router.put('/cart/:userId', (req, res) => __awaiter(void 0, void 0, void
     yield (0, queries_1.update)('costumers', { gid: gid }, { cart: req.body.cart });
     res.send('O cart foi atualizado!');
 }));
+exports.router.delete('/costumers/:userId', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const gid = req.params.userId;
+    yield (0, queries_1.remove)('costumers', { gid: gid });
+    res.send('O usuário foi deletado!');
+}));
 //# sourceMappingURL=routes.js.map

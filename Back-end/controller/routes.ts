@@ -1,4 +1,4 @@
-import { create, read, update } from "../model/queries"
+import { create, read, remove, update } from "../model/queries"
 
 const express = require('express')
 
@@ -30,3 +30,9 @@ router.put('/cart/:userId', async (req, res)=> {
   await update('costumers', {gid:gid}, {cart:req.body.cart})
   res.send('O cart foi atualizado!')     
 }) 
+
+router.delete('/costumers/:userId', async (req, res) => {
+  const gid = req.params.userId
+  await remove('costumers', {gid:gid})
+  res.send('O usuário foi deletado!')
+})

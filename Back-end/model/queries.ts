@@ -38,3 +38,14 @@ export const update = async (coll, filter, query) => {
   // client.close()
 } 
  
+export const remove = async (coll, filter) => {
+  try {
+    const collection = client.db('store').collection(coll)
+    await collection.deleteOne(filter)
+  } catch (err) {
+    console.log(err)
+  }
+  client.close()
+}
+
+// remove('costumers', {gid: '110584721519611156608'}).then(console.log('usuário deletado!'))
