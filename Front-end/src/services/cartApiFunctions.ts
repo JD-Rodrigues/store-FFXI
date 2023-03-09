@@ -46,7 +46,7 @@ export const addItemToCart = ( cart:TCart, product:PrismicDocument, uuid:()=>str
 
 // Se o produto selecionado já existe no cart, chama  função changeQuantity(). Se ainda não existe, chama a função addItemToCart().
 export const addOrChangeItem = async (
-    user: TUserObject, 
+    userGid:string, 
     cart:TCart, 
     setCart: React.Dispatch<React.SetStateAction<TCart>>, 
     product:PrismicDocument, 
@@ -58,12 +58,12 @@ export const addOrChangeItem = async (
 
   if(itemAlreadyInCart === undefined) {
     const updatedCart = addItemToCart(cart, product, uuid, Date)
-    await updateCart(user.gid, updatedCart)
-    await setCartHandler(user.gid, getCart, setCart)
+    await updateCart(userGid, updatedCart)
+    await setCartHandler(userGid, getCart, setCart)
 
 
   } else {
-    await changeQuantity(user, cart, product, 'increment', updateCart, setCart, setCartHandler)
+    await changeQuantity(userGid, cart, product, 'increment', updateCart, setCart, setCartHandler)
   }
 
   
@@ -88,10 +88,12 @@ export const updateCart = async (gid:string, newValues:TCart) => {
   
 }
 
+
+
 // Chamada apenas quando o item já existe no carrinho. Tem por finalidade alterar a quantidade do item.
 
 export const changeQuantity = async (
-  user:TUserObject, 
+  userGid:string, 
   cart:TCart, 
   selectedProduct:PrismicDocument, 
   typeOfChange:string, 
@@ -101,7 +103,8 @@ export const changeQuantity = async (
     gid:string, 
     getCart:(gid:string)=> Promise<TCart>,
     setCart:React.Dispatch<React.SetStateAction<TCart>>
-  )=> void, value = 0) => {
+    )=> void, value = 0
+  ) => {
 
   const updatedCart = cart
   
@@ -109,18 +112,19 @@ export const changeQuantity = async (
     if(item.id === selectedProduct.id) {
         switch (typeOfChange) {
         case 'increment':
-          value === 0 ? item.quant ++ : item.quant = value
+          item.quant ++ 
           break;
-        case 'decrement':
-          value === 0 ? item.quant -- : item.quant = value
+        case 'shift':
+          value > 0 ? item.quant = value : console.error("Você não está passando o argumento para o parâmetro value ou está passando-o com o valor 0.");
+          break          
         default:
-          console.log('Está faltando o 3º parâmetro da função. Defina se deseja incrementar ou decrementar a quantidade do item.')
+          console.log('Está faltando o 3º parâmetro da função. Defina se deseja incrementar em 1 ("increment"), decrementar em 1 ("increment") ou alterar a quantidade do item para outro valor ("shift").')
           break;
         }
     }
     
-    await updateCart(user.gid, updatedCart)
-    await setCartHandler(user.gid, getCart, setCart)
+    await updateCart(userGid, updatedCart)
+    await setCartHandler(userGid, getCart, setCart)
   })
   
 }
