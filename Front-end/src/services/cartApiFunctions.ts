@@ -44,6 +44,29 @@ export const addItemToCart = ( cart:TCart, product:PrismicDocument, uuid:()=>str
   }
 }
 
+export const removeItemFromCart = async (
+  productId:string, 
+  gid:string,
+  cart:TCart, 
+  updateCart: (gid:string, newValues:TCart)=>void,
+  getCartFunction: (gid:string)=> Promise<TCart>, 
+  setCartFunction:React.Dispatch<React.SetStateAction<TCart>>,
+  setCartHandler: (
+    googleID:string, 
+    getCartFunction: (gid:string)=> Promise<TCart>, 
+    setCartFunction:React.Dispatch<React.SetStateAction<TCart>>
+    )=>void
+  ) => {
+
+  const updatedCart = cart
+  const updatedItems = cart.items.filter(item=> item.id !== productId)
+  updatedCart.items = updatedItems
+
+  await updateCart(gid, updatedCart)
+  await setCartHandler(gid, getCartFunction, setCartFunction)
+
+}
+
 // Se o produto selecionado já existe no cart, chama  função changeQuantity(). Se ainda não existe, chama a função addItemToCart().
 export const addOrChangeItem = async (
     userGid:string, 
@@ -118,7 +141,6 @@ export const changeQuantity = async (
           value > 0 ? item.quant = value : console.error("Você não está passando o argumento para o parâmetro value ou está passando-o com o valor 0.");
           break          
         default:
-          console.log('Está faltando o 3º parâmetro da função. Defina se deseja incrementar em 1 ("increment"), decrementar em 1 ("increment") ou alterar a quantidade do item para outro valor ("shift").')
           break;
         }
     }
