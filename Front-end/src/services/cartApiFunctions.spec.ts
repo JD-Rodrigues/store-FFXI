@@ -218,9 +218,10 @@ describe('changeQuantity() tests', ()=>{
 })
 
 describe('Testes da função removeItemFromCart()', ()=> {
-  test('', async ()=> {
+  test('Retorna o carrinho atualizado, com apenas 1 item.', async ()=> {
+
     const productId = '0a55c6eb-269f-42e3-baf4-19ac68e757d5'
-    const userGid = '64016d265a2d6849dee0ab6c'
+
     const cart = {
       orderId: 'ea0380b8-4c2e-4d5c-838b-400685526a6d',
       date: 'Fri Mar 03 2023 00:44:37 GMT-0300 (Horário Padrão de Brasília)',
@@ -244,7 +245,7 @@ describe('Testes da função removeItemFromCart()', ()=> {
         }
       ]
     }
-
+  
     const updatedCart = {
       orderId: 'ea0380b8-4c2e-4d5c-838b-400685526a6d',
       date: 'Fri Mar 03 2023 00:44:37 GMT-0300 (Horário Padrão de Brasília)',
@@ -259,16 +260,43 @@ describe('Testes da função removeItemFromCart()', ()=> {
           quant: 1
         }
       ]
+    }    
+
+    const returnOfFunction = removeItemFromCart(productId, cart) 
+
+    expect(returnOfFunction).toEqual(updatedCart)
+    
+  })
+
+  test('Retorna o carrinho atualizado, sem nenhum item (array vazio como valor da propriedade "items"), string vazia como valor de orderId e date e false como valor da propriedade opened.', async ()=> {
+
+    const productId = '0a55c6eb-269f-42e3-baf4-19ac68e757d5'
+    const cart = {
+      orderId: 'ea0380b8-4c2e-4d5c-838b-400685526a6d',
+      date: 'Fri Mar 03 2023 00:44:37 GMT-0300 (Horário Padrão de Brasília)',
+      opened: true,
+      items: [
+        {
+          id: '0a55c6eb-269f-42e3-baf4-19ac68e757d5',
+          title: 'Prancha de cabelo',
+          desc: 'Uma prancha alisadora de cabelos, capaz de atingir altas temperaturas.',
+          pic: 'http://imagemdaprancha.jpg',
+          price: 19.90,
+          quant: 2
+        }
+      ]
     }
-    const updateCart = jest.fn()
-    const getCart = jest.fn()
-    const setCart = jest.fn()
-    const setCartHandler = jest.fn()
-
-    await removeItemFromCart(productId, userGid, cart, updateCart, getCart, setCart, setCartHandler) 
-
-    expect(updateCart).toHaveBeenCalledWith(userGid, updatedCart)
   
-    expect(setCartHandler).toHaveBeenCalledWith(userGid, getCart, setCart) 
+    const updatedCart = {
+      orderId: '',
+      date: '',
+      opened: false,
+      items: [ ]
+    }    
+
+    const returnOfFunction = removeItemFromCart(productId, cart) 
+
+    expect(returnOfFunction).toEqual(updatedCart)
+    
   })
 })

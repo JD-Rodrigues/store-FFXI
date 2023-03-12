@@ -44,26 +44,25 @@ export const addItemToCart = ( cart:TCart, product:PrismicDocument, uuid:()=>str
   }
 }
 
-export const removeItemFromCart = async (
+export const removeItemFromCart = (
   productId:string, 
-  gid:string,
-  cart:TCart, 
-  updateCart: (gid:string, newValues:TCart)=>void,
-  getCartFunction: (gid:string)=> Promise<TCart>, 
-  setCartFunction:React.Dispatch<React.SetStateAction<TCart>>,
-  setCartHandler: (
-    googleID:string, 
-    getCartFunction: (gid:string)=> Promise<TCart>, 
-    setCartFunction:React.Dispatch<React.SetStateAction<TCart>>
-    )=>void
+  cart:TCart
   ) => {
 
   const updatedCart = cart
   const updatedItems = cart.items.filter(item=> item.id !== productId)
   updatedCart.items = updatedItems
 
-  await updateCart(gid, updatedCart)
-  await setCartHandler(gid, getCartFunction, setCartFunction)
+  if (updatedItems.length === 0 ) {
+    return {
+      ...updatedCart,
+      orderId: '',
+      date: '',
+      opened: false
+    }
+  } else {
+    return updatedCart
+  }
 
 }
 
