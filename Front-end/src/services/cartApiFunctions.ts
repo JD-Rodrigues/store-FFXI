@@ -86,10 +86,8 @@ export const addOrChangeItem = async (
 
 
   } else {
-    await changeQuantity(userGid, cart, product, 'increment', updateCart, setCart, setCartHandler)
-  }
-
-  
+    await changeQuantity(userGid, cart, product, updateCart, setCart, setCartHandler)
+  }  
 }
 
 // No primeiro parâmetro, recebe um GoogleID. No segundo, um objeto contendo as propriedades do carrinho atualizado.
@@ -115,11 +113,46 @@ export const updateCart = async (gid:string, newValues:TCart) => {
 
 // Chamada apenas quando o item já existe no carrinho. Tem por finalidade alterar a quantidade do item.
 
+// export const changeQuantity = async (
+//   userGid:string, 
+//   cart:TCart, 
+//   selectedProduct:PrismicDocument, 
+//   typeOfChange:string, 
+//   updateCart: (gid:string,updatedCart:TCart)=> void, 
+//   setCart:React.Dispatch<React.SetStateAction<TCart>>,
+//   setCartHandler: (
+//     gid:string, 
+//     getCart:(gid:string)=> Promise<TCart>,
+//     setCart:React.Dispatch<React.SetStateAction<TCart>>
+//     )=> void, value = 0
+//   ) => {
+
+//   const updatedCart = cart
+  
+//   updatedCart.items.forEach(async(item) => {
+//     if(item.id === selectedProduct.id) {
+//         switch (typeOfChange) {
+//         case 'increment':
+//           item.quant ++ 
+//           break;
+//         case 'shift':
+//           value > 0 ? item.quant = value : console.error("Você não está passando o argumento para o parâmetro value ou está passando-o com o valor 0.");
+//           break          
+//         default:
+//           break;
+//         }
+//     }
+    
+//     await updateCart(userGid, updatedCart)
+//     await setCartHandler(userGid, getCart, setCart)
+//   })
+  
+// }
+
 export const changeQuantity = async (
   userGid:string, 
   cart:TCart, 
   selectedProduct:PrismicDocument, 
-  typeOfChange:string, 
   updateCart: (gid:string,updatedCart:TCart)=> void, 
   setCart:React.Dispatch<React.SetStateAction<TCart>>,
   setCartHandler: (
@@ -131,25 +164,20 @@ export const changeQuantity = async (
 
   const updatedCart = cart
   
-  updatedCart.items.forEach(async(item) =>{
+  updatedCart.items.forEach(async(item) => {
     if(item.id === selectedProduct.id) {
-        switch (typeOfChange) {
-        case 'increment':
+        if (value === 0) {        
           item.quant ++ 
-          break;
-        case 'shift':
-          value > 0 ? item.quant = value : console.error("Você não está passando o argumento para o parâmetro value ou está passando-o com o valor 0.");
-          break          
-        default:
-          break;
+        } else {        
+          value > 0 ? item.quant = value : console.error("Você não está passando um número negativo como argumento para o parâmetro value. Este parâmetro deve receber um número positivo ou ser deixado em branco.");                 
         }
     }
     
     await updateCart(userGid, updatedCart)
     await setCartHandler(userGid, getCart, setCart)
-  })
-  
+  })  
 }
+
 
 // Pega o carrinho atualizado do usuário logado  e seta-o como valor do state "cart".
 

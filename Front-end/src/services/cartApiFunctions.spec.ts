@@ -124,7 +124,7 @@ describe('changeQuantity() tests', ()=>{
     const setCart = jest.fn()
     const setCartHandler = jest.fn()
 
-    await changeQuantity(userGid, cart, product, 'increment', updateCart, setCart, setCartHandler)
+    await changeQuantity(userGid, cart, product, updateCart, setCart, setCartHandler)
 
     expect(cart).toEqual({
       orderId: 'ea0380b8-4c2e-4d5c-838b-400685526a6d',
@@ -168,7 +168,7 @@ describe('changeQuantity() tests', ()=>{
     const setCart = jest.fn()
     const setCartHandler = jest.fn()
 
-    await changeQuantity(userGid, cart, product, 'shift', updateCart, setCart, setCartHandler, 5)
+    await changeQuantity(userGid, cart, product, updateCart, setCart, setCartHandler, 5)
 
     expect(cart).toEqual({
       orderId: 'ea0380b8-4c2e-4d5c-838b-400685526a6d',
@@ -211,9 +211,9 @@ describe('changeQuantity() tests', ()=>{
     const setCartHandler = jest.fn()
     const spyConsoleLog = jest.spyOn(console, 'error') 
 
-    await changeQuantity(userGid, cart, product, 'shift', updateCart, setCart, setCartHandler)
+    await changeQuantity(userGid, cart, product, updateCart, setCart, setCartHandler, -2)
 
-    expect(spyConsoleLog).toHaveBeenCalledWith("Você não está passando o argumento para o parâmetro value ou está passando-o com o valor 0.") 
+    expect(spyConsoleLog).toHaveBeenCalledWith("Você não está passando um número negativo como argumento para o parâmetro value. Este parâmetro deve receber um número positivo ou ser deixado em branco.") 
   })
 })
 
