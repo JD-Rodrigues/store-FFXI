@@ -168,7 +168,7 @@ export const changeQuantity = async (
         if (value === 0) {        
           item.quant ++ 
         } else {        
-          value > 0 ? item.quant = value : console.error("Você não está passando um número negativo como argumento para o parâmetro value. Este parâmetro deve receber um número positivo ou ser deixado em branco.");                 
+          value > 0 ? item.quant = value : console.error("Você está passando um número negativo como argumento para o parâmetro value. Este parâmetro deve receber um número positivo ou ser deixado em branco.");                 
         }
     }
     
@@ -180,14 +180,42 @@ export const changeQuantity = async (
 
 // Pega o carrinho atualizado do usuário logado  e seta-o como valor do state "cart".
 
-export const setCartHandler = async (googleID:string, getCartFunction: (gid:string)=> Promise<TCart>, setCartFunction:React.Dispatch<React.SetStateAction<TCart>> ) => {
+export const setCartHandler = async (
+  googleID:string, 
+  getCartFunction: (gid:string)=> Promise<TCart>, 
+  setCartFunction:React.Dispatch<React.SetStateAction<TCart>> 
+  ) => {
   const cart = await getCartFunction(googleID)
   setCartFunction(cart)
 }
 
+export const removeItemHandler = async (
+  productId:string, 
+  cart:TCart, 
+  gid:string, 
+  setCart:React.Dispatch<React.SetStateAction<TCart>>,
+  removeItemFromCart:(id:string, cart:TCart) => TCart,
+  setCartHandler: (
+    googleID:string, 
+    getCartFunction: (gid:string)=> Promise<TCart>, 
+    setCartFunction:React.Dispatch<React.SetStateAction<TCart>> 
+  ) => void,
+  updateCart: (
+    gid:string, 
+    newValues:TCart
+  ) => void
+  ) => {
+    const updatedCart = removeItemFromCart(productId, cart)
+    await updateCart(gid, updatedCart)
+    await setCartHandler(gid, getCart, setCart)
+}
+
 // Busca todas as informações do produto selecionado e seta-o como valor do state "selectedProduct".
 
-export const selectedProductHandler = async (productID:string, selectProduct:React.Dispatch<React.SetStateAction<PrismicDocument>> ) => {
+export const selectedProductHandler = async (
+  productID:string, 
+  selectProduct:React.Dispatch<React.SetStateAction<PrismicDocument>> 
+  ) => {
     
   const choosedItem = await getProductByID(productID)    
   selectProduct(choosedItem)
