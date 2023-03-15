@@ -97,7 +97,7 @@ type TAuthContextValue = {
 type TCartContextValue =  {
   selectedProduct: PrismicDocument | undefined
   setSelectedProduct:React.Dispatch<React.SetStateAction<PrismicDocument>> 
-  cart?:TCart
+  cart:TCart
   setCart:React.Dispatch<React.SetStateAction<TCart>> 
 } | {}
 

@@ -1,5 +1,5 @@
 import { PrismicDocument } from "@prismicio/types"
-import { IProduct, TCart, TCartContextValue, TUserObject } from "src/types"
+import { IProduct, TCart, TCartContextValue, TCartItem, TUserObject } from "src/types"
 import { getProductByID } from "./prismicFunctions"
 import {v4 as uuid} from 'uuid'
 
@@ -13,33 +13,33 @@ export const getCart = async (gid:string) => {
 //Chamada quando o usuário adiciona um item ao carrinho. Se o item não existir, adiciona-o. Se já existir, aumenta sua quantidade em 1.
 
 export const addItemToCart = ( cart:TCart, product:PrismicDocument, uuid:()=>string, Date:()=>string ) => {
-  const updatedCart = cart
-  
+  let updatedCart = cart
+  console.log('addItemToCart')
   if(updatedCart.items.length > 0) {
 
-    updatedCart.items.push({
+    updatedCart.items = [...cart.items, {
       id: product.id,
       title: product.data.title,
       desc: product.data.description[0],
       pic: product.data.gallery_image.url,
       price: product.data.price,
       quant: 1
-    })
+    }]
 
     return updatedCart
 
-  }else {
+  } else {
     updatedCart.orderId = uuid()
     updatedCart.date = Date()
     updatedCart.opened = true
-    updatedCart.items.push({
+    updatedCart.items = updatedCart.items = [...cart.items, {
       id: product.id,
       title: product.data.title,
       desc: product.data.description[0],
       pic: product.data.gallery_image.url,
       price: product.data.price,
       quant: 1
-    })
+    }]
     return updatedCart
   }
 }
@@ -75,9 +75,11 @@ export const addOrChangeItem = async (
     updateCart: (gid:string, updatedCart:TCart)=> void,
     setCartHandler: (gid:string, getCart:(gid:string)=>Promise<TCart>, setCart: React.Dispatch<React.SetStateAction<TCart>>)=>void, 
   ) => {
-
+    console.log('A função addOrChangeItem está sendo chamada.')
+    
+    
   const itemAlreadyInCart = cart.items.find(item => item.id === product.id)
-
+    console.log(product)
   if(itemAlreadyInCart === undefined) {
     const updatedCart = addItemToCart(cart, product, uuid, Date)
     await updateCart(userGid, updatedCart)
@@ -219,5 +221,6 @@ export const selectedProductHandler = async (
     
   const choosedItem = await getProductByID(productID)    
   selectProduct(choosedItem)
+  
 
 } 

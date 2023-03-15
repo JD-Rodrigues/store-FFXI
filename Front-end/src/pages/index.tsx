@@ -7,6 +7,7 @@ import { PrismicDocument } from '@prismicio/types'
 import { useContext, useEffect } from 'react'
 import { AuthContext } from 'src/contexts/authContextProvider'
 import { CartContext } from 'src/contexts/cartContextProvider'
+import { getCart, setCartHandler } from 'src/services/cartApiFunctions'
 
 
 
@@ -25,10 +26,9 @@ export default function Home({products}:IHomeProps) {
   // const context = useContext(CartContext)
   // if(!('setSelectedProduct' in context)) {
   //   throw new Error('Erro!')
-  // }  
-  useEffect(()=> {
-    console.log(products[0])
-  },[])
+  // }
+
+  
 
   
   return (
