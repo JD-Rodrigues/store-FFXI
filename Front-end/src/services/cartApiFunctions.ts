@@ -12,21 +12,22 @@ export const getCart = async (gid:string) => {
 
 //Chamada quando o usuário adiciona um item ao carrinho. Se o item não existir, adiciona-o. Se já existir, aumenta sua quantidade em 1.
 
-export const addItemToCart = ( cart:TCart, product:PrismicDocument, uuid:()=>string, Date:()=>string ) => {
+export const addItemToCart = ( cart:TCart, product: PrismicDocument, uuid:()=>string, Date:()=>string ) => {
   let updatedCart = cart
   console.log('addItemToCart')
   if(updatedCart.items.length > 0) {
-
-    updatedCart.items = [...cart.items, {
+    updatedCart.items.push({
       id: product.id,
       title: product.data.title,
       desc: product.data.description[0],
       pic: product.data.gallery_image.url,
       price: product.data.price,
       quant: 1
-    }]
-
+    })
+    
     return updatedCart
+
+    
 
   } else {
     updatedCart.orderId = uuid()
@@ -80,12 +81,12 @@ export const addOrChangeItem = async (
     
   const itemAlreadyInCart = cart.items.find(item => item.id === product.id)
     console.log(product)
-  if(itemAlreadyInCart === undefined) {
+  if(!itemAlreadyInCart) {
     const updatedCart = addItemToCart(cart, product, uuid, Date)
-    await updateCart(userGid, updatedCart)
-    await setCartHandler(userGid, getCart, setCart)
-
-
+    await Promise.all([
+      updateCart(userGid, updatedCart),
+      setCartHandler(userGid, getCart, setCart)
+    ])
   } else {
     await changeQuantity(userGid, cart, product, updateCart, setCart, setCartHandler)
   }  
@@ -218,9 +219,6 @@ export const selectedProductHandler = async (
   productID:string, 
   selectProduct:React.Dispatch<React.SetStateAction<PrismicDocument>> 
   ) => {
-    
   const choosedItem = await getProductByID(productID)    
-  selectProduct(choosedItem)
-  
-
+  return choosedItem
 } 

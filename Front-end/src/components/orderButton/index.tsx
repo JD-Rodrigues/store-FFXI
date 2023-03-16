@@ -18,25 +18,26 @@ const OrderButton = ({text, productId}:TOrderButtonProps) => {
   },[cartContext.selectedProduct])
 
   const addProductHandler = async () => {
-    await selectedProductHandler(productId,cartContext.setSelectedProduct)
+   const productItem = await selectedProductHandler(productId, cartContext.setSelectedProduct)
+    console.log('esse cara retorna o produto', productItem)
 
-    const updatedCart = cartContext.selectedProduct && addItemToCart(cartContext.cart, cartContext.selectedProduct,uuid, Date)
-
-    console.log(updatedCart)
-    console.log(cartContext.selectedProduct)
-    console.log(userContext.user)
+    // const productExistToCart = cartContext.cart.item.filter((item: any) => {item.id === productItem.id})
 
     userContext.user 
-    && cartContext.selectedProduct
-    && updatedCart
+    && productItem
     && await addOrChangeItem(
       userContext.user.gid, 
-      updatedCart, 
+      cartContext.cart, 
       cartContext.setCart, 
-      cartContext.selectedProduct, 
+      productItem, 
       updateCart, 
       setCartHandler) 
 
+    // const updatedCart = productItem && addItemToCart(cartContext.cart, productItem, uuid, Date)
+
+    // console.log(updatedCart)
+    // console.log(cartContext.selectedProduct)
+    // console.log(userContext.user)
   }
   
   return(
