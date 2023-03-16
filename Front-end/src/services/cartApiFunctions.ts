@@ -14,7 +14,7 @@ export const getCart = async (gid:string) => {
 
 export const addItemToCart = ( cart:TCart, product: PrismicDocument, uuid:()=>string, Date:()=>string ) => {
   let updatedCart = cart
-  console.log('addItemToCart')
+  
   if(updatedCart.items.length > 0) {
     updatedCart.items.push({
       id: product.id,
@@ -33,14 +33,16 @@ export const addItemToCart = ( cart:TCart, product: PrismicDocument, uuid:()=>st
     updatedCart.orderId = uuid()
     updatedCart.date = Date()
     updatedCart.opened = true
-    updatedCart.items = updatedCart.items = [...cart.items, {
-      id: product.id,
-      title: product.data.title,
-      desc: product.data.description[0],
-      pic: product.data.gallery_image.url,
-      price: product.data.price,
-      quant: 1
-    }]
+    updatedCart.items = [
+      {
+        id: product.id,
+        title: product.data.title,
+        desc: product.data.description[0],
+        pic: product.data.gallery_image.url,
+        price: product.data.price,
+        quant: 1
+      }
+    ]
     return updatedCart
   }
 }
@@ -74,26 +76,31 @@ export const addOrChangeItem = async (
     setCart: React.Dispatch<React.SetStateAction<TCart>>, 
     product:PrismicDocument, 
     updateCart: (gid:string, updatedCart:TCart)=> void,
-    setCartHandler: (gid:string, getCart:(gid:string)=>Promise<TCart>, setCart: React.Dispatch<React.SetStateAction<TCart>>)=>void, 
+    getCart: (gid: string) => Promise<any> 
   ) => {
     console.log('A função addOrChangeItem está sendo chamada.')
-    
+    // console.log('cart recebido dentro de addOrChangeItem',cart)
     
   const itemAlreadyInCart = cart.items.find(item => item.id === product.id)
     console.log(product)
+
   if(!itemAlreadyInCart) {
     const updatedCart = addItemToCart(cart, product, uuid, Date)
     await Promise.all([
       updateCart(userGid, updatedCart),
-      setCartHandler(userGid, getCart, setCart)
     ])
+    const updatedCartFromDB = await getCart(userGid)
+    console.log('Carrinho obtido do DB: ', updatedCartFromDB)
+    setCart(updatedCartFromDB)
   } else {
-    await changeQuantity(userGid, cart, product, updateCart, setCart, setCartHandler)
+    await changeQuantity(userGid, cart, product, updateCart, setCart)
+    
   }  
 }
 
 // No primeiro parâmetro, recebe um GoogleID. No segundo, um objeto contendo as propriedades do carrinho atualizado.
 export const updateCart = async (gid:string, newValues:TCart) => {
+  console.log('cart recebido dentro de updateCart',newValues)
   try {
     await fetch(`https://kampler-store-api-costumers.onrender.com/cart/${gid}`, {
       method: "PUT",
@@ -157,26 +164,23 @@ export const changeQuantity = async (
   selectedProduct:PrismicDocument, 
   updateCart: (gid:string,updatedCart:TCart)=> void, 
   setCart:React.Dispatch<React.SetStateAction<TCart>>,
-  setCartHandler: (
-    gid:string, 
-    getCart:(gid:string)=> Promise<TCart>,
-    setCart:React.Dispatch<React.SetStateAction<TCart>>
-    )=> void, value = 0
+  value = 0
   ) => {
 
   const updatedCart = cart
   
   updatedCart.items.forEach(async(item) => {
     if(item.id === selectedProduct.id) {
-        if (value === 0) {        
-          item.quant ++ 
-        } else {        
-          value > 0 ? item.quant = value : console.error("Você está passando um número negativo como argumento para o parâmetro value. Este parâmetro deve receber um número positivo ou ser deixado em branco.");                 
-        }
+      if (value === 0) {        
+        item.quant ++ 
+      } else {        
+        value > 0 ? item.quant = value : console.error("Você está passando um número negativo como argumento para o parâmetro value. Este parâmetro deve receber um número positivo ou ser deixado em branco.");                 
+      }
+      await updateCart(userGid, updatedCart)
+      await setCartHandler(userGid, getCart, setCart)
     }
     
-    await updateCart(userGid, updatedCart)
-    await setCartHandler(userGid, getCart, setCart)
+    
   })  
 }
 
@@ -188,7 +192,9 @@ export const setCartHandler = async (
   getCartFunction: (gid:string)=> Promise<TCart>, 
   setCartFunction:React.Dispatch<React.SetStateAction<TCart>> 
   ) => {
+  
   const cart = await getCartFunction(googleID)
+  console.log('cart recebido dentro de setCartHandler', cart)
   setCartFunction(cart)
 }
 

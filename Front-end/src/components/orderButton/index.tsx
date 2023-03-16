@@ -1,7 +1,7 @@
 import { useContext, useEffect } from "react"
 import { AuthContext } from "src/contexts/authContextProvider"
 import { CartContext } from "src/contexts/cartContextProvider"
-import { addItemToCart, addOrChangeItem, selectedProductHandler, setCartHandler, updateCart } from "src/services/cartApiFunctions"
+import { addItemToCart, addOrChangeItem, getCart, selectedProductHandler, setCartHandler, updateCart } from "src/services/cartApiFunctions"
 import { TCartContextValue, TOrderButtonProps } from "src/types"
 import {v4 as uuid} from 'uuid'
 
@@ -22,7 +22,7 @@ const OrderButton = ({text, productId}:TOrderButtonProps) => {
     console.log('esse cara retorna o produto', productItem)
 
     // const productExistToCart = cartContext.cart.item.filter((item: any) => {item.id === productItem.id})
-
+    console.log('cart antes de chamar addOrChangeItem',cartContext.cart)
     userContext.user 
     && productItem
     && await addOrChangeItem(
@@ -31,7 +31,7 @@ const OrderButton = ({text, productId}:TOrderButtonProps) => {
       cartContext.setCart, 
       productItem, 
       updateCart, 
-      setCartHandler) 
+      getCart) 
 
     // const updatedCart = productItem && addItemToCart(cartContext.cart, productItem, uuid, Date)
 
