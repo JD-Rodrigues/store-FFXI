@@ -76,7 +76,12 @@ export const addOrChangeItem = async (
     setCart: React.Dispatch<React.SetStateAction<TCart>>, 
     product:PrismicDocument, 
     updateCart: (gid:string, updatedCart:TCart)=> void,
-    getCart: (gid: string) => Promise<any> 
+    getCart: (gid: string) => Promise<any>,
+    setCartHandler: (
+      googleID:string, 
+      getCartFunction: (gid:string)=> Promise<TCart>, 
+      setCartFunction:React.Dispatch<React.SetStateAction<TCart>> 
+    )=> void 
   ) => {
     console.log('A função addOrChangeItem está sendo chamada.')
     // console.log('cart recebido dentro de addOrChangeItem',cart)
@@ -89,9 +94,11 @@ export const addOrChangeItem = async (
     await Promise.all([
       updateCart(userGid, updatedCart),
     ])
-    const updatedCartFromDB = await getCart(userGid)
-    console.log('Carrinho obtido do DB: ', updatedCartFromDB)
-    setCart(updatedCartFromDB)
+
+    setCartHandler(userGid, getCart, setCart)
+    // const updatedCartFromDB = await getCart(userGid)
+    // console.log('Carrinho obtido do DB: ', updatedCartFromDB)
+    // setCart(updatedCartFromDB)
   } else {
     await changeQuantity(userGid, cart, product, updateCart, setCart)
     

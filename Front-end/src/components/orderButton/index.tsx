@@ -26,12 +26,14 @@ const OrderButton = ({text, productId}:TOrderButtonProps) => {
     userContext.user 
     && productItem
     && await addOrChangeItem(
-      userContext.user.gid, 
-      cartContext.cart, 
-      cartContext.setCart, 
-      productItem, 
-      updateCart, 
-      getCart) 
+        userContext.user.gid, 
+        cartContext.cart, 
+        cartContext.setCart, 
+        productItem, 
+        updateCart, 
+        getCart,
+        setCartHandler
+      ) 
 
     // const updatedCart = productItem && addItemToCart(cartContext.cart, productItem, uuid, Date)
 
