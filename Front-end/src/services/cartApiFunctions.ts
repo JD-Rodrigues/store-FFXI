@@ -14,7 +14,7 @@ export const getCart = async (gid:string) => {
 
 export const addItemToCart = ( cart:TCart, product: PrismicDocument, uuid:()=>string, Date:()=>string ) => {
   let updatedCart = cart
-  
+  console.log(product.data.description[0])
   if(updatedCart.items.length > 0) {
     updatedCart.items.push({
       id: product.id,

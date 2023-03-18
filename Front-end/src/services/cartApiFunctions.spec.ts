@@ -18,7 +18,7 @@ const product = {
     title: 'Prancha de cabelo',
     gallery_image:{url:'http://imagemdaprancha.jpg'},
     price: 19.90,
-    description: ['Uma prancha alisadora de cabelos, capaz de atingir altas temperaturas.']
+    description: [{text:'Uma prancha alisadora de cabelos, capaz de atingir altas temperaturas.'}]
   }
 }
 
