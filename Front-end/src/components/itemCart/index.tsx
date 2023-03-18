@@ -1,22 +1,21 @@
 import { Trash } from "@styled-icons/boxicons-regular"
+import { TCartCard } from "src/types"
 
 
-const ItemCart = () => {
+const ItemCart = ({img, title, description, price}:TCartCard) => {
   return (
     <article className="item__cart">
       <img 
-        src="/gallery__images/item__desc.jpg" 
+        src={img}
         className="item__cart__pic"
       />
       <section className="item__cart__details">
         <div className="item__cart__description">
           <h3 className="item__cart__description__title">
-            FINAL FANTASY VII REMAKE™ STATIC ARTS TIFA LOCKHART EXOTIC DRESS VER.
+            {title}
           </h3>
           <section className="item__cart__description__text">
-            <p>Platform: Merchandise</p>
-            <p>Edition: TIFA LOCKHART EXOTIC DRESS Ver.</p>
-            <p>Delivery: Shipping</p>
+          {`${description.substring(0,60)}...`}
           </section>
         </div>
         <select className="item__cart__quantity">
@@ -27,7 +26,7 @@ const ItemCart = () => {
           <option>5</option>
         </select>
         <div className="item__cart__price-delete">
-          <p className="item__cart__price">$199.99</p>
+          <p className="item__cart__price">{`$${price}`}</p>
           <Trash className="item__cart__delete" />
         </div>
       </section>

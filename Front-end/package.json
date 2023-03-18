@@ -7,6 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
+    "sass": "sass src/sass/styles.sass:src/styles/index.css --watch",
     "test": "jest --watch",
     "slicemachine": "start-slicemachine"
   },

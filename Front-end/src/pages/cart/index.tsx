@@ -1,10 +1,20 @@
 import Head from "next/head";
+import { useContext } from "react";
+import { CheckoutButton } from "src/components/checkoutButton";
 import ItemCart from "src/components/itemCart";
 import { OrderButton } from "src/components/orderButton";
+import { CartContext } from "src/contexts/cartContextProvider";
 import MainContent from "src/layout/main";
 
 
 export default function Cart() {
+
+  const cartContext = useContext(CartContext)
+
+  if(!('cart' in cartContext)) {
+    throw new Error('O cart etá nulo!')
+  }
+
   return (
     <>
       <Head>
@@ -26,11 +36,15 @@ export default function Cart() {
             >
               CART SUMMARY
             </h2>
-            <div className="cart__summary__items">
-              <ItemCart />
-              <ItemCart />
-              <ItemCart />
-            </div>
+            <ul className="cart__summary__items">
+              {
+                cartContext.cart.items.map(item=> 
+                  <li className="cart__item__wrapper" key={item.id}>
+                    <ItemCart img={item.pic} title={item.title} description={item.desc.text} price={item.price} />
+                  </li>
+                )
+              }
+            </ul>
 
           </section>
           <section className="cart__checkout">
@@ -43,7 +57,7 @@ export default function Cart() {
                 $1,814.96
               </p>
             </div>
-            <OrderButton text="LOGIN / CREATE AN ACCOUNT" />
+            <CheckoutButton text="LOGIN / CREATE AN ACCOUNT" />
           </section>
         </section>
       </article>

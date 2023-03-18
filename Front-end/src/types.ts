@@ -123,7 +123,7 @@ type TCredential = {
 type TCartItem = {
   id:string
   title:string
-  desc:string
+  desc:{text:string}
   pic: string
   price: number
   quant:number
@@ -136,7 +136,18 @@ type TCart = {
   items: TCartItem[]
 }
 
+type TCartCard = {
+  img:string
+  title:string
+  description: string
+  price:number
+}
+
+type TCheckoutButtonProps = {
+  text:string
+}
 
 
-export type { MainContentProps, TGalleryCard, TOrderButtonProps, IHomeProps, IGetStaticItemProps, IItemProps, IProduct, IGetStaticCategoryProps, IAuthContextProps, ICartContextProps, TAuthContextValue, TCartContextValue, TUserObject, IcreateUserParam, TCredential, TCart, TCartItem }
+
+export type { MainContentProps, TGalleryCard, TOrderButtonProps, IHomeProps, IGetStaticItemProps, IItemProps, IProduct, IGetStaticCategoryProps, IAuthContextProps, ICartContextProps, TAuthContextValue, TCartContextValue, TUserObject, IcreateUserParam, TCredential, TCart, TCartItem, TCartCard, TCheckoutButtonProps }
 
