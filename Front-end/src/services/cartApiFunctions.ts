@@ -100,7 +100,7 @@ export const addOrChangeItem = async (
     // console.log('Carrinho obtido do DB: ', updatedCartFromDB)
     // setCart(updatedCartFromDB)
   } else {
-    await changeQuantity(userGid, cart, product, updateCart, setCart)
+    await changeQuantity(userGid, cart, product, updateCart, setCart, setCartHandler)
     
   }  
 }
@@ -171,6 +171,11 @@ export const changeQuantity = async (
   selectedProduct:PrismicDocument, 
   updateCart: (gid:string,updatedCart:TCart)=> void, 
   setCart:React.Dispatch<React.SetStateAction<TCart>>,
+  setCartHandler: (
+    googleID:string, 
+    getCartFunction: (gid:string)=> Promise<TCart>, 
+    setCartFunction:React.Dispatch<React.SetStateAction<TCart>> 
+  )=> void,
   value = 0
   ) => {
 

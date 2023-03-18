@@ -36,7 +36,7 @@ describe('addItemToCart() tests', ()=> {
         {
           id: 'def3fd61-a04f-431a-970d-19ca55843701',
           title: 'Pente cacheador',
-          desc: 'Um pente que auxilia no processo de cacheamento dos cabelos.',
+          desc: {text: 'Um pente que auxilia no processo de cacheamento dos cabelos.'},
           pic: 'http://pentecacheador.jpg',
           price: 8.75,
           quant: 1
@@ -55,7 +55,7 @@ describe('addItemToCart() tests', ()=> {
         {
           id: 'def3fd61-a04f-431a-970d-19ca55843701',
           title: 'Pente cacheador',
-          desc: 'Um pente que auxilia no processo de cacheamento dos cabelos.',
+          desc: {text: 'Um pente que auxilia no processo de cacheamento dos cabelos.'},
           pic: 'http://pentecacheador.jpg',
           price: 8.75,
           quant: 1
@@ -63,7 +63,7 @@ describe('addItemToCart() tests', ()=> {
         {
           id: '0a55c6eb-269f-42e3-baf4-19ac68e757d5',
           title: 'Prancha de cabelo',
-          desc: 'Uma prancha alisadora de cabelos, capaz de atingir altas temperaturas.',
+          desc:{text:  'Uma prancha alisadora de cabelos, capaz de atingir altas temperaturas.'},
           pic: 'http://imagemdaprancha.jpg',
           price: 19.90,
           quant: 1
@@ -90,7 +90,7 @@ describe('addItemToCart() tests', ()=> {
         {
           id: '0a55c6eb-269f-42e3-baf4-19ac68e757d5',
           title: 'Prancha de cabelo',
-          desc: 'Uma prancha alisadora de cabelos, capaz de atingir altas temperaturas.',
+          desc: {text:  'Uma prancha alisadora de cabelos, capaz de atingir altas temperaturas.'},
           pic: 'http://imagemdaprancha.jpg',
           price: 19.90,
           quant: 1
@@ -112,7 +112,9 @@ describe('changeQuantity() tests', ()=>{
         {
           id: '0a55c6eb-269f-42e3-baf4-19ac68e757d5',
           title: 'Prancha de cabelo',
-          desc: 'Uma prancha alisadora de cabelos, capaz de atingir altas temperaturas.',
+          desc: {
+            text: 'Uma prancha alisadora de cabelos, capaz de atingir altas temperaturas.'
+          },
           pic: 'http://imagemdaprancha.jpg',
           price: 19.90,
           quant: 1
@@ -134,7 +136,7 @@ describe('changeQuantity() tests', ()=>{
         {
           id: '0a55c6eb-269f-42e3-baf4-19ac68e757d5',
           title: 'Prancha de cabelo',
-          desc: 'Uma prancha alisadora de cabelos, capaz de atingir altas temperaturas.',
+          desc: {text: 'Uma prancha alisadora de cabelos, capaz de atingir altas temperaturas.'},
           pic: 'http://imagemdaprancha.jpg',
           price: 19.90,
           quant: 2
@@ -156,7 +158,7 @@ describe('changeQuantity() tests', ()=>{
         {
           id: '0a55c6eb-269f-42e3-baf4-19ac68e757d5',
           title: 'Prancha de cabelo',
-          desc: 'Uma prancha alisadora de cabelos, capaz de atingir altas temperaturas.',
+          desc:{text: 'Uma prancha alisadora de cabelos, capaz de atingir altas temperaturas.'},
           pic: 'http://imagemdaprancha.jpg',
           price: 19.90,
           quant: 2
@@ -178,7 +180,7 @@ describe('changeQuantity() tests', ()=>{
         {
           id: '0a55c6eb-269f-42e3-baf4-19ac68e757d5',
           title: 'Prancha de cabelo',
-          desc: 'Uma prancha alisadora de cabelos, capaz de atingir altas temperaturas.',
+          desc:{text:  'Uma prancha alisadora de cabelos, capaz de atingir altas temperaturas.'},
           pic: 'http://imagemdaprancha.jpg',
           price: 19.90,
           quant: 5
@@ -198,7 +200,7 @@ describe('changeQuantity() tests', ()=>{
         {
           id: '0a55c6eb-269f-42e3-baf4-19ac68e757d5',
           title: 'Prancha de cabelo',
-          desc: 'Uma prancha alisadora de cabelos, capaz de atingir altas temperaturas.',
+          desc: {text: 'Uma prancha alisadora de cabelos, capaz de atingir altas temperaturas.'},
           pic: 'http://imagemdaprancha.jpg',
           price: 19.90,
           quant: 2
@@ -230,15 +232,15 @@ describe('Testes da função removeItemFromCart()', ()=> {
         {
           id: '0a55c6eb-269f-42e3-baf4-19ac68e757d5',
           title: 'Prancha de cabelo',
-          desc: 'Uma prancha alisadora de cabelos, capaz de atingir altas temperaturas.',
-          pic: 'http://imagemdaprancha.jpg',
+          desc:{text:  'Uma prancha alisadora de cabelos, capaz de atingir altas temperaturas.'},
+          pic: 'http://imagemdaprancha.jpg', 
           price: 19.90,
           quant: 2
         },
         {
           id: 'def3fd61-a04f-431a-970d-19ca55843701',
           title: 'Pente cacheador',
-          desc: 'Um pente que auxilia no processo de cacheamento dos cabelos.',
+          desc: {text: 'Um pente que auxilia no processo de cacheamento dos cabelos.'},
           pic: 'http://pentecacheador.jpg',
           price: 8.75,
           quant: 1
@@ -254,10 +256,10 @@ describe('Testes da função removeItemFromCart()', ()=> {
         {
           id: 'def3fd61-a04f-431a-970d-19ca55843701',
           title: 'Pente cacheador',
-          desc: 'Um pente que auxilia no processo de cacheamento dos cabelos.',
+          desc: {text: 'Um pente que auxilia no processo de cacheamento dos cabelos.'},
           pic: 'http://pentecacheador.jpg',
           price: 8.75,
-          quant: 1
+          quant: 1 
         }
       ]
     }    
@@ -279,7 +281,7 @@ describe('Testes da função removeItemFromCart()', ()=> {
         {
           id: '0a55c6eb-269f-42e3-baf4-19ac68e757d5',
           title: 'Prancha de cabelo',
-          desc: 'Uma prancha alisadora de cabelos, capaz de atingir altas temperaturas.',
+          desc: {text: 'Uma prancha alisadora de cabelos, capaz de atingir altas temperaturas.'},
           pic: 'http://imagemdaprancha.jpg',
           price: 19.90,
           quant: 2
