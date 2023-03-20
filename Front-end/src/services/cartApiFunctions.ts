@@ -184,7 +184,7 @@ export const changeQuantity = async (
   updatedCart.items.forEach(async(item) => {
     if(item.id === selectedProduct.id) {
       if (value === 0) {        
-        item.quant ++ 
+        item.quant < 5 && item.quant ++ 
       } else {        
         value > 0 ? item.quant = value : console.error("Você está passando um número negativo como argumento para o parâmetro value. Este parâmetro deve receber um número positivo ou ser deixado em branco.");                 
       }

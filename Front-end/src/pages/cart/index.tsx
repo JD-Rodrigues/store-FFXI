@@ -40,7 +40,7 @@ export default function Cart() {
               {
                 cartContext.cart.items.map(item=> 
                   <li className="cart__item__wrapper" key={item.id}>
-                    <ItemCart img={item.pic} title={item.title} description={item.desc.text} price={item.price} />
+                    <ItemCart img={item.pic} title={item.title} description={item.desc.text} price={item.price} quantity={item.quant}/>
                   </li>
                 )
               }

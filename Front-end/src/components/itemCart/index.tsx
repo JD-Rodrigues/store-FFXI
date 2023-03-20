@@ -2,7 +2,7 @@ import { Trash } from "@styled-icons/boxicons-regular"
 import { TCartCard } from "src/types"
 
 
-const ItemCart = ({img, title, description, price}:TCartCard) => {
+const ItemCart = ({img, title, description, price, quantity}:TCartCard) => {
   return (
     <article className="item__cart">
       <img 
@@ -19,11 +19,11 @@ const ItemCart = ({img, title, description, price}:TCartCard) => {
           </section>
         </div>
         <select className="item__cart__quantity">
-          <option>1</option>
-          <option>2</option>
-          <option>3</option>
-          <option>4</option>
-          <option>5</option>
+          <option selected={quantity === 1}>1</option>
+          <option selected={quantity === 2}>2</option>
+          <option selected={quantity === 3}>3</option>
+          <option selected={quantity === 4}>4</option>
+          <option selected={quantity === 5}>5</option>
         </select>
         <div className="item__cart__price-delete">
           <p className="item__cart__price">{`$${price}`}</p>

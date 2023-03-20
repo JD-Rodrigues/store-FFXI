@@ -141,6 +141,7 @@ type TCartCard = {
   title:string
   description: string
   price:number
+  quantity:number
 }
 
 type TCheckoutButtonProps = {
