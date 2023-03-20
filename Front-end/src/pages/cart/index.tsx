@@ -15,6 +15,8 @@ export default function Cart() {
     throw new Error('O cart etá nulo!')
   }
 
+  const subtotal = cartContext.cart.items.reduce((sum, item)=> item.price * item.quant + sum, 0)
+
   return (
     <>
       <Head>
@@ -54,7 +56,7 @@ export default function Cart() {
               </p>
               <p className="cart__subtotal__value"
               >
-                $1,814.96
+                {subtotal}
               </p>
             </div>
             <CheckoutButton text="LOGIN / CREATE AN ACCOUNT" />
