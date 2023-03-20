@@ -52,19 +52,22 @@ export const removeItemFromCart = (
   cart:TCart
   ) => {
 
-  const updatedCart = cart
-  const updatedItems = cart.items.filter(item=> item.id !== productId)
-  updatedCart.items = updatedItems
-
-  if (updatedItems.length === 0 ) {
+  const updatedCart = cart.items.filter(item=> item.id !== productId)
+  
+  
+  if (updatedCart.length === 0 ) {
     return {
-      ...updatedCart,
       orderId: '',
       date: '',
-      opened: false
+      opened: false,
+      items: updatedCart
     }
   } else {
-    return updatedCart
+    return {
+      ...cart,
+      items: updatedCart
+
+    }
   }
 
 }
@@ -210,26 +213,6 @@ export const setCartHandler = async (
   setCartFunction(cart)
 }
 
-export const removeItemHandler = async (
-  productId:string, 
-  cart:TCart, 
-  gid:string, 
-  setCart:React.Dispatch<React.SetStateAction<TCart>>,
-  removeItemFromCart:(id:string, cart:TCart) => TCart,
-  setCartHandler: (
-    googleID:string, 
-    getCartFunction: (gid:string)=> Promise<TCart>, 
-    setCartFunction:React.Dispatch<React.SetStateAction<TCart>> 
-  ) => void,
-  updateCart: (
-    gid:string, 
-    newValues:TCart
-  ) => void
-  ) => {
-    const updatedCart = removeItemFromCart(productId, cart)
-    await updateCart(gid, updatedCart)
-    await setCartHandler(gid, getCart, setCart)
-}
 
 // Busca todas as informações do produto selecionado e seta-o como valor do state "selectedProduct".
 

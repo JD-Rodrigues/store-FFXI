@@ -1,4 +1,4 @@
-import { addItemToCart, changeQuantity, removeItemFromCart, removeItemHandler } from "./cartApiFunctions";
+import { addItemToCart, changeQuantity, removeItemFromCart } from "./cartApiFunctions";
 
 
 const product = {
@@ -303,25 +303,3 @@ describe('Testes da função removeItemFromCart()', ()=> {
   })
 })
 
-describe('Testes da função removeItemHandler()', ()=> {
-  test('Chama as funções removeItemFromCart(), updateCart() e setCartHandler()',async ()=> {
-    const cart = {
-      orderId: '',
-      date: '',
-      opened: false,
-      items: [ ]
-    }  
-    const productId = '0a55c6eb-269f-42e3-baf4-19ac68e757d5'
-    const userGid = '64016d265a2d6849dee0ab6c'
-    const removeItemFromCart = jest.fn()
-    const updateCart = jest.fn()
-    const setCart = jest.fn()
-    const setCartHandler = jest.fn()
-
-    await removeItemHandler(productId, cart, userGid, setCart, removeItemFromCart, setCartHandler, updateCart ) 
-
-    // expect(removeItemFromCart).toHaveBeenCalledTimes(1)
-    // expect(updateCart).toHaveBeenCalled()
-    // expect(setCartHandler).toHaveBeenCalledTimes(1)
-  }) 
-}) 

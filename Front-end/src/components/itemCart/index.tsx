@@ -1,8 +1,29 @@
 import { Trash } from "@styled-icons/boxicons-regular"
+import { useContext } from "react"
+import { AuthContext } from "src/contexts/authContextProvider"
+import { CartContext } from "src/contexts/cartContextProvider"
+import { getCart, removeItemFromCart, setCartHandler, updateCart } from "src/services/cartApiFunctions"
 import { TCartCard } from "src/types"
 
 
-const ItemCart = ({img, title, description, price, quantity}:TCartCard) => {
+const ItemCart = ({productId, img, title, description, price, quantity}:TCartCard) => {
+  const cartContext = useContext(CartContext)
+  const userContext = useContext(AuthContext)
+
+  if(!('cart' in cartContext)) {
+    throw new Error('O estado "cart" está nulo ou undefined')
+  }  
+
+  const removeItemHandler = async () => {
+    const updatedCart = removeItemFromCart(productId, cartContext.cart)
+
+    if(userContext.user) {
+      await updateCart(userContext.user.gid, updatedCart)
+      await setCartHandler(userContext.user.gid, getCart, cartContext.setCart)
+    }
+      
+  }
+
   return (
     <article className="item__cart">
       <img 
@@ -27,7 +48,10 @@ const ItemCart = ({img, title, description, price, quantity}:TCartCard) => {
         </select>
         <div className="item__cart__price-delete">
           <p className="item__cart__price">{`$${price}`}</p>
-          <Trash className="item__cart__delete" />
+          <Trash 
+            className="item__cart__delete"
+            onClick={removeItemHandler}
+            />
         </div>
       </section>
       

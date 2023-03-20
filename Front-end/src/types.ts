@@ -137,6 +137,7 @@ type TCart = {
 }
 
 type TCartCard = {
+  productId:string
   img:string
   title:string
   description: string
