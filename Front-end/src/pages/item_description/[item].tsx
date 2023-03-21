@@ -75,7 +75,7 @@ export default function ItemDescription({product}:IItemProps) {
             
             <div className="item__abstract__price-order">
               <p className="item__abstract__price">
-              {product.data.price}
+              {`$${product.data.price}`}
               </p>
               <OrderButton 
                 text="ADD TO CART" 

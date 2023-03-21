@@ -57,6 +57,13 @@ const Header = () => {
       <nav className="header__menu">
         <ul className={ showMenu ? 'show__menu' : 'header__menu__list'} >
           <Link
+            href="/" 
+            className="header__menu__item link"
+            onClick={hideMenuByLinks}
+          >
+            Home
+          </Link>
+          <Link
             href="/category/weapons" 
             className="header__menu__item link"
             onClick={hideMenuByLinks}
