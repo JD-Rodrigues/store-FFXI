@@ -2,7 +2,8 @@ import { Trash } from "@styled-icons/boxicons-regular"
 import { useContext } from "react"
 import { AuthContext } from "src/contexts/authContextProvider"
 import { CartContext } from "src/contexts/cartContextProvider"
-import { getCart, removeItemFromCart, setCartHandler, updateCart } from "src/services/cartApiFunctions"
+import { changeQuantity, getCart, removeItemFromCart, setCartHandler, updateCart } from "src/services/cartApiFunctions"
+import { getProductByID } from "src/services/prismicFunctions"
 import { TCartCard } from "src/types"
 
 
@@ -14,14 +15,24 @@ const ItemCart = ({productId, img, title, description, price, quantity}:TCartCar
     throw new Error('O estado "cart" está nulo ou undefined')
   }  
 
+
   const removeItemHandler = async () => {
     const updatedCart = removeItemFromCart(productId, cartContext.cart)
 
     if(userContext.user) {
       await updateCart(userContext.user.gid, updatedCart)
       await setCartHandler(userContext.user.gid, getCart, cartContext.setCart)
-    }
-      
+    }      
+  } 
+
+  const changeQuantityHandler = async (quant:string) => { 
+    console.log(userContext.user )
+    console.log(cartContext.selectedProduct)
+    const product = await getProductByID(productId)
+
+    userContext.user 
+    && await changeQuantity(userContext.user.gid, cartContext.cart, product, updateCart, cartContext.setCart, setCartHandler, Number(quant))
+
   }
 
   return (
@@ -39,12 +50,15 @@ const ItemCart = ({productId, img, title, description, price, quantity}:TCartCar
           {`${description.substring(0,60)}...`}
           </section>
         </div>
-        <select className="item__cart__quantity">
-          <option selected={quantity === 1}>1</option>
-          <option selected={quantity === 2}>2</option>
-          <option selected={quantity === 3}>3</option>
-          <option selected={quantity === 4}>4</option>
-          <option selected={quantity === 5}>5</option>
+        <select 
+          className="item__cart__quantity"
+          onChange={(e)=>changeQuantityHandler(e.target.value)}
+        >
+            <option selected={quantity === 1}>1</option>
+            <option selected={quantity === 2}>2</option>
+            <option selected={quantity === 3}>3</option>
+            <option selected={quantity === 4}>4</option>
+            <option selected={quantity === 5}>5</option>
         </select>
         <div className="item__cart__price-delete">
           <p className="item__cart__price">{`$${price}`}</p>
@@ -59,4 +73,4 @@ const ItemCart = ({productId, img, title, description, price, quantity}:TCartCar
   )
 }
 
-export default ItemCart 
+export default ItemCart

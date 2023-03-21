@@ -519,11 +519,6 @@
   align-items: center;
   width: 350px;
 }
-@media (max-width: 1200px) {
-  .cart__checkout {
-    width: 290px;
-  }
-}
 @media (max-width: 768px) {
   .cart__checkout {
     width: 100%;

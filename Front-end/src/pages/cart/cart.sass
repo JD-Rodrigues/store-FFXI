@@ -74,14 +74,12 @@
     
 
   &__checkout
+    width: 350px
     border: variables.$divisory-color solid 1px
     align-self: flex-start
     padding: 20px
     row-gap: 20px
-    @include mixins.flex(column)
-    width: 350px
-    @include mixins.notebook
-      width: 290px  
+    @include mixins.flex(column)     
     @include mixins.tablet
       width: 100%
       padding: 10px

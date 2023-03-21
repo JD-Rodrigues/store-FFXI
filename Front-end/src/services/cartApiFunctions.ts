@@ -181,7 +181,7 @@ export const changeQuantity = async (
   )=> void,
   value = 0
   ) => {
-
+    console.log('A função changeQuantity foi chamada')
   const updatedCart = cart
   
   updatedCart.items.forEach(async(item) => {
@@ -218,7 +218,6 @@ export const setCartHandler = async (
 
 export const selectedProductHandler = async (
   productID:string, 
-  selectProduct:React.Dispatch<React.SetStateAction<PrismicDocument>> 
   ) => {
   const choosedItem = await getProductByID(productID)    
   return choosedItem
