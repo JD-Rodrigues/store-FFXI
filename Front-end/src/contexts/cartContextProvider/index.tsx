@@ -11,9 +11,10 @@ export const CartContextProvider = ({children}:ICartContextProps) => {
     opened: false,
     items: []
   })
+  const [loading, setLoading] = useState(false)
 
   return(
-    <CartContext.Provider value={{selectedProduct, setSelectedProduct, cart, setCart}}>
+    <CartContext.Provider value={{selectedProduct, setSelectedProduct, cart, setCart, loading, setLoading}}>
       {children}
     </CartContext.Provider>
   )

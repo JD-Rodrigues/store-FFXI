@@ -20,12 +20,15 @@ const ItemCart = ({productId, img, title, description, price, quantity}:TCartCar
     const updatedCart = removeItemFromCart(productId, cartContext.cart)
 
     if(userContext.user) {
+      cartContext.setLoading(true)
       await updateCart(userContext.user.gid, updatedCart)
       await setCartHandler(userContext.user.gid, getCart, cartContext.setCart)
+      cartContext.setLoading(false)
     }      
   } 
 
   const changeQuantityHandler = async (quant:string) => { 
+    cartContext.setLoading(true)
     console.log(userContext.user )
     console.log(cartContext.selectedProduct)
     const product = await getProductByID(productId)
@@ -33,6 +36,7 @@ const ItemCart = ({productId, img, title, description, price, quantity}:TCartCar
     userContext.user 
     && await changeQuantity(userContext.user.gid, cartContext.cart, product, updateCart, cartContext.setCart, setCartHandler, Number(quant))
 
+    cartContext.setLoading(false)
   }
 
   return (

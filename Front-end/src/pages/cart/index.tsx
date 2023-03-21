@@ -1,14 +1,14 @@
 import Head from "next/head";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { CheckoutButton } from "src/components/checkoutButton";
 import ItemCart from "src/components/itemCart";
 import { OrderButton } from "src/components/orderButton";
 import { CartContext } from "src/contexts/cartContextProvider";
 import MainContent from "src/layout/main";
 
+ 
 
 export default function Cart() {
-
   const cartContext = useContext(CartContext)
 
   if(!('cart' in cartContext)) {
@@ -46,6 +46,15 @@ export default function Cart() {
                   </li>
                 )
               }
+              {
+                cartContext.loading && 
+                  <div className="cart__loading__screen">
+                    <img 
+                      src='/crystal-loading.png'
+                      className="cart__loading__screen__spinner" 
+                      alt='' 
+                    /> 
+                  </div>}
             </ul>
 
           </section>

@@ -3,6 +3,9 @@
 @use '../../layout/main/main'
 
 
+
+
+
 .cart__wrapper
   @extend .main__content
   row-gap: 40px
@@ -74,12 +77,14 @@
     
 
   &__checkout
-    width: 350px
     border: variables.$divisory-color solid 1px
     align-self: flex-start
     padding: 20px
     row-gap: 20px
-    @include mixins.flex(column)     
+    @include mixins.flex(column)
+    width: 350px
+    @include mixins.notebook
+      width: 290px  
     @include mixins.tablet
       width: 100%
       padding: 10px
@@ -98,6 +103,9 @@
     @include mixins.XL-monitor
       font-size: 1.3vw
 
+.cart__summary__items
+  position: relative
+
 .cart__summary__items li
   border-bottom: variables.$divisory-color solid 1px
   @include mixins.XL-monitor
@@ -105,3 +113,31 @@
 
 .cart__summary__items li:last-child
   border: none
+
+@keyframes loading
+  from
+    transform: rotate(0deg)
+  to
+    transform: rotate(360deg)
+
+.cart__loading__screen
+  position: absolute
+  top: 0
+  left: 0
+  width: 100%
+  height: 100%
+  display: flex
+  justify-content: center
+  align-items: center  
+  background-color: variables.$backdrop
+  
+
+  &__spinner
+    width: 6vw
+    height: 6vw
+    animation: loading 1s linear infinite
+    @include mixins.tablet
+      width: 12vw
+      height: 12vw
+
+

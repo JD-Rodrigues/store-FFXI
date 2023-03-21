@@ -99,7 +99,10 @@ type TCartContextValue =  {
   setSelectedProduct:React.Dispatch<React.SetStateAction<PrismicDocument>> 
   cart:TCart
   setCart:React.Dispatch<React.SetStateAction<TCart>> 
+  loading: boolean
+  setLoading:React.Dispatch<React.SetStateAction<boolean>> 
 } | {}
+  
 
 
 
