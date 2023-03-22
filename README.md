@@ -33,18 +33,18 @@ A aplicação atenderá à demanda de um cliente.
 - Migração do back-end para hospedagem paga, a fim de manter a disponibilidade da aplicação, sem hibernação.
   
 ## 🔭 Tecnologias utilizadas até o presente momento:
-- **React** - biblioteca Javascript utilizada na componentização da interface.
-- **NextJs** - framework do React utilizado na geração de páginas estáticas para o conteúdo.
-- **Typescript** - utilizado na tipagem de dados, visando melhora a experiência de desenvolvimento por reduzir os erros no processo de codificação.
--  **Sass** - pré-processador utilizado para otimizar a escrita de CSS tornando o código mais reutilizável, bem como e organizar as folhas de estilo. 
-- **Prismic CMS** - usado para armazenar os dados dos produtos (incluindo mídias) e disponibilizá-los através de uma API RESTful, para serem exibidos pela interface. Também permite ao administrador gerenciar todo o conteúdo da aplicação. 
-- **Node JS** - ambiente de desenvolvimento utilizado para rodar Javascript do lado do servidor.
-- **Express JS** - framework do Node JS utilizado na construção da API Rest, que permite a comunicação entre a interface e o banco de dados, para troca de informações sobre usuários, carrinhos de compra e transações.
-- **MongoDB Atlas** - serviço de banco de  baserado em nuvem, utilizado para armazenar as informações sobre os usuários e seus respectivos carrinhos de compra, bem como as transações realizadas.
-- **React OAuth Google** - biblioteca que permite fornecer ao usuário a autenticação utilizando sua conta Google.
-- **uuid** - biblioteca utilizada na geração de ids randômicos para as transações.
-- **Styled Icons** - biblioteca de ícones
-- **JWT Decode** - biblioteca utilizada na decodificação do token JWT obtido do Google com as informações do usuário para cadastro e login.
+**React** - biblioteca Javascript utilizada na componentização da interface.
+**NextJs** - framework do React utilizado na geração de páginas estáticas para o conteúdo.
+**Typescript** - utilizado na tipagem de dados, visando melhora a experiência de desenvolvimento por reduzir os erros no processo de codificação.
+**Sass** - pré-processador utilizado para otimizar a escrita de CSS tornando o código mais reutilizável, bem como e organizar as folhas de estilo. 
+**Prismic CMS** - usado para armazenar os dados dos produtos (incluindo mídias) e disponibilizá-los através de uma API RESTful, para serem exibidos pela interface. Também permite ao administrador gerenciar todo o conteúdo da aplicação. 
+**Node JS** - ambiente de desenvolvimento utilizado para rodar Javascript do lado do servidor.
+**Express JS** - framework do Node JS utilizado na construção da API Rest, que permite a comunicação entre a interface e o banco de dados, para troca de informações sobre usuários, carrinhos de compra e transações.
+**MongoDB Atlas** - serviço de banco de  baserado em nuvem, utilizado para armazenar as informações sobre os usuários e seus respectivos carrinhos de compra, bem como as transações realizadas.
+**React OAuth Google** - biblioteca que permite fornecer ao usuário a autenticação utilizando sua conta Google.
+**uuid** - biblioteca utilizada na geração de ids randômicos para as transações.
+**Styled Icons** - biblioteca de ícones
+**JWT Decode** - biblioteca utilizada na decodificação do token JWT obtido do Google com as informações do usuário para cadastro e login.
 
 
 ## 🟡 Status do projeto:
