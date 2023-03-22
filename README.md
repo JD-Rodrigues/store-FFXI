@@ -33,7 +33,8 @@ A aplicação atenderá à demanda de um cliente.
 - Migração do back-end para hospedagem paga, a fim de manter a disponibilidade da aplicação, sem hibernação.
   
 ## 🔭 Tecnologias utilizadas até o presente momento:
-*React** - biblioteca Javascript utilizada na componentização da interface.
+__React__ - biblioteca Javascript utilizada na componentização da interface.
+
 __NextJs__ - framework do React utilizado na geração de páginas estáticas para o conteúdo.
 
 **Typescript** - utilizado na tipagem de dados, visando melhora a experiência de desenvolvimento por reduzir os erros no processo de codificação.
