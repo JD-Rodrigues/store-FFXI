@@ -15,6 +15,9 @@
 ## 🎯 Motivação:
 A aplicação atenderá à demanda de um cliente.
 
+## 🟡 Status do projeto:
+Em desenvolvimento - Atualmente, estou trabalhando na implementação do checkout.
+
 ## 🛠️ Funcionalidades já desenvolvidas:
 - Painel de gerenciamento de conteúdo onde o administrador pode cadastrar novos produtos, alterar informações dos itens ou removê-los.
 - Login de usuário utilizando a conta Google.
@@ -56,10 +59,6 @@ A aplicação atenderá à demanda de um cliente.
 - **Styled Icons** - biblioteca de ícones
 
 - **JWT Decode** - biblioteca utilizada na decodificação do token JWT obtido do Google com as informações do usuário para cadastro e login.
-
-
-## 🟡 Status do projeto:
-Em desenvolvimento - Atualmente, estou trabalhando na implementação do checkout.
 
 
 ## ⚠️ Observação importante:
