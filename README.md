@@ -1,5 +1,5 @@
 <p align="center">
-  <img width=200 src="https://raw.githubusercontent.com/JD-Rodrigues/store-FFXI/main/Front-end/public/logo.png" />
+  <img width=200 src="https://raw.githubusercontent.com/JD-Rodrigues/store-FFXI/main/Front-end/public/logo-readme.png" />
 </p>
 
 ## 📋 Descrição:
