@@ -6,7 +6,7 @@
 <p>Kampler Store é um e-commerce de itens e serviços in-game do jogo Final Fantasy XI Online.</p>
 <p> 🟢 Live do projeto: <a href="https://store-ffxi.vercel.app">clique aqui.</a></p><br>
 <div align="center"><img  src="https://github.com/JD-Rodrigues/store-FFXI/blob/main/Front-end/public/screenshots/kampler-store-demo-desktop.gif?raw=true" /></div><br>
-<section style="display:flex;justify-content:center">
+<section style="display:flex;justify-content:center; column-gap:20px;">
   <img style="max-width:300px" src="https://raw.githubusercontent.com/JD-Rodrigues/store-FFXI/main/Front-end/public/screenshots/kampler-store-mobile-home.png" >
   <img style="max-width:300px" src="https://raw.githubusercontent.com/JD-Rodrigues/store-FFXI/main/Front-end/public/screenshots/kampler-store-mobile-menu.png" >
   <img style="max-width:300px" src="https://raw.githubusercontent.com/JD-Rodrigues/store-FFXI/main/Front-end/public/screenshots/kampler-store-mobile-item-description.png" >
