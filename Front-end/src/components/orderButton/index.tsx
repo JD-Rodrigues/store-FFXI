@@ -1,5 +1,6 @@
 import { AlignStartVerticalDimensions } from "@styled-icons/fluentui-system-filled/AlignStartVertical"
 import Link from "next/link"
+import { useRouter } from "next/router"
 import { useContext, useEffect, useState } from "react"
 import { AuthContext } from "src/contexts/authContextProvider"
 import { CartContext } from "src/contexts/cartContextProvider"
@@ -12,7 +13,7 @@ const OrderButton = ({text, productId}:TOrderButtonProps) => {
   const [modal, setModal] = useState(false)
   const cartContext = useContext(CartContext)
   const userContext = useContext(AuthContext)
-  
+  const router = useRouter()
   
   if(!('setSelectedProduct' in cartContext)) {
     throw new Error('Erro!')
@@ -20,28 +21,31 @@ const OrderButton = ({text, productId}:TOrderButtonProps) => {
 
   useEffect(()=> {
     const modalElement = document.getElementById(`${productId}`) as HTMLDialogElement
-    console.log(cartContext.selectedProduct)
+  
     modal ? modalElement.showModal() : modalElement.close()
 
   },[modal])
 
   const addProductHandler = async () => {
-    const productItem = await getProductByID(productId)
-    cartContext.setSelectedProduct(productItem)
-    
-    productItem && setModal(true)
-
-    userContext.user 
-    && productItem 
-    && await addOrChangeItem(
-        userContext.user.gid, 
-        cartContext.cart, 
-        cartContext.setCart, 
-        productItem, 
-        updateCart, 
-        getCart,
-        setCartHandler
-      ) 
+    if(userContext.user) {
+      const productItem = await getProductByID(productId)
+      cartContext.setSelectedProduct(productItem)
+        
+      productItem 
+      && 
+        setModal(true)
+        await addOrChangeItem(
+          userContext.user.gid, 
+          cartContext.cart, 
+          cartContext.setCart, 
+          productItem, 
+          updateCart, 
+          getCart,
+          setCartHandler
+        ) 
+    } else {
+      router.push('/login')
+    }
 
     // const updatedCart = productItem && addItemToCart(cartContext.cart, productItem, uuid, Date)
 
