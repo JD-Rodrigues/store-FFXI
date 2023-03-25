@@ -65,7 +65,7 @@ const ItemCart = ({productId, img, title, description, price, quantity}:TCartCar
             <option selected={quantity === 5}>5</option>
         </select>
         <div className="item__cart__price-delete">
-          <p className="item__cart__price">{`$${price}`}</p>
+          <p className="item__cart__price">${price}</p>
           <Trash 
             className="item__cart__delete"
             onClick={removeItemHandler}

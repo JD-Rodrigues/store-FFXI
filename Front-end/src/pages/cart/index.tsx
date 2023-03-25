@@ -65,7 +65,7 @@ export default function Cart() {
               </p>
               <p className="cart__subtotal__value"
               >
-                {`$${subtotal.toFixed(2)}`}
+                ${subtotal.toFixed(2)}
               </p>
             </div>
             <CheckoutButton text="LOGIN / CREATE AN ACCOUNT" />

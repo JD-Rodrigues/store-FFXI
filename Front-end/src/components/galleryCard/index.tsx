@@ -26,7 +26,7 @@ const GalleryCard = ({id, title, pic, price, path}:TGalleryCard) => {
           </Link>
           
           <p 
-            className='product__card__price'>{`$${price}`}
+            className='product__card__price'>${price}
           </p>
         </div>       
       </div>

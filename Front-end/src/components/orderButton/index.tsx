@@ -1,3 +1,5 @@
+import { AlignStartVerticalDimensions } from "@styled-icons/fluentui-system-filled/AlignStartVertical"
+import Link from "next/link"
 import { useContext, useEffect, useState } from "react"
 import { AuthContext } from "src/contexts/authContextProvider"
 import { CartContext } from "src/contexts/cartContextProvider"
@@ -18,7 +20,7 @@ const OrderButton = ({text, productId}:TOrderButtonProps) => {
 
   useEffect(()=> {
     const modalElement = document.getElementById(`${productId}`) as HTMLDialogElement
-
+    console.log(cartContext.selectedProduct)
     modal ? modalElement.showModal() : modalElement.close()
 
   },[modal])
@@ -26,7 +28,9 @@ const OrderButton = ({text, productId}:TOrderButtonProps) => {
   const addProductHandler = async () => {
     const productItem = await getProductByID(productId)
     cartContext.setSelectedProduct(productItem)
-    setModal(true)
+    
+    productItem && setModal(true)
+
     userContext.user 
     && productItem 
     && await addOrChangeItem(
@@ -52,11 +56,41 @@ const OrderButton = ({text, productId}:TOrderButtonProps) => {
             {text}
       </button>  
       <dialog           
-          className="modal__order"
           id={productId}
-          onClick={()=>setModal(false)}
-        >          
-        <h3>{cartContext.selectedProduct?.data.title}</h3>
+        >
+          <div className="modal__order">
+            <p className="modal__success__msg">Successfully added in your shopping cart!</p>   
+            <article className="modal__item">
+              <img 
+                src={cartContext.selectedProduct?.data.gallery_image.url}
+                className="modal__item__pic" 
+              />
+              <section className="modal__item__details">
+                <h3 className="modal__item__title">{cartContext.selectedProduct?.data.title}</h3>
+                <p className="modal__item__description">
+                  {`${cartContext.selectedProduct?.data.description[0].text.substring(0,60)}...`}
+                </p>
+                <p className="modal__item__price">${cartContext.selectedProduct?.data.price}</p>
+              </section>
+            </article> 
+            <div className="modal__buttons">
+              <button 
+                className="modal__buttons__continue__shopping"
+                onClick={()=>setModal(false)}
+              >
+                CONTINUE SHOPPING
+              </button>
+              <Link href="/cart">
+                <button 
+                  className="modal__buttons__checkout"
+                  onClick={()=>setModal(false)}
+                >
+                  CHECKOUT NOW
+                </button>
+              </Link>
+              
+            </div>
+          </div>        
       </dialog>
     </>
   )
