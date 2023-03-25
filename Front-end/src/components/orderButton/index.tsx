@@ -1,4 +1,4 @@
-import { useContext, useEffect } from "react"
+import { useContext, useEffect, useState } from "react"
 import { AuthContext } from "src/contexts/authContextProvider"
 import { CartContext } from "src/contexts/cartContextProvider"
 import { addItemToCart, addOrChangeItem, getCart, selectedProductHandler, setCartHandler, updateCart } from "src/services/cartApiFunctions"
@@ -7,19 +7,26 @@ import { TCartContextValue, TOrderButtonProps } from "src/types"
 import {v4 as uuid} from 'uuid'
 
 const OrderButton = ({text, productId}:TOrderButtonProps) => {
+  const [modal, setModal] = useState(false)
   const cartContext = useContext(CartContext)
   const userContext = useContext(AuthContext)
+  
   
   if(!('setSelectedProduct' in cartContext)) {
     throw new Error('Erro!')
   }  
 
+  useEffect(()=> {
+    const modalElement = document.getElementById(`${productId}`) as HTMLDialogElement
+
+    modal ? modalElement.showModal() : modalElement.close()
+
+  },[modal])
 
   const addProductHandler = async () => {
-    const productItem = await getProductByID(productId) 
-    console.log('esse cara retorna o produto', productItem)
-    
-    console.log('cart antes de chamar addOrChangeItem',cartContext.cart)
+    const productItem = await getProductByID(productId)
+    cartContext.setSelectedProduct(productItem)
+    setModal(true)
     userContext.user 
     && productItem 
     && await addOrChangeItem(
@@ -40,9 +47,18 @@ const OrderButton = ({text, productId}:TOrderButtonProps) => {
   }
   
   return(
-    <button onClick={ addProductHandler }  className="order__button">
-          {text}
-    </button>  
+    <>
+      <button onClick={ addProductHandler }  className="order__button">
+            {text}
+      </button>  
+      <dialog           
+          className="modal__order"
+          id={productId}
+          onClick={()=>setModal(false)}
+        >          
+        <h3>{cartContext.selectedProduct?.data.title}</h3>
+      </dialog>
+    </>
   )
 }
 

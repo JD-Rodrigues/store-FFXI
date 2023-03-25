@@ -224,6 +224,13 @@
   }
 }
 
+.modal__order {
+  width: 400px;
+  height: 400px;
+  border: red solid;
+  background-color: aliceblue;
+}
+
 .item__history {
   width: 100%;
   font-size: 1vw;
