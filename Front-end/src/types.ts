@@ -91,8 +91,10 @@ type TAuthContextValue = {
   logged?: boolean
   setLogged?: React.Dispatch<React.SetStateAction<boolean>>
   user?:TUserObject | undefined
-  setUser?: React.Dispatch<React.SetStateAction<TUserObject>> | React.Dispatch<React.SetStateAction<undefined>>
+  setUser?:React.Dispatch<React.SetStateAction<TUserObject | undefined>>
 }
+
+// React.Dispatch<React.SetStateAction<TUserObject>> | React.Dispatch<React.SetStateAction<undefined>> 
 
 type TCartContextValue =  {
   selectedProduct: PrismicDocument | undefined

@@ -32,8 +32,10 @@ const Login = () => {
     
     if(await userFound.length > 0) {
       context.setUser!(userFound[0])
-      login(context.setLogged!)
-      await setCartHandler(userFound[0].gid, getCart, cartContext.setCart)      
+      login(context.setLogged!)      
+      await setCartHandler(userFound[0].gid, getCart, cartContext.setCart)  
+      router.push('/') 
+          
     } else {
       await createUser(
         {
@@ -57,6 +59,7 @@ const Login = () => {
         login(context.setLogged!)
         
         await setCartHandler(registredUser[0].gid, getCart, cartContext.setCart)
+        router.push('/') 
       }
       
       

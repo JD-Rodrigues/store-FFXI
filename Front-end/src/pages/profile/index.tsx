@@ -9,15 +9,26 @@ import { logout } from "src/services/authFunctions"
 
 
 const Profile = () => {
-  const context = useContext(AuthContext)
-
+  const userContext = useContext(AuthContext)
+  const cartContext = useContext(CartContext)
   const router = useRouter()
 
-  
+  const initialValue = {
+    _id: '',
+    name: '',
+    email: '',
+    gid: '',
+    pic: '',
+    cart: {}
+  }
+
+  if(!('setUser' in userContext)){
+    throw new Error('Não há produto selecionado!')
+  }
 
   useEffect(()=> {
-    context.logged === false && router.push('/login')
-  },[context.logged])
+    userContext.logged === false && router.push('/login')
+  },[userContext.logged])
 
 
   return(
@@ -31,12 +42,12 @@ const Profile = () => {
       <header className="profile__header">
         <section  className="profile__header__cover">
           <section className="profile__header__details">
-            <p className="profile__header__name">{ context.user ? context.user!.name : "" }</p>
-            <p className="profile__header__email">{ context.user ? context.user!.email : "" }</p>
+            <p className="profile__header__name">{ userContext.user ? userContext.user!.name : "" }</p>
+            <p className="profile__header__email">{ userContext.user ? userContext.user!.email : "" }</p>
           </section>
           <div className="profile__header__pic__wrapper">
             <img 
-              src={ context.user ? context.user!.pic : "" } 
+              src={ userContext.user ? userContext.user!.pic : "" } 
               className="profile__header__pic"
             />
           </div>
@@ -46,8 +57,7 @@ const Profile = () => {
           <p 
             className="logout__button"
             onClick={()=> {
-              logout(context.setLogged!)
-              console.log(context.logged)
+              logout(userContext.setLogged!, userContext.setUser!)
             }}
           > 
             LOGOUT
