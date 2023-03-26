@@ -11,15 +11,15 @@ export default function App({ Component, pageProps }: AppProps) {
   return (
     <>
       <Header />
-      <AuthContextProvider>
-        <CartContextProvider>
-          <GoogleOAuthProvider 
+      <GoogleOAuthProvider 
             clientId="241788816470-j1336ms85rkvq56srvgk499iodsfjtr8.apps.googleusercontent.com"
-          >
-              <Component {...pageProps} />
-          </GoogleOAuthProvider>
+      >
+        <CartContextProvider>
+          <AuthContextProvider>                  
+            <Component {...pageProps} />            
+          </AuthContextProvider>
         </CartContextProvider>
-      </AuthContextProvider>
+      </GoogleOAuthProvider>
       
       <Footer />
     </>

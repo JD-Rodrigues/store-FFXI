@@ -2,8 +2,10 @@ import Head from "next/head"
 import { useRouter } from "next/router"
 import { useContext, useEffect } from "react"
 import ItemHistory from "src/components/item_history"
+import LoginCard from "src/components/loginCard/loginCard"
 import { AuthContext } from "src/contexts/authContextProvider"
 import { CartContext } from "src/contexts/cartContextProvider"
+import MainContent from "src/layout/main"
 import { logout } from "src/services/authFunctions"
 
 
@@ -22,7 +24,7 @@ const Profile = () => {
     cart: {}
   }
 
-  if(!('setUser' in userContext)){
+  if(!('setUser' in userContext!)){
     throw new Error('Não há produto selecionado!')
   }
 
@@ -74,7 +76,7 @@ const Profile = () => {
           <ItemHistory />
         </article>
       </main>
-    </>
+    </>     
   )
 }
 

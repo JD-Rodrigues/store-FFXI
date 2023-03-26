@@ -27,7 +27,7 @@ const OrderButton = ({text, productId}:TOrderButtonProps) => {
   },[modal])
 
   const addProductHandler = async () => {
-    if(userContext.user) {
+    if(userContext!.user) {
       const productItem = await getProductByID(productId)
       cartContext.setSelectedProduct(productItem)
         
@@ -35,7 +35,7 @@ const OrderButton = ({text, productId}:TOrderButtonProps) => {
       && 
         setModal(true)
         await addOrChangeItem(
-          userContext.user.gid, 
+          userContext!.user.gid, 
           cartContext.cart, 
           cartContext.setCart, 
           productItem, 
@@ -44,7 +44,7 @@ const OrderButton = ({text, productId}:TOrderButtonProps) => {
           setCartHandler
         ) 
     } else {
-      router.push('/login')
+      userContext?.setModalLogin(true)
     }
 
     // const updatedCart = productItem && addItemToCart(cartContext.cart, productItem, uuid, Date)

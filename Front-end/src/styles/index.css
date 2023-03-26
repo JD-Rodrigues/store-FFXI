@@ -847,10 +847,6 @@ dialog {
   }
 }
 
-.nsm7Bb-HzV7m-LgbsSe-BPrWId {
-  width: 14.6vw;
-}
-
 .profile__header {
   padding-top: 3.6vw;
   color: #FFF;
@@ -1587,6 +1583,11 @@ address {
   .item__cart__delete {
     width: 1.3vw;
   }
+}
+
+.login__dialog {
+  border: solid green;
+  top: 7vw;
 }
 
 /*# sourceMappingURL=index.css.map */
