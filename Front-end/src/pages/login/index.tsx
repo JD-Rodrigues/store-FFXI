@@ -1,6 +1,6 @@
 import Head from "next/head"
 import MainContent from "src/layout/main"
-import { CredentialResponse, GoogleLogin } from '@react-oauth/google';
+import { CredentialResponse, GoogleLogin, useGoogleLogin } from '@react-oauth/google';
 import jwt_decode from 'jwt-decode'
 import { checkUserInDatabase, createUser } from "src/services/costumersApiFunctions";
 import { TCredential } from "src/types";
@@ -19,7 +19,7 @@ const Login = () => {
   const context = useContext(AuthContext)
   const cartContext = useContext(CartContext)
   const router = useRouter()
-  
+
   if(!('setCart' in cartContext)) {
     throw new Error()
   }
@@ -98,13 +98,13 @@ const Login = () => {
           />
           <p className="login__label">
             LOG IN USING YOUR GOOGLE ACCOUNT
-          </p>          
+          </p>   
           <GoogleLogin
             onSuccess={response => credentialResponseHandler(response)}
             onError={() => {
               console.log('Login Failed');
             }}
-          />          
+          />         
         </article>
       </MainContent>
     </>

@@ -847,6 +847,10 @@ dialog {
   }
 }
 
+.nsm7Bb-HzV7m-LgbsSe-BPrWId {
+  width: 14.6vw;
+}
+
 .profile__header {
   padding-top: 3.6vw;
   color: #FFF;
@@ -1426,7 +1430,7 @@ address {
 @media (min-width: 1367px) {
   .product__card__title {
     font-size: 0.9vw;
-    line-height: 15px1 0.1vw;
+    line-height: 1.1vw;
   }
 }
 .product__card__title:hover {
