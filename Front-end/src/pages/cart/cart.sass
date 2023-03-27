@@ -114,30 +114,3 @@
 .cart__summary__items li:last-child
   border: none
 
-@keyframes loading
-  from
-    transform: rotate(0deg)
-  to
-    transform: rotate(360deg)
-
-.cart__loading__screen
-  position: absolute
-  top: 0
-  left: 0
-  width: 100%
-  height: 100%
-  display: flex
-  justify-content: center
-  align-items: center  
-  background-color: variables.$backdrop
-  
-
-  &__spinner
-    width: 6vw
-    height: 6vw
-    animation: loading 1s linear infinite
-    @include mixins.tablet
-      width: 12vw
-      height: 12vw
-
-

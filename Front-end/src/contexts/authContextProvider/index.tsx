@@ -1,5 +1,5 @@
 import { createContext, useContext, useEffect, useState } from "react"
-import LoginCard from "src/components/loginCard/loginCard"
+import LoginCard from "src/components/loginCard"
 import { IAuthContextProps, TAuthContextValue, TUserObject } from "src/types"
 import { CartContext } from "../cartContextProvider"
 
@@ -30,6 +30,10 @@ export const AuthContextProvider = ({children}:IAuthContextProps) => {
         className="login__dialog"
       >
         <LoginCard />
+        <p 
+          className="login__dialog__back"
+          onClick={()=>setModalLogin(false)}
+        >← Voltar</p>
       </dialog>
     </AuthContext.Provider>
   )

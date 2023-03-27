@@ -1,3 +1,12 @@
+@use '../../basic_styles/variables' 
+  
+
 .login__dialog
-  border: solid green
   top: 7vw 
+
+  &__back
+    cursor: pointer
+
+    &:hover
+      text-decoration: underline
+      color: variables.$highlight

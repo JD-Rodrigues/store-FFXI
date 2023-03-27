@@ -9,6 +9,7 @@ import { useRouter } from "next/router";
 import {v4 as uuid} from 'uuid'
 import { getCart, setCartHandler } from "src/services/cartApiFunctions";
 import { CartContext } from "src/contexts/cartContextProvider";
+import LoadingScreen from '../loadingScreen';
 
 
 const LoginCard = ()=> {
@@ -69,26 +70,32 @@ const LoginCard = ()=> {
     const credential: "" | TCredential | undefined = response.credential &&  jwt_decode(response.credential)
 
     const googleId = credential!.sub
-    
+    cartContext.setLoading(true)
     await loginLogoutHandler(googleId, credential)
-    
+    cartContext.setLoading(false)
   }
   return(
-    <article className="login">
-          <img 
-            src="/kampler-members.png" 
-            className="login__logo" 
-          />
-          <p className="login__label">
-            LOG IN USING YOUR GOOGLE ACCOUNT
-          </p>   
-          <GoogleLogin
-            onSuccess={response => credentialResponseHandler(response)}
-            onError={() => {
-              console.log('Login Failed');
-            }}
-          />         
-        </article>
+    <>
+      <article className="login">
+        <img 
+          src="/kampler-members.png" 
+          className="login__logo" 
+        />
+        <p className="login__label">
+          LOG IN USING YOUR GOOGLE ACCOUNT
+        </p>   
+        <GoogleLogin
+          onSuccess={response => credentialResponseHandler(response)}
+          onError={() => {
+            console.log('Login Failed');
+          }}
+        />         
+      </article>
+      {
+        cartContext.loading &&
+        <LoadingScreen />
+      }
+    </>
   )
 }
 

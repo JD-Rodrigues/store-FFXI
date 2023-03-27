@@ -2,6 +2,7 @@ import Head from "next/head";
 import { useContext, useState } from "react";
 import { CheckoutButton } from "src/components/checkoutButton";
 import ItemCart from "src/components/itemCart";
+import LoadingScreen from "src/components/loadingScreen";
 import { OrderButton } from "src/components/orderButton";
 import { CartContext } from "src/contexts/cartContextProvider";
 import MainContent from "src/layout/main";
@@ -48,13 +49,8 @@ export default function Cart() {
               }
               {
                 cartContext.loading && 
-                  <div className="cart__loading__screen">
-                    <img 
-                      src='/crystal-loading.png'
-                      className="cart__loading__screen__spinner" 
-                      alt='' 
-                    /> 
-                  </div>}
+                  <LoadingScreen />
+              }
             </ul>
 
           </section>

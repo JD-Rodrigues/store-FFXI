@@ -71,8 +71,7 @@ const ItemCart = ({productId, img, title, description, price, quantity}:TCartCar
             onClick={removeItemHandler}
             />
         </div>
-      </section>
-      
+      </section>      
     </article>
   )
 }

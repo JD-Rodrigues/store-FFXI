@@ -1,7 +1,7 @@
 import Head from "next/head"
 import { useRouter } from "next/router"
 import { useContext, useEffect } from "react"
-import LoginCard from "src/components/loginCard/loginCard"
+import LoginCard from "src/components/loginCard"
 import { AuthContext } from "src/contexts/authContextProvider"
 import MainContent from "src/layout/main"
 
