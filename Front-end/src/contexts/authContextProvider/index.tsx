@@ -9,6 +9,7 @@ export const AuthContextProvider = ({children}:IAuthContextProps) => {
   const [logged, setLogged] = useState(false)
   const [user, setUser] = useState<TUserObject | undefined>()
   const [modalLogin, setModalLogin] = useState(false)
+  const [loadingLogin, setLoadingLogin] = useState(false)
   const cartContext = useContext(CartContext)
 
   useEffect(()=> {
@@ -24,7 +25,7 @@ export const AuthContextProvider = ({children}:IAuthContextProps) => {
   },[modalLogin])
 
   return(
-    <AuthContext.Provider value={{logged, setLogged, user, setUser, modalLogin, setModalLogin}}>
+    <AuthContext.Provider value={{logged, setLogged, user, setUser, modalLogin, setModalLogin, loadingLogin, setLoadingLogin}}>
       {children}
       <dialog 
         className="login__dialog"

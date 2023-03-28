@@ -1,11 +1,10 @@
-import { CredentialResponse, GoogleLogin, useGoogleLogin } from '@react-oauth/google';
+import { CredentialResponse, GoogleLogin } from '@react-oauth/google';
 import jwt_decode from 'jwt-decode'
 import { checkUserInDatabase, createUser } from "src/services/costumersApiFunctions";
 import { TCredential } from "src/types";
 import { useContext, useEffect } from "react";
 import { AuthContext } from "src/contexts/authContextProvider";
 import { login } from "src/services/authFunctions";
-import { useRouter } from "next/router";
 import {v4 as uuid} from 'uuid'
 import { getCart, setCartHandler } from "src/services/cartApiFunctions";
 import { CartContext } from "src/contexts/cartContextProvider";
@@ -56,9 +55,7 @@ const LoginCard = ()=> {
         
         await setCartHandler(registredUser[0].gid, getCart, cartContext.setCart)
         userContext!.setModalLogin(false)
-      }
-      
-      
+      }    
       
     }
   }
@@ -70,9 +67,9 @@ const LoginCard = ()=> {
     const credential: "" | TCredential | undefined = response.credential &&  jwt_decode(response.credential)
 
     const googleId = credential!.sub
-    cartContext.setLoading(true)
+    userContext!.setLoadingLogin(true)
     await loginLogoutHandler(googleId, credential)
-    cartContext.setLoading(false)
+    userContext!.setLoadingLogin(false)
   }
   return(
     <>
@@ -92,7 +89,7 @@ const LoginCard = ()=> {
         />         
       </article>
       {
-        cartContext.loading &&
+        userContext!.loadingLogin &&
         <LoadingScreen />
       }
     </>

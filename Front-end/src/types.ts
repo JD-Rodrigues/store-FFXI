@@ -94,6 +94,8 @@ type TAuthContextValue = {
   setUser?:React.Dispatch<React.SetStateAction<TUserObject | undefined>>
   modalLogin:boolean
   setModalLogin:React.Dispatch<React.SetStateAction<boolean>>
+  loadingLogin: boolean
+  setLoadingLogin: React.Dispatch<React.SetStateAction<boolean>>
 } 
 
 // React.Dispatch<React.SetStateAction<TUserObject>> | React.Dispatch<React.SetStateAction<undefined>> 
