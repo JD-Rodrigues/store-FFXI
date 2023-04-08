@@ -6,11 +6,13 @@ import LoadingScreen from "src/components/loadingScreen";
 import { OrderButton } from "src/components/orderButton";
 import { CartContext } from "src/contexts/cartContextProvider";
 import MainContent from "src/layout/main";
+import { PayPalButtons, PayPalScriptProvider,OnApproveBraintreeData } from '@paypal/react-paypal-js'
 
  
 
 export default function Cart() {
   const cartContext = useContext(CartContext)
+  const CLIENT_ID = "AWBfBF6lwcqZtRWLiZ7U4PKJKQWNpopmwS6o_5h2Xd4dfMhgYxrqpwYrv4IqAOPqLj5nQk3r4Fo-LhYS"
 
   if(!('cart' in cartContext)) {
     throw new Error('O cart etá nulo!')
@@ -18,6 +20,12 @@ export default function Cart() {
 
   const subtotal = cartContext.cart.items.reduce((sum, item)=> item.price * item.quant + sum, 0)
 
+  const paypalOptions = {
+    "client-id": CLIENT_ID,
+    currency: "USD",
+  };
+
+  
   return (
     <>
       <Head>
@@ -64,7 +72,34 @@ export default function Cart() {
                 ${subtotal.toFixed(2)}
               </p>
             </div>
-            <CheckoutButton text="LOGIN / CREATE AN ACCOUNT" />
+            <PayPalScriptProvider options={{"client-id":CLIENT_ID}} >
+              <PayPalButtons 
+                className="paypal__button"
+                style={{
+                  layout: "vertical",
+                  color: "gold",
+                  shape: "rect",
+                  label: "checkout",
+                }}
+                createOrder={(data, actions) => {
+                  return actions.order.create({
+                    purchase_units: [
+                      {
+                        amount: {
+                          value: subtotal.toFixed(2),
+                          currency_code: "USD",
+                        },
+                      },
+                    ],
+                  });
+                }}
+                onApprove={(data, actions) => {
+                  return actions.order!.capture().then(function(details) {
+                    alert("Transaction completed by " + details.payer.name!.given_name);
+                  });
+                }}
+              />
+            </PayPalScriptProvider>
           </section>
         </section>
       </article>

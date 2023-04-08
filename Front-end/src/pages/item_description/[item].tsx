@@ -7,6 +7,7 @@ import { getAllProducts } from "src/services";
 import { getProductByUid } from "src/services/prismicFunctions";
 import { IGetStaticItemProps, IItemProps } from "src/types";
 
+
 export const getStaticPaths = async () => {
   const products = await getAllProducts()
   const paths = products.map((product:PrismicDocument)=> {

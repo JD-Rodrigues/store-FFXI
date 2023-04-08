@@ -706,6 +706,10 @@ dialog {
   border: none;
 }
 
+.paypal__button {
+  width: 100%;
+}
+
 .privacy__policy {
   font-size: 1.2vw;
   line-height: 2vw;
