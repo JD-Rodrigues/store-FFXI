@@ -28,6 +28,10 @@ const Profile = () => {
     throw new Error('Não há produto selecionado!')
   }
 
+  if(!('setCart' in cartContext!)){
+    throw new Error('Não há produto selecionado!')
+  }
+
   useEffect(()=> {
     userContext.logged === false && router.push('/login')
   },[userContext.logged])
@@ -59,7 +63,7 @@ const Profile = () => {
           <p 
             className="logout__button"
             onClick={()=> {
-              logout(userContext.setLogged!, userContext.setUser!)
+              logout(userContext.setLogged!, userContext.setUser!, cartContext.setCart)
             }}
           > 
             LOGOUT
