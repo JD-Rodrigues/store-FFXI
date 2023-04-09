@@ -9,19 +9,18 @@ import { CartContextProvider } from 'src/contexts/cartContextProvider'
 export default function App({ Component, pageProps }: AppProps) {
   
   return (
-    <>
-      <Header />
+    <>      
       <GoogleOAuthProvider 
             clientId="241788816470-j1336ms85rkvq56srvgk499iodsfjtr8.apps.googleusercontent.com"
       >
         <CartContextProvider>
-          <AuthContextProvider>                  
-            <Component {...pageProps} />            
+          <AuthContextProvider>    
+            <Header />              
+              <Component {...pageProps} />   
+            <Footer />         
           </AuthContextProvider>
         </CartContextProvider>
-      </GoogleOAuthProvider>
-      
-      <Footer />
+      </GoogleOAuthProvider>       
     </>
   )
 }

@@ -1180,6 +1180,33 @@ address {
   }
 }
 
+.cart__icon__wrapper {
+  position: relative;
+}
+
+.cart__icon__counter {
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 1.1vw;
+  height: 1.1vw;
+  background-color: #7bbf1c;
+  border-radius: 50%;
+  font-size: 0.9vw;
+}
+@media (max-width: 768px) {
+  .cart__icon__counter {
+    width: 15px;
+    height: 15px;
+    font-size: 12px;
+  }
+}
+
 .footer {
   width: 100%;
   display: flex;

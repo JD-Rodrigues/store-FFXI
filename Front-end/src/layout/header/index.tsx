@@ -3,7 +3,10 @@ import Image from "next/image"
 import Link from "next/link"
 import { useRouter } from "next/router"
 import logo from 'public/logo.png'
-import { useEffect, useState } from "react"
+import { useContext, useEffect, useState } from "react"
+import { AuthContext } from "src/contexts/authContextProvider"
+import { CartContext } from "src/contexts/cartContextProvider"
+import { TCartItem } from "src/types"
 
 
 
@@ -11,7 +14,9 @@ const Header = () => {
   const [screenWidth, setScreenWidth] = useState(Number)
   const [showMenu, setShowMenu] = useState(false)
   const router = useRouter()
-
+  const cartContext = useContext(CartContext)
+  const userContext = useContext(AuthContext)
+  console.log(cartContext)
   const userIconPath = router.route === "/profile" ? "/profile" : "/login"
 
   const setWindowWidth = () => {
@@ -114,7 +119,17 @@ const Header = () => {
             href="/cart"
             className="cart__icon" 
           >
-            <Cart/>
+            <div className="cart__icon__wrapper">
+              {
+                userContext?.logged && 'cart' in cartContext
+                  && <p className="cart__icon__counter">
+                      {
+                        cartContext.cart.items.reduce((acc:number, item:TCartItem)=> item.quant + acc, 0)
+                      }                      
+                    </p> 
+              }            
+              <Cart/>
+            </div>  
           </Link> 
 
       </div>

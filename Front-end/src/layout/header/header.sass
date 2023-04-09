@@ -91,7 +91,21 @@
       color: inherit
   
   
-    
+.cart__icon__wrapper
+  position: relative
 
-
+.cart__icon__counter
+  position: absolute
+  right: 0
+  top: 0  
+  @include mixins.flex($justify:center)
+  width: 1.1vw
+  height: 1.1vw
+  background-color: variables.$order-button
+  border-radius: 50%
+  font-size: 0.9vw
+  @include mixins.tablet
+    width: 15px
+    height: 15px
+    font-size: 12px
 
