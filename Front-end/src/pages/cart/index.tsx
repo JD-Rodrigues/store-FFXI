@@ -1,18 +1,17 @@
 import Head from "next/head";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import ItemCart from "src/components/itemCart";
 import LoadingScreen from "src/components/loadingScreen";
 import { OrderButton } from "src/components/orderButton";
 import { CartContext } from "src/contexts/cartContextProvider";
 import MainContent from "src/layout/main";
-import { PayPalButtons, PayPalScriptProvider,OnApproveBraintreeData } from '@paypal/react-paypal-js'
+import { PayPalButtons, PayPalScriptProvider } from '@paypal/react-paypal-js'
 
 
  
 
 export default function Cart() {
-  const cartContext = useContext(CartContext)
-  console.log(process.env.NEXT_PUBLIC_CLIENT_ID)
+  const cartContext = useContext(CartContext) 
   
   if(!('cart' in cartContext)) {
     throw new Error('O cart etá nulo!')
@@ -75,6 +74,10 @@ export default function Cart() {
                   shape: "rect",
                   label: "checkout",
                 }}
+                forceReRender={
+                  [
+                    subtotal.toFixed(2), 
+                  ]}
                 createOrder={(data, actions) => {
                   return actions.order.create({
                     purchase_units: [
