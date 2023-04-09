@@ -19,6 +19,6 @@
       "src/*": ["./src/*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".env/**/*"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".env/**/*", "paypalConfig.js"],
   "exclude": ["node_modules"]
 }

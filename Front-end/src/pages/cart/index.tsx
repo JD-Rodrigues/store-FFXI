@@ -1,6 +1,5 @@
 import Head from "next/head";
 import { useContext, useState } from "react";
-import { CheckoutButton } from "src/components/checkoutButton";
 import ItemCart from "src/components/itemCart";
 import LoadingScreen from "src/components/loadingScreen";
 import { OrderButton } from "src/components/orderButton";
@@ -8,23 +7,18 @@ import { CartContext } from "src/contexts/cartContextProvider";
 import MainContent from "src/layout/main";
 import { PayPalButtons, PayPalScriptProvider,OnApproveBraintreeData } from '@paypal/react-paypal-js'
 
+
  
 
 export default function Cart() {
   const cartContext = useContext(CartContext)
-  const CLIENT_ID = "AWBfBF6lwcqZtRWLiZ7U4PKJKQWNpopmwS6o_5h2Xd4dfMhgYxrqpwYrv4IqAOPqLj5nQk3r4Fo-LhYS"
-
+  console.log(process.env.NEXT_PUBLIC_CLIENT_ID)
+  
   if(!('cart' in cartContext)) {
     throw new Error('O cart etá nulo!')
   }
 
   const subtotal = cartContext.cart.items.reduce((sum, item)=> item.price * item.quant + sum, 0)
-
-  const paypalOptions = {
-    "client-id": CLIENT_ID,
-    currency: "USD",
-  };
-
   
   return (
     <>
@@ -72,7 +66,7 @@ export default function Cart() {
                 ${subtotal.toFixed(2)}
               </p>
             </div>
-            <PayPalScriptProvider options={{"client-id":CLIENT_ID}} >
+            <PayPalScriptProvider options={{"client-id":process.env.NEXT_PUBLIC_CLIENT_ID!}} >
               <PayPalButtons 
                 className="paypal__button"
                 style={{
