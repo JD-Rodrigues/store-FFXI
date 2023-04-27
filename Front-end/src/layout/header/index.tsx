@@ -106,40 +106,37 @@ const Header = () => {
         </ul>
       </nav>
       <div className="user__panel">
-      {
-        screenWidth >= 768 && 
-          <Link 
-          href={userIconPath}
-          className="user__icon"
-          >
-            <div className="profile__icon__wrapper">
-              {
-                <p className={
-                  userContext?.logged 
-                    ? "logged__in__sign"
-                    : "logged__out__sign"}>
-                </p> 
-              }     
-              <User />
-            </div>
-          </Link> 
-      }       
-          <Link 
-            href="/cart"
-            className="cart__icon" 
-          >
-            <div className="cart__icon__wrapper">
-              {
-                userContext?.logged && 'cart' in cartContext
-                  && <p className="cart__icon__counter">
-                      {
-                        cartContext.cart.items.reduce((acc:number, item:TCartItem)=> item.quant + acc, 0)
-                      }                      
-                    </p> 
-              }            
-              <Cart/>
-            </div>  
-          </Link> 
+        <Link 
+        href={userIconPath}
+        className="user__icon"
+        >
+          <div className="profile__icon__wrapper">
+            {
+              <p className={
+                userContext?.logged 
+                  ? "logged__in__sign"
+                  : "logged__out__sign"}>
+              </p> 
+            }     
+            <User />
+          </div>
+        </Link>             
+        <Link 
+          href="/cart"
+          className="cart__icon" 
+        >
+          <div className="cart__icon__wrapper">
+            {
+              userContext?.logged && 'cart' in cartContext
+                && <p className="cart__icon__counter">
+                    {
+                      cartContext.cart.items.reduce((acc:number, item:TCartItem)=> item.quant + acc, 0)
+                    }                      
+                  </p> 
+            }            
+            <Cart/>
+          </div>  
+        </Link> 
 
       </div>
     </div>
