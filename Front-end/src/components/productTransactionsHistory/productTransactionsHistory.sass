@@ -1,0 +1,42 @@
+@use '../../basic_styles/mixins' 
+@use '../../basic_styles/variables' 
+@use '../orderButton/order_button' 
+
+  
+.item__history__content
+  @include mixins.flex($align:flex-start)
+  padding: 1vw
+  column-gap: 1vw
+  @include mixins.tablet 
+    padding: 15px
+    column-gap: 15px
+
+.item__history__pic
+  width:6.2vw
+  @include mixins.tablet 
+    width: 85px
+
+.item__history__details
+  @include mixins.flex(column, $align:flex-start)
+  row-gap: 0.7vw
+  @include mixins.tablet 
+    row-gap: 10px
+
+.item__history__title
+  font-family: variables.$font-bold
+  letter-spacing: 0.02vw
+
+.item__history__rebuy__wrapper    
+  width: 7.7vw
+  height: 1.8vw
+  background-color: variables.$order-button
+  border: none
+  color: variables.$light
+  font-size: 0.8rem
+  cursor: pointer
+  @include mixins.tablet 
+    width: 105px
+    height: 25px
+
+.reduce__history__item
+  display: none

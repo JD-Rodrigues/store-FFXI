@@ -430,6 +430,13 @@ dialog {
     display: none;
   }
 }
+
+@media (max-width: 768px) {
+  .show-hide {
+    display: none;
+  }
+}
+
 .item__history__content {
   width: 100%;
   display: flex;
@@ -445,6 +452,7 @@ dialog {
     column-gap: 15px;
   }
 }
+
 .item__history__pic {
   width: 6.2vw;
 }
@@ -453,6 +461,7 @@ dialog {
     width: 85px;
   }
 }
+
 .item__history__details {
   width: 100%;
   display: flex;
@@ -466,10 +475,12 @@ dialog {
     row-gap: 10px;
   }
 }
+
 .item__history__title {
   font-family: Proxima-Nova-Bold;
   letter-spacing: 0.02vw;
 }
+
 .item__history__rebuy__wrapper {
   width: 7.7vw;
   height: 1.8vw;
@@ -483,12 +494,6 @@ dialog {
   .item__history__rebuy__wrapper {
     width: 105px;
     height: 25px;
-  }
-}
-
-@media (max-width: 768px) {
-  .show-hide {
-    display: none;
   }
 }
 
