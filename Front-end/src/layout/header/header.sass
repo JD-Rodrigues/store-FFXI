@@ -91,7 +91,7 @@
       color: inherit
   
   
-.cart__icon__wrapper
+.cart__icon__wrapper, .profile__icon__wrapper
   position: relative
 
 .cart__icon__counter
@@ -109,3 +109,21 @@
     height: 15px
     font-size: 12px
 
+.logged__in__sign
+  position: absolute
+  right: 0.65885vw
+  top: 0.29vw  
+  @include mixins.flex($justify:center)
+  width: 0.55vw
+  height: 0.55vw
+  background-color: variables.$order-button
+  border-radius: 50%
+  @include mixins.tablet
+    width: 7px
+    height: 7px
+    right: 9px
+    top: 4px 
+
+.logged__out__sign
+  @extend .logged__in__sign
+  background-color: variables.$highlight

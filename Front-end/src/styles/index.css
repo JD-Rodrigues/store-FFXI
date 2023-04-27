@@ -1180,7 +1180,7 @@ address {
   }
 }
 
-.cart__icon__wrapper {
+.cart__icon__wrapper, .profile__icon__wrapper {
   position: relative;
 }
 
@@ -1205,6 +1205,33 @@ address {
     height: 15px;
     font-size: 12px;
   }
+}
+
+.logged__in__sign, .logged__out__sign {
+  position: absolute;
+  right: 0.65885vw;
+  top: 0.29vw;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 0.55vw;
+  height: 0.55vw;
+  background-color: #7bbf1c;
+  border-radius: 50%;
+}
+@media (max-width: 768px) {
+  .logged__in__sign, .logged__out__sign {
+    width: 7px;
+    height: 7px;
+    right: 9px;
+    top: 4px;
+  }
+}
+
+.logged__out__sign {
+  background-color: #c80000;
 }
 
 .footer {

@@ -109,10 +109,19 @@ const Header = () => {
       {
         screenWidth >= 768 && 
           <Link 
-            href={userIconPath}
-            className="user__icon"
+          href={userIconPath}
+          className="user__icon"
           >
-            <User />
+            <div className="profile__icon__wrapper">
+              {
+                <p className={
+                  userContext?.logged 
+                    ? "logged__in__sign"
+                    : "logged__out__sign"}>
+                </p> 
+              }     
+              <User />
+            </div>
           </Link> 
       }       
           <Link 
