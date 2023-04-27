@@ -1112,11 +1112,6 @@ address {
 .menu__login__link {
   text-transform: none;
 }
-@media (min-width: 769px) {
-  .menu__login__link {
-    display: none;
-  }
-}
 
 .mobile__menu__btn {
   font-size: 18px;

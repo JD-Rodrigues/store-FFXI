@@ -6,6 +6,7 @@ import logo from 'public/logo.png'
 import { useContext, useEffect, useState } from "react"
 import { AuthContext } from "src/contexts/authContextProvider"
 import { CartContext } from "src/contexts/cartContextProvider"
+import { logout } from "src/services/authFunctions"
 import { TCartItem } from "src/types"
 
 
@@ -31,7 +32,9 @@ const Header = () => {
     screenWidth <= 768 && setShowMenu(false)
   }
 
-
+  if(!('cart' in cartContext)) {
+    throw new Error('O cart está nulo!')
+  }
 
   useEffect(()=>{   
     window.addEventListener('resize', ()=> {
@@ -99,9 +102,16 @@ const Header = () => {
           <Link
             href={userIconPath} 
             className="header__menu__item link menu__login__link"
-            onClick={hideMenuByLinks}
+            onClick={() => {
+              hideMenuByLinks()
+              logout(userContext!.setLogged!, userContext!.setUser!, cartContext.setCart)
+            }}
           >
-            Log in/Create account
+            {
+              userContext?.logged 
+                ? "Logout"
+                : "Login/Create account" 
+            }
           </Link>
         </ul>
       </nav>
