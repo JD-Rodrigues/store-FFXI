@@ -61,5 +61,5 @@ const remove = (coll, filter) => __awaiter(void 0, void 0, void 0, function* () 
     client.close();
 });
 exports.remove = remove;
-
+// remove('costumers', {gid: '110584721519611156608'}).then(console.log('usuário deletado!'))
 //# sourceMappingURL=queries.js.map
