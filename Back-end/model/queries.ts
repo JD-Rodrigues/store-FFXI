@@ -11,6 +11,7 @@ export const read = async (coll, filter = {}) => {
     const data = collection.find(filter)
     const docs = []
     await data.forEach(doc => docs.push(doc))
+    console.log("leu!")
     return docs
   } catch (err) {
     console.log(err);
@@ -22,6 +23,7 @@ export const create = async (coll, query) => {
   try {
     const collection = client.db('store').collection(coll)
     await collection.insertOne(query)
+    console.log('criou!')
   }catch(err) {
     console.log(err)
   } 

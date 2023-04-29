@@ -25,6 +25,10 @@ exports.router.post('/costumers', (req, res) => __awaiter(void 0, void 0, void 0
     yield (0, queries_1.create)('costumers', req.body.user);
     res.json('Cliente cadastrado!');
 }));
+exports.router.post('/transactions', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    yield (0, queries_1.create)('transactions', req.body.transaction);
+    res.json('Transação cadastrada!');
+}));
 exports.router.get('/cart/:userId', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const gid = req.params.userId;
     const user = yield (0, queries_1.read)('costumers', { gid: gid });

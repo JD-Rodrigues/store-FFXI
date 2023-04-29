@@ -19,6 +19,11 @@ router.post('/costumers', async (req, res)=> {
   res.json('Cliente cadastrado!')
 })
 
+router.post('/transactions', async (req, res)=> {
+  await create('transactions',req.body.transaction)
+  res.json('Transação cadastrada!')
+})
+
 router.get('/cart/:userId', async (req, res)=> {
   const gid = req.params.userId
   const user = await read('costumers', {gid:gid})
