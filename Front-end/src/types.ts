@@ -162,12 +162,7 @@ type TPurchaseTransaction = {
   orderNumber: string
   userId: string
   date:string
-  items: {
-    title: string
-    pic: string
-    price: string
-    quant: string
-  }
+  items: TCartItem[]
 }
 
 
