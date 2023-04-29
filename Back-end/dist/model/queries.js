@@ -21,6 +21,7 @@ const read = (coll, filter = {}) => __awaiter(void 0, void 0, void 0, function* 
         const data = collection.find(filter);
         const docs = [];
         yield data.forEach(doc => docs.push(doc));
+        console.log("leu!");
         return docs;
     }
     catch (err) {
@@ -33,6 +34,7 @@ const create = (coll, query) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const collection = client.db('store').collection(coll);
         yield collection.insertOne(query);
+        console.log('criou!');
     }
     catch (err) {
         console.log(err);

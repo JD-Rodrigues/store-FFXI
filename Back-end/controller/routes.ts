@@ -13,10 +13,28 @@ router.get('/costumers/:id', async (req, res)=> {
   
 })
 
+router.get('/transactions/:orderNumber', async (req, res)=> {
+  const transactionNumberSearched = req.params.orderNumber
+  const transactionsInDatabase = await read('transactions')
+  const foundTransactions = transactionsInDatabase.length > 0 ? transactionsInDatabase.filter(transaction=> transaction.orderNumber === transactionNumberSearched ) : []
+  // console.log(foundCostumer) 
+  res.json(foundTransactions)  
+})
+
+router.get('/transactions', async (req, res)=> {
+  const transactionsInDatabase = await read('transactions')
+  res.json(transactionsInDatabase)  
+})
+
 router.post('/costumers', async (req, res)=> {
   console.log("Epaaa") 
   await create('costumers',req.body.user)
   res.json('Cliente cadastrado!')
+})
+
+router.post('/transactions', async (req, res)=> {
+  await create('transactions',req.body.transaction)
+  res.json('Transação cadastrada!')
 })
 
 router.get('/cart/:userId', async (req, res)=> {

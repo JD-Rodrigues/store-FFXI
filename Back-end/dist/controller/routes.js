@@ -20,10 +20,25 @@ exports.router.get('/costumers/:id', (req, res) => __awaiter(void 0, void 0, voi
     // console.log(foundCostumer) 
     res.json(foundCostumer);
 }));
+exports.router.get('/transactions/:orderNumber', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const transactionNumberSearched = req.params.orderNumber;
+    const transactionsInDatabase = yield (0, queries_1.read)('transactions');
+    const foundTransactions = transactionsInDatabase.length > 0 ? transactionsInDatabase.filter(transaction => transaction.orderNumber === transactionNumberSearched) : [];
+    // console.log(foundCostumer) 
+    res.json(foundTransactions);
+}));
+exports.router.get('/transactions', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const transactionsInDatabase = yield (0, queries_1.read)('transactions');
+    res.json(transactionsInDatabase);
+}));
 exports.router.post('/costumers', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     console.log("Epaaa");
     yield (0, queries_1.create)('costumers', req.body.user);
     res.json('Cliente cadastrado!');
+}));
+exports.router.post('/transactions', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    yield (0, queries_1.create)('transactions', req.body.transaction);
+    res.json('Transação cadastrada!');
 }));
 exports.router.get('/cart/:userId', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const gid = req.params.userId;
