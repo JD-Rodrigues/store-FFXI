@@ -101,6 +101,12 @@ type TAuthContextValue = {
 // React.Dispatch<React.SetStateAction<TUserObject>> | React.Dispatch<React.SetStateAction<undefined>> 
 
 type TCartContextValue =  {
+  initialValueCart: {
+    orderId: string
+    date: string
+    opened: boolean
+    items: []
+  }
   selectedProduct: PrismicDocument | undefined
   setSelectedProduct:React.Dispatch<React.SetStateAction<PrismicDocument>> 
   cart:TCart
