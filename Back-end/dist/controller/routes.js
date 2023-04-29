@@ -20,10 +20,10 @@ exports.router.get('/costumers/:id', (req, res) => __awaiter(void 0, void 0, voi
     // console.log(foundCostumer) 
     res.json(foundCostumer);
 }));
-exports.router.get('/transactions/:orderNumber', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    const transactionNumberSearched = req.params.orderNumber;
+exports.router.get('/transactions/:userId', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const transactionNumberSearched = req.params.userId;
     const transactionsInDatabase = yield (0, queries_1.read)('transactions');
-    const foundTransactions = transactionsInDatabase.length > 0 ? transactionsInDatabase.filter(transaction => transaction.orderNumber === transactionNumberSearched) : [];
+    const foundTransactions = transactionsInDatabase.length > 0 ? transactionsInDatabase.filter(transaction => transaction.userId === transactionNumberSearched) : [];
     // console.log(foundCostumer) 
     res.json(foundTransactions);
 }));

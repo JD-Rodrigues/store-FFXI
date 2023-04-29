@@ -13,10 +13,10 @@ router.get('/costumers/:id', async (req, res)=> {
   
 })
 
-router.get('/transactions/:orderNumber', async (req, res)=> {
-  const transactionNumberSearched = req.params.orderNumber
+router.get('/transactions/:userId', async (req, res)=> {
+  const transactionNumberSearched = req.params.userId
   const transactionsInDatabase = await read('transactions')
-  const foundTransactions = transactionsInDatabase.length > 0 ? transactionsInDatabase.filter(transaction=> transaction.orderNumber === transactionNumberSearched ) : []
+  const foundTransactions = transactionsInDatabase.length > 0 ? transactionsInDatabase.filter(transaction=> transaction.userId === transactionNumberSearched ) : []
   // console.log(foundCostumer) 
   res.json(foundTransactions)  
 })

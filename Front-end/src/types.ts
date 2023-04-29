@@ -158,7 +158,18 @@ type TCheckoutButtonProps = {
   text:string
 }
 
+type TPurchaseTransaction = {
+  orderNumber: string
+  userId: string
+  date:string
+  items: {
+    title: string
+    pic: string
+    price: string
+    quant: string
+  }
+}
 
 
-export type { MainContentProps, TGalleryCard, TOrderButtonProps, IHomeProps, IGetStaticItemProps, IItemProps, IProduct, IGetStaticCategoryProps, IAuthContextProps, ICartContextProps, TAuthContextValue, TCartContextValue, TUserObject, IcreateUserParam, TCredential, TCart, TCartItem, TCartCard, TCheckoutButtonProps }
+export type { MainContentProps, TGalleryCard, TOrderButtonProps, IHomeProps, IGetStaticItemProps, IItemProps, IProduct, IGetStaticCategoryProps, IAuthContextProps, ICartContextProps, TAuthContextValue, TCartContextValue, TUserObject, IcreateUserParam, TCredential, TCart, TCartItem, TCartCard, TCheckoutButtonProps, TPurchaseTransaction }
 
