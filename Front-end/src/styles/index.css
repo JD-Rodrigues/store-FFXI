@@ -431,6 +431,15 @@ dialog {
   }
 }
 
+.product__history__wrapper {
+  border-bottom: #ddd 0.07vw solid;
+}
+@media (max-width: 768px) {
+  .product__history__wrapper {
+    border-bottom: #ddd 1px solid;
+  }
+}
+
 @media (max-width: 768px) {
   .show-hide {
     display: none;
@@ -955,6 +964,11 @@ dialog {
   .profile__main__title {
     font-size: 20px;
   }
+}
+
+.item__history__wrapper {
+  width: 100%;
+  list-style-type: none;
 }
 
 *, *:before, *:after {

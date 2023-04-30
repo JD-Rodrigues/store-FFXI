@@ -171,6 +171,15 @@ type TPurchaseTransaction = {
   items: TCartItem[]
 }
 
+type TItemHistoryProps = {
+  transaction: TPurchaseTransaction
+}
 
-export type { MainContentProps, TGalleryCard, TOrderButtonProps, IHomeProps, IGetStaticItemProps, IItemProps, IProduct, IGetStaticCategoryProps, IAuthContextProps, ICartContextProps, TAuthContextValue, TCartContextValue, TUserObject, IcreateUserParam, TCredential, TCart, TCartItem, TCartCard, TCheckoutButtonProps, TPurchaseTransaction }
+type IProductTransactionHistoryProps = {
+  expandItem: boolean
+  product: TCartItem
+}
+
+
+export type { MainContentProps, TGalleryCard, TOrderButtonProps, IHomeProps, IGetStaticItemProps, IItemProps, IProduct, IGetStaticCategoryProps, IAuthContextProps, ICartContextProps, TAuthContextValue, TCartContextValue, TUserObject, IcreateUserParam, TCredential, TCart, TCartItem, TCartCard, TCheckoutButtonProps, TPurchaseTransaction, TItemHistoryProps, IProductTransactionHistoryProps}
 
