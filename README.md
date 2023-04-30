@@ -16,7 +16,7 @@
 A aplicação atenderá à demanda de um cliente.
 
 ## 🟡 Status do projeto:
-Em desenvolvimento - Atualmente, estou trabalhando na implementação do checkout.
+Em desenvolvimento - Atualmente, estou trabalhando na paginação do histórico de compras do cliente.
 
 ## 🛠️ Funcionalidades já desenvolvidas:
 - Painel de gerenciamento de conteúdo onde o administrador pode cadastrar novos produtos, alterar informações dos itens ou removê-los.
@@ -24,14 +24,14 @@ Em desenvolvimento - Atualmente, estou trabalhando na implementação do checkou
 - Adicionar e remover itens do carrinho, bem como alterar a quantidade.
 - Itens adicionados ao carrinho permanecem salvos para as futuras sessões, até a compra ser efetivada ou serem removidos pelo usuário.
 - As páginas dos produtos e categorias são estáticas, geradas a cada nova atualização do conteúdo, o que proporciona ao usuário uma rápida navegação.
-
-## ⛏️ Funcionalidades em desenvolvimento:
 - Checkout via Paypal.
-- Envio de e-mail de notificação para o administrador após a realização de cada transação.
 - Histórico de compras mostrado na área do usuário.
 - Modais de confirmação para adicionar e remover itens do carrinho.
-- Histórico de todas as transações para acesso do administrador.
 - Indicador da quantidade de itens adicionados ao carrinho posicionado sobre o ícone do cart.
+
+## ⛏️ Funcionalidades em desenvolvimento:
+- Envio de e-mail de notificação para o administrador após a realização de cada transação.
+- Histórico de todas as transações para acesso do administrador.
 - Links das redes sociais nos ícones do rodapé.
 - Migração do back-end para hospedagem paga, a fim de manter a disponibilidade da aplicação, sem hibernação.
   
