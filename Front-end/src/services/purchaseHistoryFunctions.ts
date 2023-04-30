@@ -14,6 +14,8 @@ export const saveTransactionInDatabase = async (transaction:TPurchaseTransaction
   const userTransactions  = await fetch(
     `https://kampler-store-api-costumers.onrender.com/transactions`,
     {
+      method:"POST",
+      headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
         transaction: transaction
       })

@@ -1,28 +1,29 @@
+import { IProductTransactionHistoryProps } from "src/types"
 
-const ProductTransactionHistory = ({expandItem}:any) => {
+const ProductTransactionHistory = ({expandItem, product}:IProductTransactionHistoryProps) => {
 
   return (
     <section className={`${expandItem ? "item__history__content" : "reduce__history__item"}`}>
         <img 
           className="item__history__pic"
-          src="/gallery__images/item__desc.jpg"
+          src={product.pic} 
         >
         </img>
         <section className="item__history__details">
           <h3 
             className="item__history__title"
           >
-            FINAL FANTASY VII REMAKE™ STATIC ARTS TIFA LOCKHART EXOTIC DRESS VER.
+            {product.title}
           </h3>
           <p
             className="item__history__quantity"
           >
-            Quantity: 1
+            {`Quantity: ${product.quant}`}
           </p>
           <p
             className="item__history__price"
           >
-            Price: $299.99
+            {`Price: $${product.price}`}
           </p>
           <button className="item__history__rebuy__wrapper">
             BUY AGAIN

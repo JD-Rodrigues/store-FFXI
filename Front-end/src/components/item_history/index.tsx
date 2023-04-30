@@ -1,9 +1,10 @@
 import { useState } from "react"
 import { OrderButton } from "../orderButton"
 import ProductTransactionHistory from "../productTransactionsHistory"
+import { TItemHistoryProps, TPurchaseTransaction } from "src/types"
 
 
-const ItemHistory = () => {
+const ItemHistory = ({transaction}:TItemHistoryProps) => {
   const [expandItem, setExpandItem] = useState(true)
 
   const expandHideItem = () => {
@@ -26,7 +27,7 @@ const ItemHistory = () => {
           <p 
             className="item__history__header__info" id="order__number"
           >
-            26512803
+            {transaction.orderNumber}
           </p>
         </div>
         <div className="item__history__header__cell">
@@ -37,7 +38,7 @@ const ItemHistory = () => {
             className="item__history__header__info"
             id="date"
           >
-            2020-07-04 07:55:19
+            {transaction.date}
           </p>
         </div>
         <div className="item__history__header__cell">
@@ -59,7 +60,7 @@ const ItemHistory = () => {
             className="item__history__header__info"
             id="items"
           >
-            1
+            {transaction.items.length}
           </p>
         </div>
         <div className="item__history__header__cell">
@@ -70,13 +71,21 @@ const ItemHistory = () => {
             className="item__history__header__info"
             id="items"
           >
-            $0.00
+            {`$${transaction.items.reduce((acc, currentValue)=> acc + currentValue.price, 0)}`}
           </p>
         </div>
       </header>
-      <ProductTransactionHistory expandItem={expandItem} />
+      
       <section>
-
+        {
+          transaction.items.map(item => 
+            <div className="product__history__wrapper" key={item.id}> 
+              <ProductTransactionHistory 
+                expandItem={expandItem} 
+                product={item} 
+              /> 
+            </div>)
+        }
       </section>
     </article>
   )

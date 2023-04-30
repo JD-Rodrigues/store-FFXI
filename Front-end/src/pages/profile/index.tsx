@@ -1,16 +1,19 @@
 import Head from "next/head"
 import { useRouter } from "next/router"
-import { useContext, useEffect } from "react"
+import { useContext, useEffect, useState } from "react"
 import ItemHistory from "src/components/item_history"
 import LoginCard from "src/components/loginCard"
 import { AuthContext } from "src/contexts/authContextProvider"
 import { CartContext } from "src/contexts/cartContextProvider"
 import MainContent from "src/layout/main"
 import { logout } from "src/services/authFunctions"
+import { getUserTransactions } from "src/services/purchaseHistoryFunctions"
+import { TPurchaseTransaction } from "src/types"
 
 
 
 const Profile = () => {
+  const [purchaseHistory, setPurchaseHistory] = useState<TPurchaseTransaction[]>()
   const userContext = useContext(AuthContext)
   const cartContext = useContext(CartContext)
   const router = useRouter()
@@ -36,6 +39,11 @@ const Profile = () => {
     userContext.logged === false && router.push('/login')
   },[userContext.logged])
 
+  useEffect(()=> {
+    if(userContext.user?.gid) {
+      const transactions = getUserTransactions(userContext.user?.gid).then(data=>setPurchaseHistory(data))
+    }
+  },[])
 
   return(
     <>
@@ -74,10 +82,10 @@ const Profile = () => {
         <article className="profile__main__history">
           <h1 className="profile__main__title">
             PURCHASE HISTORY
-          </h1>
-          <ItemHistory />
-          <ItemHistory />
-          <ItemHistory />
+          </h1>          
+          {
+            purchaseHistory && purchaseHistory.map(transaction => <li className="item__history__wrapper" key={transaction.orderNumber}><ItemHistory transaction={transaction}/></li> )
+          }    
         </article>
       </main>
     </>     

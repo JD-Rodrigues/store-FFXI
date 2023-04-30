@@ -6,12 +6,17 @@ import { OrderButton } from "src/components/orderButton";
 import { CartContext } from "src/contexts/cartContextProvider";
 import MainContent from "src/layout/main";
 import { PayPalButtons, PayPalScriptProvider } from '@paypal/react-paypal-js'
+import { getAllTransactions, getUserTransactions, saveTransactionInDatabase } from "src/services/purchaseHistoryFunctions";
+import { AuthContext } from "src/contexts/authContextProvider";
+import { getCart, setCartHandler, updateCart } from "src/services/cartApiFunctions";
 
 
  
 
 export default function Cart() {
-  const cartContext = useContext(CartContext) 
+  const cartContext = useContext(CartContext)
+  const userContext = useContext(AuthContext)
+
   
   if(!('cart' in cartContext)) {
     throw new Error('O cart etá nulo!')
@@ -91,8 +96,23 @@ export default function Cart() {
                   });
                 }}
                 onApprove={(data, actions) => {
-                  return actions.order!.capture().then(function(details) {
-                    alert("Transaction completed by " + details.payer.name!.given_name);
+                  return actions.order!.capture().then(async function(details) {
+                    if (userContext
+                    && userContext.user
+                    && cartContext.cart.items.length > 0) { 
+                      await saveTransactionInDatabase(
+                        {
+                          orderNumber: cartContext.cart.orderId,
+                          userId: userContext.user.gid,
+                          date: cartContext.cart.date,
+                          items: cartContext.cart.items
+                        }
+                      )    
+
+                      await updateCart(userContext?.user?.gid, cartContext.initialValueCart) 
+
+                      await setCartHandler(userContext.user.gid, getCart, cartContext.setCart)
+                    }             
                   });
                 }}
               />

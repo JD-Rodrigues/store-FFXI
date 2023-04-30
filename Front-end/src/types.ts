@@ -101,6 +101,12 @@ type TAuthContextValue = {
 // React.Dispatch<React.SetStateAction<TUserObject>> | React.Dispatch<React.SetStateAction<undefined>> 
 
 type TCartContextValue =  {
+  initialValueCart: {
+    orderId: string
+    date: string
+    opened: boolean
+    items: []
+  }
   selectedProduct: PrismicDocument | undefined
   setSelectedProduct:React.Dispatch<React.SetStateAction<PrismicDocument>> 
   cart:TCart
@@ -162,14 +168,18 @@ type TPurchaseTransaction = {
   orderNumber: string
   userId: string
   date:string
-  items: {
-    title: string
-    pic: string
-    price: string
-    quant: string
-  }
+  items: TCartItem[]
+}
+
+type TItemHistoryProps = {
+  transaction: TPurchaseTransaction
+}
+
+type IProductTransactionHistoryProps = {
+  expandItem: boolean
+  product: TCartItem
 }
 
 
-export type { MainContentProps, TGalleryCard, TOrderButtonProps, IHomeProps, IGetStaticItemProps, IItemProps, IProduct, IGetStaticCategoryProps, IAuthContextProps, ICartContextProps, TAuthContextValue, TCartContextValue, TUserObject, IcreateUserParam, TCredential, TCart, TCartItem, TCartCard, TCheckoutButtonProps, TPurchaseTransaction }
+export type { MainContentProps, TGalleryCard, TOrderButtonProps, IHomeProps, IGetStaticItemProps, IItemProps, IProduct, IGetStaticCategoryProps, IAuthContextProps, ICartContextProps, TAuthContextValue, TCartContextValue, TUserObject, IcreateUserParam, TCredential, TCart, TCartItem, TCartCard, TCheckoutButtonProps, TPurchaseTransaction, TItemHistoryProps, IProductTransactionHistoryProps}
 
